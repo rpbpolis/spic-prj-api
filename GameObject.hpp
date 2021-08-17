@@ -38,7 +38,7 @@ namespace spic {
              * @brief Returns the first active loaded object of Type type.
              */
             template<class T>
-            static GameObject* FindObjectOfType<T>() {
+            static GameObject* FindObjectOfType(bool includeInactive = false) {
                 // ... implementation here
             }
 
@@ -46,7 +46,7 @@ namespace spic {
              * @brief Gets a list of all loaded objects of Type type.
              */
             template<class T>
-            static GameObject* FindObjectsOfType<T>() {
+            static GameObject* FindObjectsOfType(bool includeInactive = false) {
                 // ...implementation here
             }
 
@@ -103,7 +103,7 @@ namespace spic {
              * @param component Reference to the component.
              */
             template<class T>
-            void AddComponent<T>(const T* component) {
+            void AddComponent(const T* component) {
                 // ... implementation here
             }
 
@@ -113,7 +113,7 @@ namespace spic {
              * @return Pointer to Component instance.
              */
             template<class T>
-            Component* GetComponent<T>() const {
+            Component* GetComponent() const {
                 // ... implementation here
             }
 
@@ -124,7 +124,7 @@ namespace spic {
              * @return Pointer to Component instance.
              */
             template<class T>
-            Component* GetComponentInChildren<T>() const {
+            Component* GetComponentInChildren() const {
                 // ... implementation here
             }
 
@@ -135,7 +135,7 @@ namespace spic {
              * @return Pointer to Component instance.
              */
             template<class T>
-            Component* GetComponentInParent<T>() const {
+            Component* GetComponentInParent() const {
                 // ... implementation here
             }
 
@@ -145,7 +145,7 @@ namespace spic {
              * @return Vector with pointers to Component instances.
              */
             template<class T>
-            std::vector<Component*> GetComponents<T>() const {
+            std::vector<Component*> GetComponents() const {
                 // ... implementation here
             }
 
@@ -156,7 +156,7 @@ namespace spic {
              * @return Vector with pointers to Component instances.
              */
             template<class T>
-            std::vector<Component*> GetComponentsInChildren<T>() const {
+            std::vector<Component*> GetComponentsInChildren() const {
                 // ... implementation here
             }
 
@@ -167,7 +167,7 @@ namespace spic {
              * @return Vector with pointers to Component instances.
              */
             template<class T>
-            std::vector<Component*> GetComponentsInParent<T>() const {
+            std::vector<Component*> GetComponentsInParent() const {
                 // ... implementation here
             }
 
