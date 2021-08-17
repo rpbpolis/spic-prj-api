@@ -1,4 +1,6 @@
 #include "Time.hpp"
 
-int spic::Time::deltaTime {0};
-double spic::Time::timeScale {0.0};
+using namespace spic;
+
+double Time::deltaTime {0.0};
+double Time::timeScale {0.0};

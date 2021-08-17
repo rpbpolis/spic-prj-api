@@ -22,6 +22,8 @@ namespace spic {
         public:
             /**
              * @brief Apply force to this rigid body.
+             * @param forceDirection A point, used as a vector to indicate direction
+             *        and magnitude of the force to be applied.
              */
             void AddForce(const Point& forceDirection);
 

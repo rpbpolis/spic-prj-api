@@ -7,7 +7,22 @@ namespace spic {
      * @brief Base class for all components.
      */
     class Component {
+        public:
+            /**
+             * @brief Getter for active status.
+             * @return true if active, false otherwise.
+             */
+            bool Active() const { return active; }
+
+            /**
+             * @brief flag New active status.
+             */
+            void Active(bool flag) { active = flag; }
+
         private:
+            /**
+             * @brief Active status.
+             */
             bool active;
     };
 
