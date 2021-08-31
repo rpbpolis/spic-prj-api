@@ -11,7 +11,7 @@ namespace spic {
      */
     class Camera : public GameObject {
         private:
-            Color backgroundCOlor;
+            Color backgroundColor;
             double aspectWidth;
             double aspectHeight;
     };
