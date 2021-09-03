@@ -6,6 +6,9 @@
 
 namespace spic {
 
+    /**
+     * @brief Some convenient input functions.
+     */
     namespace Input {
 
         /**
