@@ -14,6 +14,11 @@ namespace spic {
              * @brief This function is called by a Camera to render the scene on the engine.
              */
             void RenderScene();
+
+            /**
+             * @brief This property contains all the Game Object that are loaded into the scene.
+             */
+            GameObject[] contents;
     };
 
 }
