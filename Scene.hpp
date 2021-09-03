@@ -16,7 +16,7 @@ namespace spic {
             void RenderScene();
 
             /**
-             * @brief This property contains all the Game Object that are loaded into the scene.
+             * @brief This property contains all the Game Object that are contained in this scene.
              */
             GameObject[] contents;
     };
