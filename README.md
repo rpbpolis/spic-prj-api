@@ -1,4 +1,4 @@
-# spic-prj-api
+# spic-prj-api (Group I & J)
 Engine API for the SPiC minor's project.
 
 Warning: API is currently NOT stable yet!
