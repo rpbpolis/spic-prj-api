@@ -69,6 +69,18 @@ namespace spic {
              */
             void SetAlignment(const Alignment alignment);
 
+            /**
+             * @brief Get the color of the Text object
+             * @return A reference to the color of the Text object
+             */
+            const Color& Color() const { return color; }
+
+            /**
+             * @brief Set the color of the Text object
+             * @param color the new color
+             */
+            void SetColor(const Color& color);
+
         private:
             std::string text;
             std::string font;
