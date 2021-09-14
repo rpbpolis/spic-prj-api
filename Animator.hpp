@@ -3,6 +3,8 @@
 
 #include "Component.hpp"
 #include "Sprite.hpp"
+#include <vector>
+#include <memory>
 
 namespace spic {
 
@@ -11,6 +13,13 @@ namespace spic {
      */
     class Animator : public Component {
         public:
+            /**
+             * @brief Constructor.
+             * @param fps The amount of frames the animator will cycle though per second.
+             * @param sprites An list of sprites to loop through.
+             */
+            Animator(const int fps, const std::vector<std::shared_ptr<Sprite>>& sprites);
+
             /**
              * @brief Start playing the image sequence.
              * @param looping If true, will automatically start again when done.
@@ -28,7 +37,10 @@ namespace spic {
              * @brief frames per second (playing speed)
              */
             int fps;
-            // ... collection of Sprites here
+            /**
+             * @brief collection of Sprites to cycle through
+             */
+            std::vector<std::shared_ptr<Sprite>> sprites;
     };
 
 }
