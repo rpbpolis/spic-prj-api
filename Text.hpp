@@ -64,8 +64,8 @@ namespace spic {
             const Alignment& Alignment() const { return alignment; }
 
             /**
-             * @brief Set the font of the Text object
-             * @param font the new font
+             * @brief Set the alignment of the content of the Text object
+             * @param alignment the new alignment
              */
             void SetAlignment(const Alignment alignment);
 
