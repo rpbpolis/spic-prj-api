@@ -21,6 +21,14 @@ namespace spic {
     class RigidBody : public Component {
         public:
             /**
+             * @brief Constructor
+             * @param mass The mass of the rigid body
+             * @param gravityScale The scale of the gravity of the rigid body
+             * @param bodyType The type of the rigid body
+             */
+            RigidBody(const double mass, const double gravityScale, const BodyType& bodyType);
+            
+            /**
              * @brief Apply force to this rigid body.
              * @param forceDirection A point, used as a vector to indicate direction
              *        and magnitude of the force to be applied.
