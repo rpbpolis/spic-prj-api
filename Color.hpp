@@ -72,6 +72,30 @@ namespace spic {
              * @return A reference to a statically allocated Color instance.
              */
             static const Color& black() { return _black; }
+
+            /**
+             * @brief One of the standard colors (read-only): purple.
+             * @return A reference to a statically allocated Color instance.
+             */
+            static const Color& purple() { return _purple; }
+
+            /**
+             * @brief One of the standard colors (read-only): lime.
+             * @return A reference to a statically allocated Color instance.
+             */
+            static const Color& lime() { return _lime; }
+
+            /**
+             * @brief One of the standard colors (read-only): orange.
+             * @return A reference to a statically allocated Color instance.
+             */
+            static const Color& orange() { return _orange; }
+
+            /**
+             * @brief One of the standard colors (read-only): transparent.
+             * @return A reference to a statically allocated Color instance.
+             */
+            static const Color& transparent() { return _transparent; }
             // ... more standard colors here
 
             /**
@@ -105,6 +129,10 @@ namespace spic {
             static Color _magenta;
             static Color _yellow;
             static Color _black;
+            static Color _purple;
+            static Color _lime;
+            static Color _orange;
+            static Color _transparent;
             // ... more standard color here
     };
 
