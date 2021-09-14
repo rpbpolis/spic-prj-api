@@ -1,0 +1,4 @@
+<map id="spic::Scene" name="spic::Scene">
+<area shape="rect" id="node1" title="Class representing a scene which can be rendered by the Camera." alt="" coords="23,95,114,121"/>
+<area shape="rect" id="node2" href="$classspic_1_1GameObject.html" title="Any object which should be represented on screen." alt="" coords="5,5,132,32"/>
+</map>
