@@ -57,6 +57,18 @@ namespace spic {
              */
             void SetSize(const int size);
 
+            /**
+             * @brief Get the alignment of the Text object
+             * @return A reference to the alignment of the Text object
+             */
+            const Alignment& Alignment() const { return alignment; }
+
+            /**
+             * @brief Set the font of the Text object
+             * @param font the new font
+             */
+            void SetAlignment(const Alignment alignment);
+
         private:
             std::string text;
             std::string font;
