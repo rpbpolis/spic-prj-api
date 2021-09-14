@@ -10,6 +10,15 @@ namespace spic {
      * @brief Class representing a point of view towards the game scene.
      */
     class Camera : public GameObject {
+        public:
+            /**
+             * @brief Constructor.
+             * @param backgroundColor The background color of the horizon in the camera.
+             * @param aspectWidth The aspect width of the camera.
+             * @param aspectHeight The aspect width of the camera.
+             */
+            Camera(const Color& backgroundColor, const double aspectWidth, const double aspectHeight);
+
         private:
             Color backgroundColor;
             double aspectWidth;
