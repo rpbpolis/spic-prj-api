@@ -73,8 +73,10 @@ namespace spic {
              *          available collection, the administration.  This makes the
              *          Find()-functions possible.
              * @param name The name for the game object.
+             * @param tag The tag for the game object.
+             * @param layer The layer for the game object.
              */
-            GameObject(const std::string& name);
+            GameObject(const std::string& name, const std::string& tag, const int layer);
 
             /**
              * @brief Does the object exist? TODO wat wordt hiermee bedoeld?
