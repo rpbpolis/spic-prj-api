@@ -115,6 +115,30 @@ namespace spic {
              */
             void SetColor(const double r, const double g, const double b, const double a);
             
+            /**
+             * @brief The red part of the color
+             * @return A reference to the statically red part of the color.
+             */
+            const double& R() const { return r; }
+
+            /**
+             * @brief The green part of the color
+             * @return A reference to the statically green part of the color.
+             */
+            const double& G() const { return g; }
+            
+            /**
+             * @brief The blue part of the color
+             * @return A reference to the statically blue part of the color.
+             */
+            const double& B() const { return b; }
+
+            /**
+             * @brief The alpha part of the color
+             * @return A reference to the statically alpha part of the color.
+             */
+            const double& A() const { return a; }
+
         private:
             double r;
             double g;
