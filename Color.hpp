@@ -9,13 +9,21 @@ namespace spic {
     class Color {
         public:
             /**
+             * @brief Constructor, accepting an rgb value.
+             * @param red The red component, 0 ≤ r ≤ 1.
+             * @param green The green component, 0 ≤ g ≤ 1.
+             * @param blue The blue component, 0 ≤ b ≤ 1.
+             */
+            Color(const double red, const double green, const double blue);
+            
+            /**
              * @brief Constructor, accepting an rgb value and an alpha (transparency).
              * @param red The red component, 0 ≤ r ≤ 1.
              * @param green The green component, 0 ≤ g ≤ 1.
              * @param blue The blue component, 0 ≤ b ≤ 1.
              * @param alpha The transparency component, 0 ≤ alpha ≤ 1.
              */
-            Color(double red, double green, double blue, double alpha);
+            Color(const double red, const double green, const double blue, const double alpha);
 
             /**
              * @brief One of the standard colors (read-only): white.
