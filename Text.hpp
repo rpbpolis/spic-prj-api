@@ -20,6 +20,19 @@ namespace spic {
      * @brief Class representing a piece of text which can be rendered.
      */
     class Text : public UIObject {
+        public:
+            /**
+             * @brief Get the content of the Text object
+             * @return A reference to the content of the Text object
+             */
+            const std::string& Text() const { return text; }
+
+            /**
+             * @brief Set the text content of the Text object
+             * @param text new content
+             */
+            void SetText(const std::string& text);
+
         private:
             std::string text;
             std::string font;
