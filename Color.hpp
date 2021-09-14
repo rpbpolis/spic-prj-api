@@ -74,6 +74,23 @@ namespace spic {
             static const Color& black()   { return _black; }
             // ... more standard colors here
 
+            /**
+             * @brief Set the RGB values of the color
+             * @param r The red part of the color
+             * @param g The green part of the color
+             * @param b The blue part of the color
+             */
+            void SetColor(const double r, const double g, const double b);
+
+            /**
+             * @brief Set the RGBA values of the color
+             * @param r The red part of the color
+             * @param g The green part of the color
+             * @param b The blue part of the color
+             * @param a The alpha part of the color
+             */
+            void SetColor(const double r, const double g, const double b, const double a);
+            
         private:
             double r;
             double g;
