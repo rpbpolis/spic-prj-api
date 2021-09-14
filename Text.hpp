@@ -33,6 +33,18 @@ namespace spic {
              */
             void SetText(const std::string& text);
 
+            /**
+             * @brief Get the font of the Text object
+             * @return A reference to the font of the Text object
+             */
+            const int& Font() const { return font; }
+
+            /**
+             * @brief Set the font of the Text object
+             * @param font the new font
+             */
+            void SetFont(const std::string& font);
+
         private:
             std::string text;
             std::string font;
