@@ -29,31 +29,31 @@ namespace spic {
              * @brief One of the standard colors (read-only): white.
              * @return A reference to a statically allocated Color instance.
              */
-            static const Color& white()   { return _white; }
+            static const Color& white() { return _white; }
 
             /**
              * @brief One of the standard colors (read-only): red.
              * @return A reference to a statically allocated Color instance.
              */
-            static const Color& red()     { return _red; }
+            static const Color& red() { return _red; }
 
             /**
              * @brief One of the standard colors (read-only): green.
              * @return A reference to a statically allocated Color instance.
              */
-            static const Color& green()   { return _green; }
+            static const Color& green() { return _green; }
 
             /**
              * @brief One of the standard colors (read-only): blue.
              * @return A reference to a statically allocated Color instance.
              */
-            static const Color& blue()    { return _blue; }
+            static const Color& blue() { return _blue; }
 
             /**
              * @brief One of the standard colors (read-only): cyan.
              * @return A reference to a statically allocated Color instance.
              */
-            static const Color& cyan()    { return _cyan; }
+            static const Color& cyan() { return _cyan; }
 
             /**
              * @brief One of the standard colors (read-only): magenta.
@@ -65,13 +65,13 @@ namespace spic {
              * @brief One of the standard colors (read-only): yellow.
              * @return A reference to a statically allocated Color instance.
              */
-            static const Color& yellow()  { return _yellow; }
+            static const Color& yellow() { return _yellow; }
 
             /**
              * @brief One of the standard colors (read-only): black.
              * @return A reference to a statically allocated Color instance.
              */
-            static const Color& black()   { return _black; }
+            static const Color& black() { return _black; }
             // ... more standard colors here
 
             /**
