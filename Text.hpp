@@ -45,6 +45,18 @@ namespace spic {
              */
             void SetFont(const std::string& font);
 
+            /**
+             * @brief Get the size of the Text object
+             * @return A reference to the size of the Text object
+             */
+            const int& Size() const { return size; }
+
+            /**
+             * @brief Set the size of the Text object
+             * @param size the new size
+             */
+            void SetSize(const int size);
+
         private:
             std::string text;
             std::string font;
