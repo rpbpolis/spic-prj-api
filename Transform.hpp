@@ -14,9 +14,9 @@ namespace spic {
              * @brief Constructor.
              * @param pos Translation (shift).
              * @param rot Ratotion, in radians.
-             * @param scal Scale (multiplication factor).
+             * @param scale Scale (multiplication factor).
              */
-            Transform(const Point& pos, double rot, double scal);
+            Transform(const Point& pos, double rot, double scale);
 
         private:
             Point position;
