@@ -1,0 +1,4 @@
+<map id="spic::RigidBody" name="spic::RigidBody">
+<area shape="rect" id="node1" title="A component representing a rigid body." alt="" coords="9,80,123,107"/>
+<area shape="rect" id="node2" href="$classspic_1_1Component.html" title="Base class for all components." alt="" coords="5,5,127,32"/>
+</map>
