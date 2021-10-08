@@ -1,5 +1,0 @@
-<map id="spic::CircleCollider" name="spic::CircleCollider">
-<area shape="rect" id="node1" title="A collider which represents a circular collision area." alt="" coords="5,155,137,181"/>
-<area shape="rect" id="node2" href="$classspic_1_1Collider.html" title="The base class for all colliders." alt="" coords="22,80,121,107"/>
-<area shape="rect" id="node3" href="$classspic_1_1Component.html" title="Base class for all components." alt="" coords="11,5,132,32"/>
-</map>
