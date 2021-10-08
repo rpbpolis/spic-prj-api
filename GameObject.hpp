@@ -47,7 +47,7 @@ namespace spic {
              * @brief Gets a list of all loaded objects of Type type.
              */
             template<class T>
-            static std::shared_ptr<GameObject> FindObjectsOfType(bool includeInactive = false) {
+            static std::vector<std::shared_ptr<GameObject>> FindObjectsOfType(bool includeInactive = false) {
                 // ...implementation here
             }
 
