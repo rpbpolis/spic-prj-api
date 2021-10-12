@@ -32,11 +32,6 @@ namespace spic {
              * @param orderInLayer The layer the sprite will be ordered on
              */
             Sprite(const std::string& sprite, const Color& color, const bool flipX, const bool flipY, const int sortingLayer, const int orderInLayer);
-            
-            /**
-             * @brief Call this method to render the sprite.
-             */
-            void Render();
 
         private:
             std::string sprite;

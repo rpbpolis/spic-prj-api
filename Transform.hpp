@@ -4,26 +4,14 @@
 #include "Point.hpp"
 
 namespace spic {
-
     /**
      * @brief Instances of this class represent specific 2D transformations.
      */
-    class Transform {
-        public:
-            /**
-             * @brief Constructor.
-             * @param pos Translation (shift).
-             * @param rot Ratotion, in radians.
-             * @param scale Scale (multiplication factor).
-             */
-            Transform(const Point& pos, double rot, double scale);
-
-        private:
-            Point position;
-            double rotation;
-            double scale;
+    struct Transform {
+        Point position; // Translation (shift)
+        double rotation; // Rotation, in radians
+        double scale; // Multiplication factor
     };
-
 }
 
 #endif // TRANSFORM_H_
