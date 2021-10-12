@@ -2,7 +2,6 @@
 #define SPIC_PRJ_API_CD_ENGINE_HPP
 
 #include "Scene.hpp"
-#include <iostream>
 #include <stack>
 
 namespace spic {
