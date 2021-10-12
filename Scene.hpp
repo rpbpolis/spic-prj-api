@@ -18,7 +18,7 @@ namespace spic {
             /**
              * @brief This property contains all the Game Object that are contained in this scene.
              */
-            GameObject[] contents;
+            std::vector<std::shared_ptr<GameObject>> contents;
     };
 
 }
