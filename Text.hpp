@@ -31,7 +31,7 @@ namespace spic {
              * @brief Set the text content of the Text object
              * @param text new content
              */
-            void SetText(const std::string& text);
+            void Text(const std::string& text);
 
             /**
              * @brief Get the font of the Text object
@@ -43,7 +43,7 @@ namespace spic {
              * @brief Set the font of the Text object
              * @param font the new font
              */
-            void SetFont(const std::string& font);
+            void Font(const std::string& font);
 
             /**
              * @brief Get the size of the Text object
@@ -55,7 +55,7 @@ namespace spic {
              * @brief Set the size of the Text object
              * @param size the new size
              */
-            void SetSize(const int size);
+            void Size(const int size);
 
             /**
              * @brief Get the alignment of the Text object
@@ -67,7 +67,7 @@ namespace spic {
              * @brief Set the alignment of the content of the Text object
              * @param alignment the new alignment
              */
-            void SetAlignment(const Alignment alignment);
+            void Alignment(const Alignment alignment);
 
             /**
              * @brief Get the color of the Text object
@@ -79,7 +79,7 @@ namespace spic {
              * @brief Set the color of the Text object
              * @param color the new color
              */
-            void SetColor(const Color& color);
+            void Color(const Color& color);
 
         private:
             std::string text;
