@@ -21,7 +21,7 @@ namespace spic {
 
         void Start();
         void PushScene(const std::shared_ptr<Scene>& scene);
-        std::shared_ptr<Scene> Peek();
+        std::shared_ptr<Scene> PeekScene() const;
         void PopScene();
         void Shutdown();
     };
