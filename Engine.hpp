@@ -20,8 +20,8 @@ namespace spic {
         Engine& operator=(Engine&&) = delete;
 
         void Start();
-        void ActiveScene(const std::shared_ptr<Scene>& scene);
-        std::shared_ptr<Scene> ActiveScene();
+        void PushScene(const std::shared_ptr<Scene>& scene);
+        std::shared_ptr<Scene> Peek();
         void PopScene();
         void Shutdown();
     };
