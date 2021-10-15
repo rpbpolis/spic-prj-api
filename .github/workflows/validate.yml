@@ -1,0 +1,20 @@
+name: Validate C++ files
+
+on:
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Checks C++ files with g++ -fsyntax-only
+        run: |
+          apt install g++
+          chmod +x ./scripts/validate.sh
+          ./scripts/validate.sh
+        shell: bash
