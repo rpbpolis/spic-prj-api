@@ -61,13 +61,13 @@ namespace spic {
              * @brief Get the alignment of the Text object
              * @return A reference to the alignment of the Text object
              */
-            Alignment Alignment() const { return alignment; }
+            Alignment TextAlignment() const { return alignment; }
 
             /**
              * @brief Set the alignment of the content of the Text object
              * @param alignment the new alignment
              */
-            void Alignment(Alignment alignment);
+            void TextAlignment(Alignment alignment);
 
             /**
              * @brief Get the color of the Text object
