@@ -3,12 +3,13 @@ set -eu -o pipefail
 
 readonly ROOT="$(realpath "$(dirname "$(realpath "$0")")"/..)"
 readonly CHECK_COMMAND="g++ -fsyntax-only -Wall -Wextra -Wno-deprecated -std=c++17"
+readonly FILE_MATCH="([a-zA-Z]*).[c|h]pp"
 
 function main() {
   exitcode=0
 
   for file in "$ROOT"/*; do
-    if [ -z "${file##*.*pp}" ]; then
+    if [[ $file =~ $FILE_MATCH ]]; then
       echo -e "Checking file:\033[0;33m $(basename "$file") \033[0m"
       if ! eval "$CHECK_COMMAND $file"; then
         exitcode=1
