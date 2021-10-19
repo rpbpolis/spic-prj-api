@@ -14,7 +14,7 @@ namespace spic {
              * @param green The green component, 0 ≤ g ≤ 1.
              * @param blue The blue component, 0 ≤ b ≤ 1.
              */
-            Color(const double red, const double green, const double blue);
+            Color(double red, double green, double blue);
             
             /**
              * @brief Constructor, accepting an rgb value and an alpha (transparency).
@@ -23,7 +23,7 @@ namespace spic {
              * @param blue The blue component, 0 ≤ b ≤ 1.
              * @param alpha The transparency component, 0 ≤ alpha ≤ 1.
              */
-            Color(const double red, const double green, const double blue, const double alpha);
+            Color(double red, double green, double blue, double alpha);
 
             /**
              * @brief One of the standard colors (read-only): white.
@@ -104,7 +104,7 @@ namespace spic {
              * @param g The green part of the color
              * @param b The blue part of the color
              */
-            void Color(const double r, const double g, const double b);
+            void Color(double r, double g, double b);
 
             /**
              * @brief Set the RGBA values of the color
@@ -113,31 +113,31 @@ namespace spic {
              * @param b The blue part of the color
              * @param a The alpha part of the color
              */
-            void Color(const double r, const double g, const double b, const double a);
+            void Color(double r, double g, double b, double a);
             
             /**
              * @brief The red part of the color
              * @return A reference to the statically red part of the color.
              */
-            const double& R() const { return r; }
+            double& R() const { return r; }
 
             /**
              * @brief The green part of the color
              * @return A reference to the statically green part of the color.
              */
-            const double& G() const { return g; }
+            double& G() const { return g; }
             
             /**
              * @brief The blue part of the color
              * @return A reference to the statically blue part of the color.
              */
-            const double& B() const { return b; }
+            double& B() const { return b; }
 
             /**
              * @brief The alpha part of the color
              * @return A reference to the statically alpha part of the color.
              */
-            const double& A() const { return a; }
+            double& A() const { return a; }
 
         private:
             double r;

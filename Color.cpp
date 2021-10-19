@@ -16,17 +16,17 @@ Color Color::_orange{1.0, 0.6, 0.0, 1.0};
 Color Color::_transparent{0.0, 0.0, 0.0, 0.0};
 // ... more standard colors here
 
-Color::Color(const double red, const double green, const double blue, const double alpha)
+Color::Color(double red, double green, double blue, double alpha)
         : r{red}, g{green}, b{blue}, a{alpha} {}
 
-Color::Color(const double red, const double green, const double blue)
+Color::Color(double red, double green, double blue)
         : Color(red, green, blue, 1.0)
 
-void Color::Color(const double r, const double g, const double b) {
+void Color::Color(double r, double g, double b) {
     SetColor(r, g, b, a);
 }
 
-void Color::Color(const double r, const double g, const double b, const double a) {
+void Color::Color(double r, double g, double b, double a) {
     this->r = r;
     this->g = g;
     this->b = b;
