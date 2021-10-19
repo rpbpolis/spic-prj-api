@@ -25,13 +25,13 @@ namespace spic {
              * @brief Get the content of the Text object
              * @return A reference to the content of the Text object
              */
-            const std::string& Text() const { return text; }
+            const std::string& Content() const { return text; }
 
             /**
              * @brief Set the text content of the Text object
              * @param text new content
              */
-            void Text(const std::string& text);
+            void Content(const std::string& text);
 
             /**
              * @brief Get the font of the Text object
