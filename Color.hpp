@@ -104,7 +104,7 @@ namespace spic {
              * @param g The green part of the color
              * @param b The blue part of the color
              */
-            void Color(double r, double g, double b);
+            void SetColor(double r, double g, double b);
 
             /**
              * @brief Set the RGBA values of the color
@@ -113,7 +113,7 @@ namespace spic {
              * @param b The blue part of the color
              * @param a The alpha part of the color
              */
-            void Color(double r, double g, double b, double a);
+            void SetColor(double r, double g, double b, double a);
             
             /**
              * @brief The red part of the color

@@ -22,11 +22,11 @@ Color::Color(double red, double green, double blue, double alpha)
 Color::Color(double red, double green, double blue)
         : Color(red, green, blue, 1.0)
 
-void Color::Color(double r, double g, double b) {
+void Color::SetColor(double r, double g, double b) {
     SetColor(r, g, b, a);
 }
 
-void Color::Color(double r, double g, double b, double a) {
+void Color::SetColor(double r, double g, double b, double a) {
     this->r = r;
     this->g = g;
     this->b = b;
