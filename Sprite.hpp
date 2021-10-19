@@ -11,12 +11,6 @@ namespace spic {
      * @brief A component representing a sprite (small image)
      */
     class Sprite : public Component {
-        public:
-            /**
-             * @brief Call this method to render the sprite.
-             */
-            void Render();
-
         private:
             std::string sprite;
             Color color;
