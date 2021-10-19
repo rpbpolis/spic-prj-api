@@ -20,7 +20,7 @@ Color::Color(double red, double green, double blue, double alpha)
         : r{red}, g{green}, b{blue}, a{alpha} {}
 
 Color::Color(double red, double green, double blue)
-        : Color(red, green, blue, 1.0);
+        : Color(red, green, blue, 1.0) {}
 
 void Color::SetColor(double r, double g, double b) {
     SetColor(r, g, b, a);
