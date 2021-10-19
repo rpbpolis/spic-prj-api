@@ -73,13 +73,13 @@ namespace spic {
              * @brief Get the color of the Text object
              * @return A reference to the color of the Text object
              */
-            const Color& Color() const { return color; }
+            const Color& TextColor() const { return color; }
 
             /**
              * @brief Set the color of the Text object
              * @param color the new color
              */
-            void Color(const Color& color);
+            void TextColor(const Color& color);
 
         private:
             std::string text;
