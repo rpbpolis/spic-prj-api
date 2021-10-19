@@ -3,7 +3,7 @@ set -eu -o pipefail
 
 readonly ROOT="$(realpath "$(dirname "$(realpath "$0")")"/..)"
 readonly CHECK_COMMAND="g++ -fsyntax-only -Wall -Wextra -Wno-deprecated -std=c++17"
-readonly FILE_MATCH="([a-zA-Z]*)\.[c|h]pp"
+readonly FILE_MATCH="/([a-zA-Z]*)\.[c|h]pp"
 
 function main() {
   exitcode=0
