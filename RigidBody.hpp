@@ -26,7 +26,7 @@ namespace spic {
              * @param gravityScale The scale of the gravity of the rigid body
              * @param bodyType The type of the rigid body
              */
-            RigidBody(const double mass, const double gravityScale, const BodyType& bodyType);
+            RigidBody(double mass, double gravityScale, const BodyType& bodyType);
             
             /**
              * @brief Apply force to this rigid body.

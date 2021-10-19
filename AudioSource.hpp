@@ -16,7 +16,7 @@ namespace spic {
              * @param audioClip The source tho the audio clip.
              * @param playOnAwake Whether the audio should start playing automatically.
              */
-            AudioSource(const std::string& audioClip, const bool playOnAwake);
+            AudioSource(const std::string& audioClip, bool playOnAwake);
 
             /**
              * @brief Call this method to start playing audio.

@@ -17,7 +17,7 @@ namespace spic {
              * @param aspectWidth The aspect width of the camera.
              * @param aspectHeight The aspect width of the camera.
              */
-            Camera(const Color& backgroundColor, const double aspectWidth, const double aspectHeight);
+            Camera(const Color& backgroundColor, double aspectWidth, double aspectHeight);
 
         private:
             Color backgroundColor;

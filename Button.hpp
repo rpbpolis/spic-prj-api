@@ -19,7 +19,7 @@ namespace spic {
              * @param width The width of the UI object.
              * @param height The height of the UI object.
              */
-            Button(const std::string& name, const std::string& tag, const int layer, const double width, const double height);
+            Button(const std::string& name, const std::string& tag, int layer, double width, double height);
 
             /**
              * @brief This function is called when the button is clicked, which

@@ -29,7 +29,7 @@ namespace spic {
              * @param width The width of the UI object.
              * @param height The height of the UI object.
              */
-            Text(const std::string& name, const std::string& tag, const int layer, const double width, const double height);
+            Text(const std::string& name, const std::string& tag, int layer, double width, double height);
             
             /**
              * @brief Constructor.
@@ -44,7 +44,7 @@ namespace spic {
              * @param alignment The alignment the content will be rendered with 
              * @param color The color the content will be rendered in
              */
-            Text(const std::string& name, const std::string& tag, const int layer, const double width, const double height, const std::string& text, const std::string& font, const int size, const Alignment alignment, const Color& color);
+            Text(const std::string& name, const std::string& tag, int layer, double width, double height, const std::string& text, const std::string& font, int size, Alignment alignment, const Color& color);
         private:
             std::string text;
             std::string font;

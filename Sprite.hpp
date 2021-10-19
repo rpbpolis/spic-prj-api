@@ -20,7 +20,7 @@ namespace spic {
              * @param sortingLayer The layer the sprite will be sorted on
              * @param orderLayer The layer the sprite will be ordered on
              */
-            Sprite(const std::string& sprite, const bool flipX, const bool flipY, const int sortingLayer, const int orderLayer);
+            Sprite(const std::string& sprite, bool flipX, bool flipY, int sortingLayer, int orderLayer);
             
             /**
              * @brief Constructor
@@ -31,7 +31,7 @@ namespace spic {
              * @param sortingLayer The layer the sprite will be sorted on
              * @param orderInLayer The layer the sprite will be ordered on
              */
-            Sprite(const std::string& sprite, const Color& color, const bool flipX, const bool flipY, const int sortingLayer, const int orderInLayer);
+            Sprite(const std::string& sprite, const Color& color, bool flipX, bool flipY, int sortingLayer, int orderInLayer);
 
         private:
             std::string sprite;

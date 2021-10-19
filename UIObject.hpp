@@ -18,7 +18,7 @@ namespace spic {
              * @param width The width of the UI object.
              * @param height The height of the UI object.
              */
-            UIObject(const std::string& name, const std::string& tag, const int layer, const double width, const double height);
+            UIObject(const std::string& name, const std::string& tag, int layer, double width, double height);
 
         private:
             double width;

@@ -76,7 +76,7 @@ namespace spic {
              * @param tag The tag for the game object.
              * @param layer The layer for the game object.
              */
-            GameObject(const std::string& name, const std::string& tag, const int layer);
+            GameObject(const std::string& name, const std::string& tag, int layer);
 
             /**
              * @brief Does the object exist? TODO wat wordt hiermee bedoeld?
