@@ -37,7 +37,7 @@ namespace spic {
              * @brief Get the font of the Text object
              * @return A reference to the font of the Text object
              */
-            const int& Font() const { return font; }
+            const std::string& Font() const { return font; }
 
             /**
              * @brief Set the font of the Text object
@@ -49,25 +49,25 @@ namespace spic {
              * @brief Get the size of the Text object
              * @return A reference to the size of the Text object
              */
-            const int& Size() const { return size; }
+            int Size() const { return size; }
 
             /**
              * @brief Set the size of the Text object
              * @param size the new size
              */
-            void Size(const int size);
+            void Size(int size);
 
             /**
              * @brief Get the alignment of the Text object
              * @return A reference to the alignment of the Text object
              */
-            const Alignment& Alignment() const { return alignment; }
+            Alignment Alignment() const { return alignment; }
 
             /**
              * @brief Set the alignment of the content of the Text object
              * @param alignment the new alignment
              */
-            void Alignment(const Alignment alignment);
+            void Alignment(Alignment alignment);
 
             /**
              * @brief Get the color of the Text object
