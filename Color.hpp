@@ -119,25 +119,25 @@ namespace spic {
              * @brief The red part of the color
              * @return A reference to the statically red part of the color.
              */
-            double& R() const { return r; }
+            double R() const { return r; }
 
             /**
              * @brief The green part of the color
              * @return A reference to the statically green part of the color.
              */
-            double& G() const { return g; }
+            double G() const { return g; }
             
             /**
              * @brief The blue part of the color
              * @return A reference to the statically blue part of the color.
              */
-            double& B() const { return b; }
+            double B() const { return b; }
 
             /**
              * @brief The alpha part of the color
              * @return A reference to the statically alpha part of the color.
              */
-            double& A() const { return a; }
+            double A() const { return a; }
 
         private:
             double r;
