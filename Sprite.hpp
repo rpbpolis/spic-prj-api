@@ -86,7 +86,7 @@ namespace spic {
 
         private:
             std::string sprite;
-            Color color;
+            spic::Color color;
             bool flipX;
             bool flipY;
             int sortingLayer;
