@@ -1,10 +1,11 @@
 #ifndef COMPONENT_H_
 #define COMPONENT_H_
 
-#include "GameObject.hpp"
 #include <memory>
 
 namespace spic {
+
+    class GameObject;
 
     /**
      * @brief Base class for all components.
