@@ -12,6 +12,16 @@ namespace spic {
     class Button : public UIObject {
         public:
             /**
+             * @brief Constructor.
+             * @param name The name for the game object.
+             * @param tag The tag for the game object.
+             * @param layer The layer for the game object.
+             * @param width The width of the UI object.
+             * @param height The height of the UI object.
+             */
+            Button(const std::string& name, const std::string& tag, int layer, double width, double height);
+
+            /**
              * @brief This function is called when the button is clicked, which
              *        will trigger a call to the registered onClick member.
              */

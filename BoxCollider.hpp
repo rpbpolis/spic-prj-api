@@ -11,6 +11,18 @@ namespace spic {
     class BoxCollider : public Collider {
         public:
             /**
+             * @brief Constructor.
+             */
+            BoxCollider();
+
+            /**
+             * @brief Constructor.
+             * @param width The width for the box collider.
+             * @param height The height for the box collider.
+             */
+            BoxCollider(double width, double height);
+
+            /**
              * @brief The collider's width
              * @return The current width
              */
