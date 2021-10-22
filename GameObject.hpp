@@ -193,7 +193,6 @@ namespace spic {
             bool active;
             int layer;
             spic::Transform transform;
-            // ... more members
 
 #if __has_include("GameObject_private.hpp")
 #include "GameObject_private.hpp"
