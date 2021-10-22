@@ -1,0 +1,23 @@
+name: Validate C++ files
+
+on:
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up GCC
+        uses: egor-tensin/setup-gcc@v1
+        with:
+          version: latest
+          platform: x64
+      - name: Checks C++ files with g++ -fsyntax-only
+        run: |
+          chmod +x ./scripts/validate.sh
+          ./scripts/validate.sh
+        shell: bash
