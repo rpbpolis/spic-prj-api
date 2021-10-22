@@ -6,6 +6,10 @@
 #include <vector>
 #include <memory>
 
+#if __has_include("GameObject_includes.hpp")
+#include "GameObject_includes.hpp"
+#endif
+
 namespace spic {
 
     /**
@@ -39,17 +43,13 @@ namespace spic {
              * @brief Returns the first active loaded object of Type type.
              */
             template<class T>
-            static std::shared_ptr<T> FindObjectOfType(bool includeInactive = false) {
-                // ... implementation here
-            }
+            static std::shared_ptr<T> FindObjectOfType(bool includeInactive = false);
 
             /**
              * @brief Gets a list of all loaded objects of Type type.
              */
             template<class T>
-            static std::vector<std::shared_ptr<T>> FindObjectsOfType(bool includeInactive = false) {
-                // ...implementation here
-            }
+            static std::vector<std::shared_ptr<T>> FindObjectsOfType(bool includeInactive = false);
 
             /**
              * @brief Removes a GameObject from the administration.
@@ -73,8 +73,10 @@ namespace spic {
              *          available collection, the administration.  This makes the
              *          Find()-functions possible.
              * @param name The name for the game object.
+             * @param tag The tag for the game object.
+             * @param layer The layer for the game object.
              */
-            GameObject(const std::string& name);
+            GameObject(const std::string& name, const std::string& tag, int layer);
 
             /**
              * @brief Does the object exist? TODO wat wordt hiermee bedoeld?
@@ -104,9 +106,7 @@ namespace spic {
              * @param component Reference to the component.
              */
             template<class T>
-            void AddComponent(std::shared_ptr<T> component) {
-                // ... implementation here
-            }
+            void AddComponent(std::shared_ptr<T> component);
 
             /**
              * @brief Get the first component of the specified type. Must be
@@ -114,9 +114,7 @@ namespace spic {
              * @return Pointer to Component instance.
              */
             template<class T>
-            std::shared_ptr<T> GetComponent() const {
-                // ... implementation here
-            }
+            std::shared_ptr<T> GetComponent() const;
 
             /**
              * @brief Get the first component of the specified type from
@@ -125,9 +123,7 @@ namespace spic {
              * @return Pointer to Component instance.
              */
             template<class T>
-            std::shared_ptr<T> GetComponentInChildren() const {
-                // ... implementation here
-            }
+            std::shared_ptr<T> GetComponentInChildren() const;
 
             /**
              * @brief Get the first component of the specified type from
@@ -136,9 +132,7 @@ namespace spic {
              * @return Pointer to Component instance.
              */
             template<class T>
-            std::shared_ptr<T> GetComponentInParent() const {
-                // ... implementation here
-            }
+            std::shared_ptr<T> GetComponentInParent() const;
 
             /**
              * @brief Get all components of the specified type. Must be
@@ -146,9 +140,7 @@ namespace spic {
              * @return Vector with pointers to Component instances.
              */
             template<class T>
-            std::vector<std::shared_ptr<T>> GetComponents() const {
-                // ... implementation here
-            }
+            std::vector<std::shared_ptr<T>> GetComponents() const;
 
             /**
              * @brief Get all components of the specified type from
@@ -157,9 +149,7 @@ namespace spic {
              * @return Vector with pointers to Component instances.
              */
             template<class T>
-            std::vector<std::shared_ptr<T>> GetComponentsInChildren() const {
-                // ... implementation here
-            }
+            std::vector<std::shared_ptr<T>> GetComponentsInChildren() const;
 
             /**
              * @brief Get all components op the specified type from
@@ -168,9 +158,7 @@ namespace spic {
              * @return Vector with pointers to Component instances.
              */
             template<class T>
-            std::vector<std::shared_ptr<T>> GetComponentsInParent() const {
-                // ... implementation here
-            }
+            std::vector<std::shared_ptr<T>> GetComponentsInParent() const;
 
             /**
              * @brief Activates/Deactivates the GameObject, depending on the given true or false value.
@@ -197,9 +185,16 @@ namespace spic {
             std::string tag;
             bool active;
             int layer;
-            // ... more members
+
+#if __has_include("GameObject_private.hpp")
+#include "GameObject_private.hpp"
+#endif
     };
 
 }
+
+#if __has_include("GameObject_templates.hpp")
+#include "GameObject_templates.hpp"
+#endif
 
 #endif // GAMEOBJECT_H_

@@ -11,6 +11,17 @@ namespace spic {
     class CircleCollider : public Collider {
         public:
             /**
+             * @brief Constructor.
+             */
+            CircleCollider();
+
+            /**
+             * @brief Constructor.
+             * @param radius The radius for the box collider.
+             */
+            CircleCollider(double radius);
+
+            /**
              * @brief Get the collider's radius
              * @return The radius
              */
