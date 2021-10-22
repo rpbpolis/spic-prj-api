@@ -204,7 +204,7 @@ namespace spic {
             std::string tag;
             bool active;
             int layer;
-            Transform transform;
+            spic::Transform transform;
             // ... more members
     };
 
