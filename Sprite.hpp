@@ -13,16 +13,16 @@ namespace spic {
     class Sprite : public Component {
         public:
             /**
-             * @brief The path of the location of the sprite
+             * @brief The texture of the sprite
              * @param sprite the path to the sprite
              */
-            void Path(std::string sprite) { this->sprite = sprite; }
+            void Texture(std::string sprite) { this->sprite = sprite; }
 
             /**
-             * @brief The path of the location of the sprite
+             * @brief The texture of the sprite
              * @return The path of the sprite
              */
-            std::string Path() const { return sprite; }
+            std::string Texture() const { return sprite; }
 
             /**
              * @brief The color of the sprite
