@@ -1,6 +1,9 @@
 #ifndef COMPONENT_H_
 #define COMPONENT_H_
 
+#include "GameObject.hpp"
+#include <memory>
+
 namespace spic {
 
     /**
@@ -19,11 +22,24 @@ namespace spic {
              */
             void Active(bool flag) { active = flag; }
 
+            /**
+             * @brief The parent of this component
+             * @param parent the current parent
+             */
+            std::shared_ptr<GameObject> Parent() const { return _parent; }
+
+            /**
+             * @brief The parent of this component
+             * @param parent the new parent
+             */
+            void Parent(std::shared_ptr<GameObject> parent) { _parent = parent; }
+
         private:
             /**
              * @brief Active status.
              */
             bool active;
+            std::shared_ptr<GameObject> _parent;
     };
 
 }
