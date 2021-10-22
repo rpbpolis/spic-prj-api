@@ -2,6 +2,7 @@
 #define GAMEOBJECT_H_
 
 #include "Component.hpp"
+#include "Transform.hpp"
 #include <string>
 #include <vector>
 #include <memory>
@@ -192,11 +193,18 @@ namespace spic {
              */
             bool IsActiveInWorld() const;
 
+            /**
+             * @brief Returns the transform of this GameObject
+             * @return A reference to the transform
+             */
+            spic::Transform& Transform() { return transform; }
+
         private:
             std::string name;
             std::string tag;
             bool active;
             int layer;
+            Transform transform;
             // ... more members
     };
 
