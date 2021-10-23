@@ -35,6 +35,21 @@ namespace spic {
              *        collider attached to this object (2D physics only).
              */
             virtual void OnTriggerStay2D(const Collider& collider);
+
+            /**
+             * @brief Whether the script has been started.
+             * @param started desired value
+             */
+            void Started(bool started) { _started = started; }
+
+            /**
+             * @brief Whether the script has been started.
+             * @return current value
+             */
+            bool Started() const { return _started; }
+
+        private:
+            bool _started = false;
     };
 
 }
