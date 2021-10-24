@@ -49,7 +49,7 @@ namespace spic {
              * @brief The color of the sprite
              * @param color the color
              */
-            void Color(Color color) { this->color = color; }
+            void Color(spic::Color color) { this->color = color; }
 
             /**
              * @brief The color of the sprite
