@@ -27,20 +27,20 @@ namespace spic {
              * @brief The parent of this component
              * @param parent the current parent
              */
-            std::weak_ptr<GameObject> Parent() const { return _parent; }
+            std::weak_ptr<spic::GameObject> GameObject() const { return _gameObject; }
 
             /**
              * @brief The parent of this component
              * @param parent the new parent
              */
-            void Parent(std::weak_ptr<GameObject> parent) { _parent = parent; }
+            void GameObject(std::weak_ptr<spic::GameObject> gameObject) { _gameObject = gameObject; }
 
         private:
             /**
              * @brief Active status.
              */
             bool active;
-            std::weak_ptr<GameObject> _parent;
+            std::weak_ptr<spic::GameObject> _gameObject;
     };
 
 }
