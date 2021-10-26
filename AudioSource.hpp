@@ -29,6 +29,18 @@ namespace spic {
              */
             void Stop();
 
+            /**
+             * @brief Get the volume of the AudioSource
+             * @return The volume of the AudioSource, which is a double between 0.0 and 1.0 inclusively
+             */
+            double Volume() const;
+
+            /**
+             * @brief Set volume of the AudioSource
+             * @param newVolume The new volume level of the AudioSource
+             */
+            void Volume(double newVolume);
+
         private:
             /**
              * @brief Path to a locally stored audio file.
