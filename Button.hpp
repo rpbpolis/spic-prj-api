@@ -34,6 +34,18 @@ namespace spic {
              */
             void OnClick(std::function<void()> callback) { onClick = callback; }
 
+            /**
+             * @brief Get if the button is interactable
+             * @return A boolean flag if the button is interactable or not
+             */
+            bool Interactable() const;
+
+            /**
+             * @brief Set if the button is interactable
+             * @param isInteractable A new boolean value to define if the button should be interactable or not
+             */
+            void Interactable(bool isInteractable);
+
         private:
             /**
              * @brief When false, the button will not react to clicks.
