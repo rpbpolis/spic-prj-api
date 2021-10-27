@@ -37,73 +37,73 @@ namespace spic {
              * @brief The texture of the sprite
              * @param sprite the path to the sprite
              */
-            void Texture(std::string sprite) { this->sprite = sprite; }
+            void Texture(const std::string& sprite);
 
             /**
              * @brief The texture of the sprite
              * @return The path of the sprite
              */
-            std::string Texture() const { return sprite; }
+            const std::string& Texture() const;
 
             /**
              * @brief The color of the sprite
              * @param color the color
              */
-            void Color(spic::Color color) { this->color = color; }
+            void Color(const spic::Color& color);
 
             /**
              * @brief The color of the sprite
              * @return the color
              */
-            spic::Color Color() const { return color; }
+            const spic::Color& Color() const;
 
             /**
              * @brief Whether the sprite should be flipped on the X-axis
              * @param flipX desired value
              */
-            void FlipX(bool flipX) { this->flipX = flipX; }
+            void FlipX(bool flipX);
 
             /**
              * @brief Whether the sprite should be flipped on the X-axis
              * @return current value
              */
-            bool FlipX() const { return flipX; }
+            bool FlipX() const;
 
             /**
              * @brief Whether the sprite should be flipped on the Y-axis
              * @param flipY desired value
              */
-            void FlipY(bool flipY) { this->flipY = flipY; }
+            void FlipY(bool flipY);
 
             /**
              * @brief Whether the sprite should be flipped on the Y-axis
              * @return current value
              */
-            bool FlipY() const { return flipY; }
+            bool FlipY() const;
 
             /**
              * @brief The layer the sprite will be sorted on
              * @param sortingLayer desired value
              */
-            void SortingLayer(int sortingLayer) { this->sortingLayer = sortingLayer; }
+            void SortingLayer(int sortingLayer);
 
             /**
              * @brief The layer the sprite will be sorted on
              * @return current value
              */
-            int SortingLayer() const { return sortingLayer; }
+            int SortingLayer() const;
 
             /**
              * @brief The layer the sprite will be ordered on
              * @param orderInLayer desired value
              */
-            void OrderInLayer(int orderInLayer) { this->orderInLayer = orderInLayer; }
+            void OrderInLayer(int orderInLayer);
 
             /**
              * @brief The layer the sprite will be ordered on
              * @return current value
              */
-            int OrderInLayer() const { return orderInLayer; }
+            int OrderInLayer() const;
 
         private:
             std::string sprite;
