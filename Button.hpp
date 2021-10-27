@@ -4,6 +4,10 @@
 #include "UIObject.hpp"
 #include <functional>
 
+#if __has_include("Button_includes.hpp")
+#include "Button_includes.hpp"
+#endif
+
 namespace spic {
 
     /**
@@ -56,6 +60,10 @@ namespace spic {
              * @brief The registered click handler.
              */
             std::function<void()> onClick;
+
+#if __has_include("Button_private.hpp")
+#include "Button_private.hpp"
+#endif
     };
 
 }
