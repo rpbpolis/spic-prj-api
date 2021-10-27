@@ -60,8 +60,4 @@ namespace spic {
 
 }
 
-#if __has_include("BehaviourScript_templates.hpp")
-#include "BehaviourScript_templates.hpp"
-#endif
-
 #endif // BEHAVIOURSCRIPT_H_
