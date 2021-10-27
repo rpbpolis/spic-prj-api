@@ -4,6 +4,10 @@
 #include "Component.hpp"
 #include "Collider.hpp"
 
+#if __has_include("BehaviourScript_includes.hpp")
+#include "BehaviourScript_includes.hpp"
+#endif
+
 namespace spic {
 
     class BehaviourScript : public Component {
@@ -40,18 +44,24 @@ namespace spic {
              * @brief Whether the script has been started.
              * @param started desired value
              */
-            void Started(bool started) { _started = started; }
+            void Started(bool started);
 
             /**
              * @brief Whether the script has been started.
              * @return current value
              */
-            bool Started() const { return _started; }
+            bool Started() const;
 
         private:
-            bool _started = false;
+#if __has_include("BehaviourScript_private.hpp")
+#include "BehaviourScript_private.hpp"
+#endif
     };
 
 }
+
+#if __has_include("BehaviourScript_templates.hpp")
+#include "BehaviourScript_templates.hpp"
+#endif
 
 #endif // BEHAVIOURSCRIPT_H_
