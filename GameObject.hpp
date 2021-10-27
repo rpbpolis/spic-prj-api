@@ -192,7 +192,6 @@ namespace spic {
             std::string tag;
             bool active;
             int layer;
-            spic::Transform transform;
 
 #if __has_include("GameObject_private.hpp")
 #include "GameObject_private.hpp"
