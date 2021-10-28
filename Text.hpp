@@ -21,11 +21,7 @@ namespace spic {
      */
     class Text : public UIObject {
         private:
-            std::string text;
-            std::string font;
-            int size;
-            Alignment alignment;
-            Color color;
+        #include "Text_private.hpp"
     };
 
 }

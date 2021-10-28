@@ -20,10 +20,7 @@ namespace spic {
             void Active(bool flag) { active = flag; }
 
         private:
-            /**
-             * @brief Active status.
-             */
-            bool active;
+        #include "Component_private.hpp"
     };
 
 }

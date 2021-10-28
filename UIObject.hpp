@@ -10,8 +10,7 @@ namespace spic {
      */
     class UIObject : public GameObject {
         private:
-            double width;
-            double height;
+        #include "UIObject_private.hpp"
     };
 
 }

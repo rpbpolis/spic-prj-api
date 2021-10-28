@@ -22,28 +22,19 @@ namespace spic {
              */
             void Stop();
 
+            /**
+             * @brief Call this method to pause audio.
+             */
+            void Pause();
+
+            /**
+             * @brief Call this method to resume audio if paused.
+             */
+            void Resume();
+
         private:
-            /**
-             * @brief Path to a locally stored audio file.
-             */
-            std::string audioClip;
-
-            /**
-             * @brief When true, the component will start playing automatically.
-             */
-            bool playOnAwake;
-
-            /**
-             * @brief When true, the audio will play indefinitely.
-             */
-            bool loop;
-
-            /**
-             * @brief Audio volume, between 0.0 and 1.0.
-             */
-            double volume;
+            #include "AudioSource_private.hpp"
     };
-
 }
 
 #endif // AUDIOSOURCE_H_

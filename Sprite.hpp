@@ -12,12 +12,7 @@ namespace spic {
      */
     class Sprite : public Component {
         private:
-            std::string sprite;
-            Color color;
-            bool flipX;
-            bool flipY;
-            int sortingLayer;
-            int orderInLayer;
+        #include "Sprite_private.hpp"
     };
 
 }

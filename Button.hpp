@@ -25,15 +25,7 @@ namespace spic {
             void OnClick(std::function<void()> callback) { onClick = callback; }
 
         private:
-            /**
-             * @brief When false, the button will not react to clicks.
-             */
-            bool interactable;
-
-            /**
-             * @brief The registered click handler.
-             */
-            std::function<void()> onClick;
+        #include "Button_private.hpp"
     };
 
 }

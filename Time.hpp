@@ -11,23 +11,27 @@ namespace spic {
             /**
              * @brief The interval in seconds from the last frame to the current one (Read Only)
              */
-            static double DeltaTime();
+            static float GetDeltaTime();
+
+            /**
+            * @brief The current amount of frames that are ran every second
+            */
+            static float GetFps();
 
             /**
              * @brief The scale at which time passes.
              * @return time scale value
              */
-            static double TimeScale();
+            static double GetTimeScale();
 
             /**
              * @brief The scale at which time passes.
              * @param The new value for the time scale.
              */
-            static void TimeScale(double newTimeScale);
+            static void SetTimeScale(double newTimeScale);
 
         private:
-            static double deltaTime;
-            static double timeScale;
+        #include "Time_private.hpp"
     };
 
 }

@@ -35,10 +35,8 @@ namespace spic {
             void Height(double newHeight) { height = newHeight; }
 
         private:
-            double width;
-            double height;
+        #include "BoxCollider_private.hpp"
     };
-
 }
 
 #endif // BOXCOLLIDER_H_

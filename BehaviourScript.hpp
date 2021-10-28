@@ -9,12 +9,12 @@ namespace spic {
     class BehaviourScript : public Component {
         public:
             /**
-             * @brief TODO
+             * @brief Called when creating the script
              */
             virtual void OnStart();
 
             /**
-             * @brief TODO
+             * @brief Called each frame
              */
             virtual void OnUpdate();
 
@@ -22,19 +22,38 @@ namespace spic {
              * @brief Sent when another object enters a trigger collider
              *        attached to this object (2D physics only).
              */
-            virtual void OnTriggerEnter2D(const Collider& collider);
+            virtual void OnCollisionEnter2D(const Collider& collider);
 
             /**
              * @brief Sent when another object leaves a trigger collider
              *        attached to this object (2D physics only).
              */
-            virtual void OnTriggerExit2D(const Collider& collider);
+            virtual void OnCollisionExit2D(const Collider& collider);
 
             /**
-             * @brief Sent each frame where another object is within a trigger
-             *        collider attached to this object (2D physics only).
+             * @brief Sent when the cursor is moved over the GameObject this script is attached to
              */
-            virtual void OnTriggerStay2D(const Collider& collider);
+            virtual void OnMouseMoved(const MouseEvent& event);
+
+            /**
+             * @brief Sent when the mouse is pressed on the GameObject this script is attached to
+             */
+            virtual void OnMousePressed(const MouseEvent& event);
+
+            /**
+             * @brief Sent when the mouse is released on the GameObject this script is attached to
+             */
+            virtual void OnMouseReleased(const MouseEvent& event);
+
+            /**
+             * @brief Sent when a key is pressed
+             */
+            virtual void OnKeyPressed(const KeyEvent& event);
+
+            /**
+             * @brief Sent when a key is released
+             */
+            virtual void OnKeyReleased(const KeyEvent& event);
     };
 
 }

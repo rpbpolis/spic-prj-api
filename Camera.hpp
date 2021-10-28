@@ -11,9 +11,7 @@ namespace spic {
      */
     class Camera : public GameObject {
         private:
-            Color backgroundColor;
-            double aspectWidth;
-            double aspectHeight;
+        #include "Camera_private.hpp"
     };
 
 }

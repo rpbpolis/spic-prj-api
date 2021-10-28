@@ -24,13 +24,8 @@ namespace spic {
             void Stop();
 
         private:
-            /**
-             * @brief frames per second (playing speed)
-             */
-            int fps;
-            // ... collection of Sprites here
+        #include "Animator_private.hpp"
     };
-
 }
 
 #endif // ANIMATOR_H_
