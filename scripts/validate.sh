@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -eu -o pipefail
 
-readonly ROOT="$(realpath "$(dirname "$(realpath "$0")")"/..)"
 readonly CHECK_COMMAND="g++ -fsyntax-only -Wall -Wextra -Wno-deprecated -std=c++17"
 
 function main() {
