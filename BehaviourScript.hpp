@@ -4,6 +4,10 @@
 #include "Component.hpp"
 #include "Collider.hpp"
 
+#if __has_include("BehaviourScript_includes.hpp")
+#include "BehaviourScript_includes.hpp"
+#endif
+
 namespace spic {
 
     class BehaviourScript : public Component {
@@ -35,6 +39,23 @@ namespace spic {
              *        collider attached to this object (2D physics only).
              */
             virtual void OnTriggerStay2D(const Collider& collider);
+
+            /**
+             * @brief Whether the script has been started.
+             * @param started desired value
+             */
+            void Started(bool started);
+
+            /**
+             * @brief Whether the script has been started.
+             * @return current value
+             */
+            bool Started() const;
+
+        private:
+#if __has_include("BehaviourScript_private.hpp")
+#include "BehaviourScript_private.hpp"
+#endif
     };
 
 }
