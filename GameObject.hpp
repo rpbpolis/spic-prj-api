@@ -176,13 +176,13 @@ namespace spic {
              * @brief Activates/Deactivates the GameObject, depending on the given true or false value.
              * @param active Desired value.
              */
-            void SetActive(bool flag) { active = flag; }
+            void Active(bool flag);
 
             /**
              * @brief Returns whether this game object is itself active.
              * @return true if active, false if not.
              */
-            bool IsActiveSelf() const { return active; }
+            bool Active() const;
 
             /**
              * @brief Returns whether this game component is active, taking its parents
