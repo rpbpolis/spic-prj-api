@@ -2,7 +2,10 @@
 #define SPIC_PRJ_API_CD_ENGINE_HPP
 
 #include "Scene.hpp"
-#include <stack>
+
+#if __has_include("Engine_includes.hpp")
+#include "Engine_includes.hpp"
+#endif
 
 namespace spic {
     class Engine {
@@ -10,7 +13,9 @@ namespace spic {
         static Engine instance;
         Engine() = default;
 
-        std::stack<std::shared_ptr<Scene>> scenes;
+#if __has_include("Engine_private.hpp")
+#include "Engine_private.hpp"
+#endif
 
     public:
         static Engine& Instance();
