@@ -32,6 +32,18 @@ namespace spic {
              */
             void Stop();
 
+            /**
+             * @brief Get the frames per second of the animator
+             * @return An integer representing the frames per second of the animator
+             */
+            int FPS() const;
+
+            /**
+             * @brief Set the new frames per second of the animator
+             * @param newFps An integer representing the new frames per second of the animator
+             */
+            void FPS(int newFps);
+
         private:
             /**
              * @brief frames per second (playing speed)
