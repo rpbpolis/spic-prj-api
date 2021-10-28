@@ -6,6 +6,10 @@
 #include <vector>
 #include <memory>
 
+#if __has_include("Animator_includes.hpp")
+#include "Animator_includes.hpp"
+#endif
+
 namespace spic {
 
     /**
@@ -54,6 +58,10 @@ namespace spic {
              * @brief collection of Sprites to cycle through
              */
             std::vector<std::shared_ptr<Sprite>> sprites;
+
+#if __has_include("Animator_private.hpp")
+#include "Animator_private.hpp"
+#endif
     };
 
 }
