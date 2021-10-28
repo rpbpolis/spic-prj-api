@@ -4,6 +4,10 @@
 #include "UIObject.hpp"
 #include <functional>
 
+#if __has_include("Button_includes.hpp")
+#include "Button_includes.hpp"
+#endif
+
 namespace spic {
 
     /**
@@ -34,6 +38,18 @@ namespace spic {
              */
             void OnClick(std::function<void()> callback) { onClick = callback; }
 
+            /**
+             * @brief Get if the button is interactable
+             * @return A boolean flag if the button is interactable or not
+             */
+            bool Interactable() const;
+
+            /**
+             * @brief Set if the button is interactable
+             * @param isInteractable A new boolean value to define if the button should be interactable or not
+             */
+            void Interactable(bool isInteractable);
+
         private:
             /**
              * @brief When false, the button will not react to clicks.
@@ -44,6 +60,10 @@ namespace spic {
              * @brief The registered click handler.
              */
             std::function<void()> onClick;
+
+#if __has_include("Button_private.hpp")
+#include "Button_private.hpp"
+#endif
     };
 
 }
