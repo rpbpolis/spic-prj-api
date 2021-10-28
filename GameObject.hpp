@@ -176,7 +176,7 @@ namespace spic {
              * @brief Activates/Deactivates the GameObject, depending on the given true or false value.
              * @param active Desired value.
              */
-            void SetActive(bool flag) { active = flag; }
+            void Active(bool flag) { active = flag; }
 
             /**
              * @brief Returns whether this game object is itself active.
