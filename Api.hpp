@@ -8,6 +8,7 @@
 #include "Collider.hpp"
 #include "Color.hpp"
 #include "Component.hpp"
+#include "Config.hpp"
 #include "Debug.hpp"
 #include "Engine.hpp"
 #include "GameObject.hpp"
