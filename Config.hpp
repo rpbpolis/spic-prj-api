@@ -21,9 +21,14 @@ namespace spic {
         int windowWidth;
 
         /**
-         * @brief the desired height of the application window
+         * @brief The desired height of the application window
          */
         int windowHeight;
+
+        /**
+         * @brief A boolean flag if the window should be fullscreen
+         */
+        bool fullscreen;
 
     };
 
