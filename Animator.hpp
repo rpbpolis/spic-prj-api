@@ -14,18 +14,21 @@ namespace spic {
             /**
              * @brief Start playing the image sequence.
              * @param looping If true, will automatically start again when done.
+             * @spicapi
              */
             void Play(bool looping);
 
             /**
              * @brief Stop playing the image sequence. Whatever sprite was displayed
              *        last will remain shown.
+             * @spicapi
              */
             void Stop();
 
         private:
             /**
              * @brief frames per second (playing speed)
+             * @spicapi
              */
             int fps;
             // ... collection of Sprites here

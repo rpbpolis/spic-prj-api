@@ -14,6 +14,7 @@ namespace spic {
             /**
              * @brief This function is called when the button is clicked, which
              *        will trigger a call to the registered onClick member.
+             * @spicapi
              */
             void Click();
 
@@ -21,6 +22,7 @@ namespace spic {
              * @brief Register the onClick handler to be used when the button is clicked.
              * @param callback The function to register, usually a lambda. But this can be
              *        any kind of callable.
+             * @spicapi
              */
             void OnClick(std::function<void()> callback) { onClick = callback; }
 
