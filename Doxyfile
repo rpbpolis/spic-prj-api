@@ -269,7 +269,8 @@ TAB_SIZE               = 4
 # commands \{ and \} for these it is advised to use the version @{ and @} or use
 # a double escape (\\{ and \\})
 
-ALIASES                =
+ALIASES                = spicapi="\attention This is a symbol defined by the original SPIC API and should be kept as-is.\n"
+ALIASES               += sharedapi="\attention This is a symbol shared with the partner group and any changes should be communicated.\n"
 
 # Set the OPTIMIZE_OUTPUT_FOR_C tag to YES if your project consists of C sources
 # only. Doxygen will then generate output that is more tailored for C. For
