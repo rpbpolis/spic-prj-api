@@ -2,6 +2,12 @@
 #define SCENE_H_
 
 #include "GameObject.hpp"
+#include <vector>
+#include <memory>
+
+#if __has_include("Scene_includes.hpp")
+#include "Scene_includes.hpp"
+#endif
 
 namespace spic {
 
@@ -15,10 +21,12 @@ namespace spic {
              */
             void RenderScene();
 
-            /**
-             * @brief This property contains all the Game Object that are contained in this scene.
-             */
-            std::vector<std::shared_ptr<GameObject>> contents;
+            const std::vector<std::shared_ptr<GameObject>>& Contents();
+
+    private:
+#if __has_include("Scene_private.hpp")
+#include "Scene_private.hpp"
+#endif
     };
 
 }
