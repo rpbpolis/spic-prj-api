@@ -8,6 +8,8 @@ namespace spic {
      */
     class Component {
         public:
+
+            Component();
             /**
              * @brief Getter for active status.
              * @return true if active, false otherwise.

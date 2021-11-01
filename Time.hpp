@@ -3,36 +3,14 @@
 
 namespace spic {
 
-    /**
-     * @brief Class representing game time.
-     */
-    class Time {
-        public:
-            /**
-             * @brief The interval in seconds from the last frame to the current one (Read Only)
-             */
-            static float GetDeltaTime();
+    namespace Time {
+        long PreviousTime;
+        float DeltaTime;
+        double TimeScale;
 
-            /**
-            * @brief The current amount of frames that are ran every second
-            */
-            static float GetFps();
-
-            /**
-             * @brief The scale at which time passes.
-             * @return time scale value
-             */
-            static double GetTimeScale();
-
-            /**
-             * @brief The scale at which time passes.
-             * @param The new value for the time scale.
-             */
-            static void SetTimeScale(double newTimeScale);
-
-        private:
-        #include "Time_private.hpp"
-    };
+        float GetFps();
+        void CalculateDeltaTime();
+    }
 
 }
 

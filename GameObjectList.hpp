@@ -10,6 +10,7 @@
 namespace spic {
 	class GameObjectList {
 	public:
+		GameObjectList();
 		std::shared_ptr<Camera> GetActiveCamera();
 		std::vector<std::shared_ptr<GameObject>> GetAll();
 		std::vector<std::shared_ptr<GameObject>> GetActive();

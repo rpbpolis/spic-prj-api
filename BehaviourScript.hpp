@@ -8,6 +8,8 @@ namespace spic {
 
     class BehaviourScript : public Component {
         public:
+
+            BehaviourScript();
             /**
              * @brief Called when creating the script
              */

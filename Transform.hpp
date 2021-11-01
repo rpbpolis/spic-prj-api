@@ -7,10 +7,12 @@ namespace spic {
     /**
      * @brief Instances of this class represent specific 2D transformations.
      */
-    struct Transform {
-        Vector2 position; // Translation (shift)
-        double rotation; // Rotation, in radians
-        double scale; // Multiplication factor
+    class Transform {
+    public:
+        Transform(const Vector2& pos, double rot, double scale);
+        void LookAt(const Vector2& pos);
+    private:
+    #include "Transform_private.hpp"
     };
 }
 

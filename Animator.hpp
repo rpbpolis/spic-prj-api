@@ -3,6 +3,7 @@
 
 #include "Component.hpp"
 #include "Sprite.hpp"
+#include "SpriteSheet.hpp"
 
 namespace spic {
 
@@ -11,6 +12,8 @@ namespace spic {
      */
     class Animator : public Component {
         public:
+
+            Animator(SpriteSheet sheet, int fps);
             /**
              * @brief Start playing the image sequence.
              * @param looping If true, will automatically start again when done.
@@ -22,6 +25,10 @@ namespace spic {
              *        last will remain shown.
              */
             void Stop();
+
+            int GetFps();
+
+            void SetFps(int newFps);
 
         private:
         #include "Animator_private.hpp"

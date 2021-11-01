@@ -283,11 +283,6 @@ namespace spic {
         const Vector2 MousePosition();
 
         /**
-         * @brief Returns the value of the virtual axis identified by axisName.
-         */
-        double GetAxis();
-
-        /**
          * @brief Returns true while the user holds down the key identified by keycode.
          */
         bool GetKey(KeyCode key);

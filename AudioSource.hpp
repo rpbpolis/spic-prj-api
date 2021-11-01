@@ -11,6 +11,8 @@ namespace spic {
      */
     class AudioSource : public Component {
         public:
+
+            AudioSource(std::string url, bool playOnAwake, double volume);
             /**
              * @brief Call this method to start playing audio.
              * @param looping Automatically start over when done.
@@ -31,6 +33,18 @@ namespace spic {
              * @brief Call this method to resume audio if paused.
              */
             void Resume();
+
+            bool ShouldLoop();
+
+            void SetPlayOnAwake(bool flag);
+
+            bool GetPlayOnAwake();
+
+            void SetVolume(double newVolume);
+
+            double GetVolume();
+
+            std::string GetUrl();
 
         private:
             #include "AudioSource_private.hpp"

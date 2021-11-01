@@ -14,6 +14,7 @@ namespace spic {
 		static std::shared_ptr<Scene> GetActiveScene;
 		static void SetActiveScene(const std::string& name);
 		static void MoveGameObject(std::shared_ptr<GameObject> object, std::shared_ptr<Scene> scene);
+		static void RemoveGameObject(std::shared_ptr<GameObject> object);
 	private:
 	#include "SceneManager_private.hpp"
 	};
