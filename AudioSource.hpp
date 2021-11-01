@@ -12,7 +12,7 @@ namespace spic {
     class AudioSource : public Component {
         public:
 
-            AudioSource(std::string url, bool playOnAwake, double volume);
+            AudioSource(const std::string& url, bool playOnAwake, double volume);
             /**
              * @brief Call this method to start playing audio.
              * @param looping Automatically start over when done.
