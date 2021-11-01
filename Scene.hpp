@@ -1,7 +1,6 @@
 #ifndef SCENE_H_
 #define SCENE_H_
 
-#include "GameObject.hpp"
 #include <vector>
 #include <memory>
 

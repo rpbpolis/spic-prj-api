@@ -80,23 +80,23 @@ namespace spic {
             GameObject(const std::string& name, const std::string& tag, int layer);
 
             /**
-             * @brief Does the object exist? TODO wat wordt hiermee bedoeld?
+             * @brief Does the object exist?
              */
-            operator bool();
+            operator bool() const;
 
             /**
              * @brief Compare two GameObjects.
              * @param other The other object to compare this one with.
              * @return true if not equal, false otherwise.
              */
-            bool operator!=(const GameObject& other);
+            bool operator!=(const GameObject& other) const;
 
             /**
              * @brief Compare two GameObjects
              * @param other The other object to compare this one with.
              * @return true if equal, false otherwise.
              */
-            bool operator==(const GameObject& other);
+            bool operator==(const GameObject& other) const;
 
             /**
              * @brief Add a Component of the specified type. Must be a valid
@@ -185,7 +185,13 @@ namespace spic {
              * @brief Returns the transform of this GameObject
              * @return A reference to the transform
              */
-            spic::Transform& Transform() const;
+            spic::Transform& Transform();
+
+            const std::string& Name() { return name; }
+
+            const std::string& Tag() { return tag; }
+
+            const int Layer() { return layer; }
 
         private:
             std::string name;
