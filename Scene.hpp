@@ -21,7 +21,7 @@ namespace spic {
              */
             void RenderScene();
 
-            const std::vector<std::shared_ptr<GameObject>>& Contents();
+            std::vector<std::shared_ptr<GameObject>>& Contents();
 
     private:
 #if __has_include("Scene_private.hpp")
