@@ -10,6 +10,8 @@
 
 namespace spic {
 
+    class GameObject;
+
     /**
      * @brief Class representing a scene which can be rendered by the Camera.
      */
