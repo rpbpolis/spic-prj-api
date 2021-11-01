@@ -191,7 +191,7 @@ namespace spic {
 
             const std::string& Tag() { return tag; }
 
-            const int Layer() { return layer; }
+            int Layer() { return layer; }
 
         private:
             std::string name;
