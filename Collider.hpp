@@ -7,6 +7,7 @@ namespace spic {
 
     /**
      * @brief The base class for all colliders.
+     * @spicapi
      */
     class Collider : public Component {
 

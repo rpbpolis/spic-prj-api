@@ -17,6 +17,7 @@ namespace spic {
              * @brief Finds a GameObject by name and returns it.
              * @param name The name of the GameObject you want to find.
              * @return Pointer to GameObject, or nullptr if not found.
+             * @spicapi
              */
             static std::shared_ptr<GameObject> Find(const std::string& name);
 
@@ -25,6 +26,7 @@ namespace spic {
              *        vector if no GameObject was found.
              * @param tag The tag to find.
              * @return std::vector of GameObject pointers. No ownership.
+             * @spicapi
              */
             static std::vector<std::shared_ptr<GameObject>> FindGameObjectsWithTag(const std::string& tag);
 
@@ -32,11 +34,13 @@ namespace spic {
              * @brief Returns one active GameObject tagged tag. Returns nullptr if no GameObject was found.
              * @param tag The tag to find.
              * @return Pointer to GameObject, or nullptr if not found.
+             * @spicapi
              */
             static std::shared_ptr<GameObject> FindWithTag(const std::string& tag);
 
             /**
              * @brief Returns the first active loaded object of Type type.
+             * @spicapi
              */
             template<class T>
             static std::shared_ptr<GameObject> FindObjectOfType(bool includeInactive = false) {
@@ -45,6 +49,7 @@ namespace spic {
 
             /**
              * @brief Gets a list of all loaded objects of Type type.
+             * @spicapi
              */
             template<class T>
             static std::vector<std::shared_ptr<GameObject>> FindObjectsOfType(bool includeInactive = false) {
@@ -57,6 +62,7 @@ namespace spic {
              *          to the Components it possesses?
              * @param obj The GameObject to be destroyed. Must be a valid pointer to existing Game Object.
              * @exception A std::runtime_exception is thrown when the pointer is not valid.
+             * @spicapi
              */
             static void Destroy(std::shared_ptr<GameObject> obj);
 
@@ -64,6 +70,7 @@ namespace spic {
              * @brief Removes a Component.
              * @details Will search for the Component among the GameObjects.
              * @param obj The Component to be removed.
+             * @spicapi
              */
             static void Destroy(Component* obj);
 
@@ -73,11 +80,13 @@ namespace spic {
              *          available collection, the administration.  This makes the
              *          Find()-functions possible.
              * @param name The name for the game object.
+             * @spicapi
              */
             GameObject(const std::string& name);
 
             /**
              * @brief Does the object exist? TODO wat wordt hiermee bedoeld?
+             * @spicapi
              */
             operator bool();
 
@@ -85,6 +94,7 @@ namespace spic {
              * @brief Compare two GameObjects.
              * @param other The other object to compare this one with.
              * @return true if not equal, false otherwise.
+             * @spicapi
              */
             bool operator!=(const GameObject& other);
 
@@ -92,6 +102,7 @@ namespace spic {
              * @brief Compare two GameObjects
              * @param other The other object to compare this one with.
              * @return true if equal, false otherwise.
+             * @spicapi
              */
             bool operator==(const GameObject& other);
 
@@ -102,6 +113,7 @@ namespace spic {
              * @details This function places a pointer to the component in
              *          a suitable container.
              * @param component Reference to the component.
+             * @spicapi
              */
             template<class T>
             void AddComponent(std::shared_ptr<Component> component) {
@@ -112,6 +124,7 @@ namespace spic {
              * @brief Get the first component of the specified type. Must be
              *        a valid subclass of Component.
              * @return Pointer to Component instance.
+             * @spicapi
              */
             template<class T>
             std::shared_ptr<Component> GetComponent() const {
@@ -123,6 +136,7 @@ namespace spic {
              *        contained game objects. Must be
              *        a valid subclass of Component.
              * @return Pointer to Component instance.
+             * @spicapi
              */
             template<class T>
             std::shared_ptr<Component> GetComponentInChildren() const {
@@ -134,6 +148,7 @@ namespace spic {
              *        the parent game object. Must be
              *        a valid subclass of Component.
              * @return Pointer to Component instance.
+             * @spicapi
              */
             template<class T>
             std::shared_ptr<Component> GetComponentInParent() const {
@@ -144,6 +159,7 @@ namespace spic {
              * @brief Get all components of the specified type. Must be
              *        a valid subclass of Component.
              * @return Vector with pointers to Component instances.
+             * @spicapi
              */
             template<class T>
             std::vector<std::shared_ptr<Component>> GetComponents() const {
@@ -155,6 +171,7 @@ namespace spic {
              *        contained game objects. Must be
              *        a valid subclass of Component.
              * @return Vector with pointers to Component instances.
+             * @spicapi
              */
             template<class T>
             std::vector<std::shared_ptr<Component>> GetComponentsInChildren() const {
@@ -166,6 +183,7 @@ namespace spic {
              *        the parent game object. Must be
              *        a valid subclass of Component.
              * @return Vector with pointers to Component instances.
+             * @spicapi
              */
             template<class T>
             std::vector<std::shared_ptr<Component>> GetComponentsInParent() const {
@@ -175,12 +193,14 @@ namespace spic {
             /**
              * @brief Activates/Deactivates the GameObject, depending on the given true or false value.
              * @param active Desired value.
+             * @spicapi
              */
             void SetActive(bool flag) { active = flag; }
 
             /**
              * @brief Returns whether this game object is itself active.
              * @return true if active, false if not.
+             * @spicapi
              */
             bool IsActiveSelf() const { return active; }
 
@@ -189,6 +209,7 @@ namespace spic {
              *        into consideration as well.
              * @return true if game object and all of its parents are active,
              *        false otherwise.
+             * @spicapi
              */
             bool IsActiveInWorld() const;
 

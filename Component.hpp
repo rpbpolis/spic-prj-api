@@ -11,11 +11,13 @@ namespace spic {
             /**
              * @brief Getter for active status.
              * @return true if active, false otherwise.
+             * @spicapi
              */
             bool Active() const { return active; }
 
             /**
              * @brief flag New active status.
+             * @spicapi
              */
             void Active(bool flag) { active = flag; }
 
