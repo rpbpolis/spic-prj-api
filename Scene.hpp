@@ -1,7 +1,6 @@
 #ifndef SCENE_H_
 #define SCENE_H_
 
-#include "GameObject.hpp"
 #include <vector>
 #include <memory>
 
@@ -10,6 +9,8 @@
 #endif
 
 namespace spic {
+
+    class GameObject;
 
     /**
      * @brief Class representing a scene which can be rendered by the Camera.
