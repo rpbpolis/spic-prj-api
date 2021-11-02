@@ -1,0 +1,4 @@
+<map id="spic::Sprite" name="spic::Sprite">
+<area shape="rect" id="node1" title="A component representing a sprite (small image)" alt="" coords="21,80,108,107"/>
+<area shape="rect" id="node2" href="$classspic_1_1Component.html" title="Base class for all components." alt="" coords="5,5,124,32"/>
+</map>

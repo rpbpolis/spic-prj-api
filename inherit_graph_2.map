@@ -1,0 +1,7 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classspic_1_1GameObject.html" title="Any object which should be represented on screen." alt="" coords="5,31,131,57"/>
+<area shape="rect" id="node2" href="$classspic_1_1Camera.html" title="Class representing a point of view towards the game scene." alt="" coords="182,5,279,32"/>
+<area shape="rect" id="node3" href="$classspic_1_1UIObject.html" title="Base class for a user interface object like Button or Text." alt="" coords="179,56,283,83"/>
+<area shape="rect" id="node4" href="$classspic_1_1Button.html" title="Instances of this class are clickable user interface items." alt="" coords="331,31,421,57"/>
+<area shape="rect" id="node5" href="$classspic_1_1Text.html" title="Class representing a piece of text which can be rendered." alt="" coords="337,81,415,108"/>
+</map>

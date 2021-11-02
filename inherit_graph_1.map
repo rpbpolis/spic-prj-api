@@ -1,0 +1,11 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classspic_1_1Component.html" title="Base class for all components." alt="" coords="5,132,124,159"/>
+<area shape="rect" id="node2" href="$classspic_1_1Animator.html" title="A component which can play animated sequences of sprites." alt="" coords="192,5,296,32"/>
+<area shape="rect" id="node3" href="$classspic_1_1AudioSource.html" title="Component which can play audio." alt="" coords="181,56,307,83"/>
+<area shape="rect" id="node4" href="$classspic_1_1BehaviourScript.html" title=" " alt="" coords="172,107,316,133"/>
+<area shape="rect" id="node5" href="$classspic_1_1Collider.html" title="The base class for all colliders." alt="" coords="197,157,291,184"/>
+<area shape="rect" id="node8" href="$classspic_1_1RigidBody.html" title="A component representing a rigid body." alt="" coords="189,208,299,235"/>
+<area shape="rect" id="node9" href="$classspic_1_1Sprite.html" title="A component representing a sprite (small image)" alt="" coords="201,259,287,285"/>
+<area shape="rect" id="node6" href="$classspic_1_1BoxCollider.html" title="A collider which represents a rectangular collision area." alt="" coords="369,132,487,159"/>
+<area shape="rect" id="node7" href="$classspic_1_1CircleCollider.html" title="A collider which represents a circular collision area." alt="" coords="364,183,492,209"/>
+</map>
