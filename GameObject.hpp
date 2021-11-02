@@ -195,14 +195,14 @@ namespace spic {
              * @param active Desired value.
              * @spicapi
              */
-            void SetActive(bool flag) { active = flag; }
+            void Active(bool flag);
 
             /**
              * @brief Returns whether this game object is itself active.
              * @return true if active, false if not.
              * @spicapi
              */
-            bool IsActiveSelf() const { return active; }
+            bool Active() const;
 
             /**
              * @brief Returns whether this game component is active, taking its parents
