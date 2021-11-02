@@ -5,6 +5,7 @@ namespace spic {
 
     /**
      * @brief Struct representing both a 2D point and a 2D vector.
+     * @spicapi
      */
     struct Point {
         double x;

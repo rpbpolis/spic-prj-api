@@ -24,12 +24,14 @@ namespace spic {
             /**
              * @brief Get the collider's radius
              * @return The radius
+             * @spicapi
              */
             double Radius() const { return radius; }
 
             /**
              * @brief Set the collider's radius
              * @param newRadius The desired radius
+             * @spicapi
              */
             void Radius(double newRadius) { radius = newRadius; }
 

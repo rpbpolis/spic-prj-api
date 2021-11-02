@@ -8,6 +8,7 @@ namespace spic {
 
     /**
      * @brief Class representing a point of view towards the game scene.
+     * @spicapi
      */
     class Camera : public GameObject {
         public:

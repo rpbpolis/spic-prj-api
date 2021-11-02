@@ -6,6 +6,7 @@
 namespace spic {
     /**
      * @brief Instances of this class represent specific 2D transformations.
+     * @spicapi
      */
     struct Transform {
         Point position; // Translation (shift)

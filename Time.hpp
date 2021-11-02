@@ -10,18 +10,21 @@ namespace spic {
         public:
             /**
              * @brief The interval in seconds from the last frame to the current one (Read Only)
+             * @spicapi
              */
             static double DeltaTime();
 
             /**
              * @brief The scale at which time passes.
              * @return time scale value
+             * @spicapi
              */
             static double TimeScale();
 
             /**
              * @brief The scale at which time passes.
-             * @param The new value for the time scale.
+             * @param newTimeScale The new value for the time scale.
+             * @spicapi
              */
             static void TimeScale(double newTimeScale);
 

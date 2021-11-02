@@ -10,21 +10,25 @@ namespace spic {
         public:
             /**
              * @brief Called whenever the mouse is moved.
+             * @spicapi
              */
             virtual void OnMouseMoved() = 0;
 
             /**
              * @brief Called whenever a mouse button is clicked.
+             * @spicapi
              */
             virtual void OnMouseClicked() = 0;
 
             /**
              * @brief Called each frame when a mouse button is still down.
+             * @spicapi
              */
             virtual void OnMousePressed() = 0;
 
             /**
              * @brief Called whenever a mouse button is released.
+             * @spicapi
              */
             virtual void OnMouseReleased() = 0;
     };

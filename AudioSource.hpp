@@ -25,11 +25,13 @@ namespace spic {
             /**
              * @brief Call this method to start playing audio.
              * @param looping Automatically start over when done.
+             * @spicapi
              */
             void Play(bool looping);
 
             /**
              * @brief Call this method to stop playing audio.
+             * @spicapi
              */
             void Stop();
 

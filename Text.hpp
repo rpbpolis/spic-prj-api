@@ -9,6 +9,7 @@ namespace spic {
 
     /**
      * @brief Enumeration for different text alignments.
+     * @spicapi
      */
     enum class Alignment {
         left,
@@ -18,6 +19,7 @@ namespace spic {
 
     /**
      * @brief Class representing a piece of text which can be rendered.
+     * @spicapi
      */
     class Text : public UIObject {
         public:

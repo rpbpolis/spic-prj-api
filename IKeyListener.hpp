@@ -11,12 +11,14 @@ namespace spic {
             /**
              * @brief This method will be caled whenever a key is pressed.
              *        Override for implementing the desired behaviour.
+             * @spicapi
              */
             virtual void OnKeyPressed() = 0;
 
             /**
              * @brief This method will be called whenever a pressed key is released again.
              *        Override for implementing the desired behaviour.
+             * @spicapi
              */
             virtual void OnKeyReleased() = 0;
     };
