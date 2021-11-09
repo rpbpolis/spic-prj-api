@@ -285,7 +285,7 @@ namespace spic {
          * @brief The current mouse position in pixel coordinates. (Read Only)
          * @spicapi
          */
-        const Point MousePosition();
+        Point MousePosition();
 
         /**
          * @brief Returns the value of the virtual axis identified by axisName.
