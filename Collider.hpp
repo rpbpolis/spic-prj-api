@@ -3,10 +3,6 @@
 
 #include "Component.hpp"
 
-#if __has_include("Collider_includes.hpp")
-#include "Collider_includes.hpp"
-#endif
-
 namespace spic {
 
     /**
@@ -31,9 +27,7 @@ namespace spic {
         void IsTrigger(bool newIsTrigger);
 
     private:
-#if __has_include("Collider_private.hpp")
-#include "Collider_private.hpp"
-#endif
+        bool isTrigger;
     };
 
 }

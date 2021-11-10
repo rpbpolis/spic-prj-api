@@ -3,12 +3,16 @@
 
 #include "EngineConfig.hpp"
 #include "Scene.hpp"
-
-#if __has_include("Engine_includes.hpp")
-#include "Engine_includes.hpp"
-#endif
+#include <memory>
+#include <stack>
 
 namespace spic {
+
+    class Renderer;
+
+    namespace Input {
+        class InputHandler;
+    }
 
     /**
      * @brief The engine class responsible for the game loop.
@@ -17,11 +21,20 @@ namespace spic {
     class Engine {
     private:
         static Engine instance;
-        Engine() = default;
 
-#if __has_include("Engine_private.hpp")
-#include "Engine_private.hpp"
-#endif
+        Engine() = default;
+        ~Engine();
+
+        EngineConfig config;
+
+        std::stack<std::shared_ptr<Scene>> scenes;
+        std::unique_ptr<spic::Renderer> renderer;
+        std::unique_ptr<spic::Input::InputHandler> inputHandler;
+
+        bool isRunning;
+        int fps;
+
+        void Render();
 
     public:
         static Engine& Instance();
@@ -48,10 +61,8 @@ namespace spic {
         void PopScene();
         void Shutdown();
 
-        // Include "package private" methods
-#if __has_include("Engine_public.hpp")
-#include "Engine_public.hpp"
-#endif
+        const std::unique_ptr<spic::Renderer>& Renderer() const;
+        const std::unique_ptr<spic::Input::InputHandler>& InputHandler() const;
     };
 }
 

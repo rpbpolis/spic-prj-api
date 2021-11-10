@@ -6,10 +6,6 @@
 #include <vector>
 #include <memory>
 
-#if __has_include("Animator_includes.hpp")
-#include "Animator_includes.hpp"
-#endif
-
 namespace spic {
 
     /**
@@ -54,10 +50,6 @@ namespace spic {
              */
             void FPS(int newFps);
 
-#if __has_include("Animator_public.hpp")
-#include "Animator_public.hpp"
-#endif
-
         private:
             /**
              * @brief frames per second (playing speed)
@@ -65,9 +57,7 @@ namespace spic {
              */
             int fps;
 
-#if __has_include("Animator_private.hpp")
-#include "Animator_private.hpp"
-#endif
+            std::vector<std::shared_ptr<Sprite>> sprites;
     };
 
 }

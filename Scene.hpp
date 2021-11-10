@@ -31,9 +31,7 @@ namespace spic {
             std::vector<std::shared_ptr<GameObject>>& Contents();
 
     private:
-#if __has_include("Scene_private.hpp")
-#include "Scene_private.hpp"
-#endif
+        std::vector<std::shared_ptr<GameObject>> contents;
     };
 
 }

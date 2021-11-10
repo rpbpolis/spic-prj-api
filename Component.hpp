@@ -3,10 +3,6 @@
 
 #include <memory>
 
-#if __has_include("Component_includes.hpp")
-#include "Component_includes.hpp"
-#endif
-
 namespace spic {
 
     class GameObject;
@@ -52,9 +48,7 @@ namespace spic {
              */
             bool active;
 
-#if __has_include("Component_private.hpp")
-#include "Component_private.hpp"
-#endif
+            std::weak_ptr<spic::GameObject> gameObject;
     };
 
 }

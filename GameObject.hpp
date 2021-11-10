@@ -6,10 +6,8 @@
 #include <string>
 #include <vector>
 #include <memory>
-
-#if __has_include("GameObject_includes.hpp")
-#include "GameObject_includes.hpp"
-#endif
+#include <Engine.hpp>
+#include <stdexcept>
 
 namespace spic {
 
@@ -51,14 +49,39 @@ namespace spic {
              * @spicapi
              */
             template<class T>
-            static std::shared_ptr<T> FindObjectOfType(bool includeInactive = false);
+            static std::shared_ptr<T> FindObjectOfType(bool includeInactive = false) {
+                auto activeScene = Engine::Instance().PeekScene();
+                for (const auto& obj : activeScene->Contents()) {
+                    auto ptr = std::dynamic_pointer_cast<T>(obj);
+                    if (ptr) {
+                        if (!includeInactive && !obj->Active()) {
+                            continue;
+                        }
+                        return ptr;
+                    }
+                }
+                return nullptr;
+            }
 
             /**
              * @brief Gets a list of all loaded objects of Type type.
              * @spicapi
              */
             template<class T>
-            static std::vector<std::shared_ptr<T>> FindObjectsOfType(bool includeInactive = false);
+            static std::vector<std::shared_ptr<T>> FindObjectsOfType(bool includeInactive = false) {
+                std::vector<std::shared_ptr<T>> result;
+                auto activeScene = Engine::Instance().PeekScene();
+                for (const auto& obj : activeScene->Contents()) {
+                    auto ptr = std::dynamic_pointer_cast<T>(obj);
+                    if (ptr) {
+                        if (!includeInactive && !obj->Active()) {
+                            continue;
+                        }
+                        result.push_back(ptr);
+                    }
+                }
+                return result;
+            }
 
             /**
              * @brief Removes a GameObject from the administration.
@@ -122,7 +145,9 @@ namespace spic {
              * @spicapi
              */
             template<class T>
-            void AddComponent(std::shared_ptr<T> component);
+            void AddComponent(std::shared_ptr<T> component) {
+                components.push_back(component);
+            }
 
             /**
              * @brief Removes a component from a game object.
@@ -138,7 +163,13 @@ namespace spic {
              * @spicapi
              */
             template<class T>
-            std::shared_ptr<T> GetComponent() const;
+            std::shared_ptr<T> GetComponent() const {
+                for (const auto& component : components) {
+                    auto ptr = std::dynamic_pointer_cast<T>(component);
+                    if (ptr) return ptr;
+                }
+                return nullptr;
+            }
 
             /**
              * @brief Get the first component of the specified type from
@@ -148,7 +179,15 @@ namespace spic {
              * @spicapi
              */
             template<class T>
-            std::shared_ptr<T> GetComponentInChildren() const;
+            std::shared_ptr<T> GetComponentInChildren() const {
+                for (const auto& childComponent : children) {
+                    for (const auto& component : childComponent->components) {
+                        auto ptr = std::dynamic_pointer_cast<T>(component);
+                        if (ptr) return ptr;
+                    }
+                }
+                return nullptr;
+            }
 
             /**
              * @brief Get the first component of the specified type from
@@ -158,7 +197,18 @@ namespace spic {
              * @spicapi
              */
             template<class T>
-            std::shared_ptr<T> GetComponentInParent() const;
+            std::shared_ptr<T> GetComponentInParent() const {
+                auto p = parent.lock();
+                if (p) {
+                    for (const auto& component : p->components) {
+                        auto ptr = std::dynamic_pointer_cast<T>(component);
+                        if (ptr) return ptr;
+                    }
+                } else {
+                    p.reset();
+                }
+                return nullptr;
+            }
 
             /**
              * @brief Get all components of the specified type. Must be
@@ -167,7 +217,22 @@ namespace spic {
              * @spicapi
              */
             template<class T>
-            std::vector<std::shared_ptr<T>> GetComponents() const;
+            std::vector<std::shared_ptr<T>> GetComponents() const {
+                // Filter components by type T
+                std::vector<std::shared_ptr<T>> result;
+                for (const auto& component : components) {
+                    auto ptr = std::dynamic_pointer_cast<T>(component);
+                    if (ptr) result.push_back(ptr);
+                }
+
+                // Recursively add components from child GameObjects
+                for (const auto& child : children) {
+                    auto childResult = child->GetComponents<T>();
+                    result.insert(result.end(), childResult.begin(), childResult.end());
+                }
+
+                return result;
+            }
 
             /**
              * @brief Get all components of the specified type from
@@ -176,8 +241,15 @@ namespace spic {
              * @return Vector with pointers to Component instances.
              * @spicapi
              */
-            template<class T>
-            std::vector<std::shared_ptr<T>> GetComponentsInChildren() const;
+            template <class T>
+            std::vector<std::shared_ptr<T>> GetComponentsInChildren() const {
+                std::vector<std::shared_ptr<T>> result;
+                for (const auto& childComponent : children) {
+                    auto childResult = childComponent->GetComponents<T>();
+                    result.insert(result.end(), childResult.begin(), childResult.end());
+                }
+                return result;
+            }
 
             /**
              * @brief Get all components op the specified type from
@@ -186,8 +258,16 @@ namespace spic {
              * @return Vector with pointers to Component instances.
              * @spicapi
              */
-            template<class T>
-            std::vector<std::shared_ptr<T>> GetComponentsInParent() const;
+            template <class T>
+            std::vector<std::shared_ptr<T>> GetComponentsInParent() const {
+                auto p = parent.lock();
+                if (p) {
+                    return p->template GetComponents<T>();
+                } else {
+                    p.reset();
+                }
+                return nullptr;
+            }
 
             /**
              * @brief Activates/Deactivates the GameObject, depending on the given true or false value.
@@ -282,20 +362,22 @@ namespace spic {
              */
             int Layer() const;
 
-            // Include "package private" methods
-#if __has_include("GameObject_public.hpp")
-#include "GameObject_public.hpp"
-#endif
-
         private:
             std::string name;
             std::string tag;
             bool active;
             int layer;
 
-#if __has_include("GameObject_private.hpp")
-#include "GameObject_private.hpp"
-#endif
+            // Every gameObject has an identifier (id) which gets a value by auto incrementing the static 'idCounter' int
+            // This happens in the constructor of GameObject.cpp (id = idCounter++)
+            static int idCounter;
+
+            // GameObject id is used to make comparisons to other gameobjects. (See bool GameObject::operator==)
+            int id;
+            spic::Transform transform;
+            std::weak_ptr<GameObject> parent;
+            std::vector<std::shared_ptr<GameObject>> children;
+            std::vector<std::shared_ptr<Component>> components;
     };
 
 }
