@@ -35,8 +35,8 @@ namespace spic {
         int fps;
         bool showFps;
 
+        void UpdateBehaviourScripts() const;
         void Render();
-        void UpdateBehaviourScripts();
 
     public:
         static Engine& Instance();

@@ -9,13 +9,15 @@ namespace spic {
     class BehaviourScript : public Component {
         public:
             /**
-             * @brief TODO
+             * @brief Called only once, often used to initialize values used by the script.
+             *        Only called if gameobject is active
              * @spicapi
              */
             virtual void OnStart();
 
             /**
-             * @brief TODO
+             * @brief called every tick
+             *        Only called if gameobject is active
              * @spicapi
              */
             virtual void OnUpdate();
@@ -56,6 +58,7 @@ namespace spic {
             bool Started() const;
 
         private:
+            bool started;
     };
 
 }
