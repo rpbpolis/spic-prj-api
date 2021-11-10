@@ -60,6 +60,7 @@ namespace spic {
         std::shared_ptr<Scene> PeekScene() const;
         void PopScene();
         void Shutdown();
+        void UpdateBehaviourScripts();
 
         const std::unique_ptr<spic::Renderer>& Renderer() const;
         const std::unique_ptr<spic::Input::InputHandler>& InputHandler() const;
