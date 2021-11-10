@@ -34,8 +34,8 @@ namespace spic {
         bool isRunning;
         int fps;
 
+        void UpdateBehaviourScripts() const;
         void Render();
-        void UpdateBehaviourScripts();
 
     public:
         static Engine& Instance();
