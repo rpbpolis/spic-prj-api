@@ -36,6 +36,7 @@ namespace spic {
         bool showFps;
 
         void Render();
+        void UpdateBehaviourScripts();
 
     public:
         static Engine& Instance();
