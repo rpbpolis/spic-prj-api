@@ -33,6 +33,7 @@ namespace spic {
 
         bool isRunning;
         int fps;
+        bool showFps;
 
         void Render();
 
