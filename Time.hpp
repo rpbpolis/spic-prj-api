@@ -5,6 +5,7 @@ namespace spic {
 
     /**
      * @brief Class representing game time.
+     * @spicapi
      */
     class Time {
         public:
@@ -13,6 +14,13 @@ namespace spic {
              * @spicapi
              */
             static double DeltaTime();
+
+            /**
+             * @brief The interval in seconds from the last frame to the current one.
+             * @param newDeltaTime The new value for Delta Time.
+             * @sharedapi
+             */
+            static void DeltaTime(double newDeltaTime);
 
             /**
              * @brief The scale at which time passes.

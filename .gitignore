@@ -32,3 +32,5 @@
 *.app
 /html/
 /docs/
+
+.idea/

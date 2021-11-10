@@ -40,6 +40,22 @@ namespace spic {
              * @spicapi
              */
             virtual void OnTriggerStay2D(const Collider& collider);
+
+            /**
+             * @brief Whether the script has been started.
+             * @param started desired value
+             * @sharedapi
+             */
+            void Started(bool started);
+
+            /**
+             * @brief Whether the script has been started.
+             * @return current value
+             * @sharedapi
+             */
+            bool Started() const;
+
+        private:
     };
 
 }
