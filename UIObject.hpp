@@ -3,10 +3,6 @@
 
 #include "GameObject.hpp"
 
-#if __has_include("UIObject_includes.hpp")
-#include "UIObject_includes.hpp"
-#endif
-
 namespace spic {
 
     /**
@@ -57,10 +53,6 @@ namespace spic {
         private:
             double width;
             double height;
-
-#if __has_include("UIObject_private.hpp")
-#include "UIObject_private.hpp"
-#endif
     };
 
 }

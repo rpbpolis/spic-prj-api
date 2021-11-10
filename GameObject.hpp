@@ -6,7 +6,7 @@
 #include <string>
 #include <vector>
 #include <memory>
-#include <Engine.hpp>
+#include "Engine.hpp"
 #include <stdexcept>
 
 namespace spic {
@@ -381,9 +381,5 @@ namespace spic {
     };
 
 }
-
-#if __has_include("GameObject_templates.hpp")
-#include "GameObject_templates.hpp"
-#endif
 
 #endif // GAMEOBJECT_H_

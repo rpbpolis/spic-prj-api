@@ -4,10 +4,6 @@
 #include <vector>
 #include <memory>
 
-#if __has_include("Scene_includes.hpp")
-#include "Scene_includes.hpp"
-#endif
-
 namespace spic {
 
     class GameObject;

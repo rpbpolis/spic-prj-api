@@ -4,10 +4,6 @@
 #include "Component.hpp"
 #include <string>
 
-#if __has_include("AudioSource_includes.hpp")
-#include "AudioSource_includes.hpp"
-#endif
-
 namespace spic {
 
     /**
@@ -77,10 +73,6 @@ namespace spic {
              * @spicapi
              */
             double volume;
-
-#if __has_include("AudioSource_private.hpp")
-#include "AudioSource_private.hpp"
-#endif
     };
 
 }

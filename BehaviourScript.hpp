@@ -4,10 +4,6 @@
 #include "Component.hpp"
 #include "Collider.hpp"
 
-#if __has_include("BehaviourScript_includes.hpp")
-#include "BehaviourScript_includes.hpp"
-#endif
-
 namespace spic {
 
     class BehaviourScript : public Component {
@@ -60,9 +56,6 @@ namespace spic {
             bool Started() const;
 
         private:
-#if __has_include("BehaviourScript_private.hpp")
-#include "BehaviourScript_private.hpp"
-#endif
     };
 
 }

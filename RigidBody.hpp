@@ -4,10 +4,6 @@
 #include "Component.hpp"
 #include "Point.hpp"
 
-#if __has_include("RigidBody_includes.hpp")
-#include "RigidBody_includes.hpp"
-#endif
-
 namespace spic {
 
     /**
@@ -34,7 +30,7 @@ namespace spic {
              * @sharedapi
              */
             RigidBody(double mass, double gravityScale, const BodyType& bodyType);
-            
+
             /**
              * @brief Apply force to this rigid body.
              * @param forceDirection A point, used as a vector to indicate direction
@@ -85,18 +81,10 @@ namespace spic {
              */
             void GravityScale(double newGravityScale);
 
-#if __has_include("RigidBody_public.hpp")
-#include "RigidBody_public.hpp"
-#endif
-
         private:
             double mass;
             double gravityScale;
             BodyType bodyType;
-
-#if __has_include("RigidBody_private.hpp")
-#include "RigidBody_private.hpp"
-#endif
     };
 
 }

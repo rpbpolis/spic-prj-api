@@ -4,10 +4,6 @@
 #include "GameObject.hpp"
 #include "Color.hpp"
 
-#if __has_include("Camera_includes.hpp")
-#include "Camera_includes.hpp"
-#endif
-
 namespace spic {
 
     /**

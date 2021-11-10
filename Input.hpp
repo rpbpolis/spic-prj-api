@@ -6,10 +6,6 @@
 #include "IMouseListener.hpp"
 #include <string>
 
-#if __has_include("Input_includes.hpp")
-#include "Input_includes.hpp"
-#endif
-
 namespace spic {
 
     /**
@@ -363,10 +359,6 @@ namespace spic {
          * @sharedapi
          */
         void UnregisterMouseListener(IMouseListener& listener);
-
-#if __has_include("Input_public.hpp")
-#include "Input_public.hpp"
-#endif
     }
 
 }
