@@ -30,6 +30,7 @@ namespace spic {
         std::stack<std::shared_ptr<Scene>> scenes;
         std::unique_ptr<spic::Renderer> renderer;
         std::unique_ptr<spic::Input::InputHandler> inputHandler;
+        void UpdateBehaviourScripts();
 
         bool isRunning;
         int fps;
@@ -60,7 +61,6 @@ namespace spic {
         std::shared_ptr<Scene> PeekScene() const;
         void PopScene();
         void Shutdown();
-        void UpdateBehaviourScripts();
 
         const std::unique_ptr<spic::Renderer>& Renderer() const;
         const std::unique_ptr<spic::Input::InputHandler>& InputHandler() const;
