@@ -1,7 +1,6 @@
 #ifndef BEHAVIOURSCRIPT_H_
 #define BEHAVIOURSCRIPT_H_
 
-#include "GameObject.hpp"
 #include "Component.hpp"
 #include "Collider.hpp"
 
