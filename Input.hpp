@@ -264,9 +264,9 @@ namespace spic {
          * @spicapi
          */
         enum class MouseButton {
-            LEFT = 1,
-            MIDDLE = 2,
-            RIGHT = 3
+            LEFT = 0b001, // 1
+            MIDDLE = 0b010, // 2
+            RIGHT = 0b100, // 4
         };
 
         /**
