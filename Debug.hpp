@@ -9,6 +9,7 @@ namespace spic {
 
     /**
      * @brief Some convenient debugging functions.
+     * @spicapi
      */
     namespace Debug {
 

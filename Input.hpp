@@ -2,12 +2,19 @@
 #define INPUT_H_
 
 #include "Point.hpp"
+#include "IKeyListener.hpp"
+#include "IMouseListener.hpp"
 #include <string>
+
+#if __has_include("Input_includes.hpp")
+#include "Input_includes.hpp"
+#endif
 
 namespace spic {
 
     /**
      * @brief Some convenient input functions.
+     * @spicapi
      */
     namespace Input {
 
@@ -329,6 +336,37 @@ namespace spic {
          */
         bool GetMouseButtonUp(MouseButton which);
 
+        /**
+         * Register a new key listener
+         * @param listener A reference to a key listener
+         * @sharedapi
+         */
+        void RegisterKeyListener(IKeyListener& listener);
+
+        /**
+         * Unregister a key listener
+         * @param listener A reference to a key listener
+         * @sharedapi
+         */
+        void UnregisterKeyListener(IKeyListener& listener);
+
+        /**
+         * Register a new mouse listener
+         * @param listener A reference to a mouse listener
+         * @sharedapi
+         */
+        void RegisterMouseListener(IMouseListener& listener);
+
+        /**
+         * Unregister a mouse listener
+         * @param listener A reference to a mouse listener
+         * @sharedapi
+         */
+        void UnregisterMouseListener(IMouseListener& listener);
+
+#if __has_include("Input_public.hpp")
+#include "Input_public.hpp"
+#endif
     }
 
 }

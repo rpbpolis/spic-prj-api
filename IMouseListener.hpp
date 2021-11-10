@@ -5,6 +5,7 @@ namespace spic {
 
     /**
      * @brief Interface for objects wanting to respond to mouse events.
+     * @spicapi
      */
     class IMouseListener {
         public:
