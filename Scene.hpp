@@ -14,6 +14,15 @@ namespace spic {
      */
     class Scene {
         public:
+            Scene() = default;
+
+            Scene(const Scene&) = delete;
+            Scene& operator=(const Scene&) = delete;
+            Scene(const Scene&&) = delete;
+            Scene& operator=(Scene&&) = delete;
+
+            virtual ~Scene() = default;
+
             /**
              * @brief This function is called by a Camera to render the scene on the engine.
              * @spicapi
@@ -25,6 +34,18 @@ namespace spic {
              * @spicapi
              */
             std::vector<std::shared_ptr<GameObject>>& Contents();
+
+            /**
+             * Called when this scene is first pushed to the stack.
+             * @sharedapi
+             */
+            virtual void OnActivate();
+
+            /**
+             * Called when this scene is popped from the stack.
+             * @sharedapi
+             */
+            virtual void OnDeactivate();
 
     private:
         std::vector<std::shared_ptr<GameObject>> contents;
