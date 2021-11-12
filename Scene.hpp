@@ -36,7 +36,15 @@ namespace spic {
             std::vector<std::shared_ptr<GameObject>>& Contents();
 
             /**
-             * Called when this scene is first pushed to the stack.
+             * Called when this scene is first created.
+             * Use this method to initialize the objects in this scene.
+             * @sharedapi
+             */
+            virtual void OnCreate();
+
+            /**
+             * Called when this scene is pushed on top of the stack, or when the scene directly above this
+             * one is popped from the stack, thus revealing this one.
              * @sharedapi
              */
             virtual void OnActivate();

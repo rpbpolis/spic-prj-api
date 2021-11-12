@@ -116,6 +116,32 @@ namespace spic {
             static void Destroy(Component* obj);
 
             /**
+             * Create a new GameObject and add it to the static administration.
+             * @tparam T The type of GameObject
+             * @tparam Args The argument types for the constructor of type T
+             * @param args The arguments for the constructor of type T
+             * @return A shared pointer to a newly created GameObject
+             * @sharedapi
+             */
+            template<typename T, typename...Args, typename std::enable_if<std::is_base_of<GameObject, T>::value>::type* = nullptr>
+            static std::shared_ptr<T> Create(Args&&... args) {
+                // Check if we have a scene
+                auto scene = Engine::Instance().PeekScene();
+                if (!scene) {
+                    Debug::LogWarning("Can not create game object without scene");
+                    return nullptr;
+                }
+
+                // Create a pointer of the game object
+                auto pointer = std::make_shared<T>(std::forward<Args>(args)...);
+
+                // Add it to the scene "static administration"
+                scene->Contents().push_back(pointer);
+
+                return pointer;
+            }
+
+            /**
              * @brief Constructor.
              * @details The new GameObject will also be added to a statically
              *          available collection, the administration.  This makes the
@@ -375,6 +401,13 @@ namespace spic {
              * @sharedapi
              */
             int Layer() const;
+
+            /**
+             * Retrieve the relative position of this gameobject in relation to its parent.
+             * @return the relative position of this gameobject in relation to its parent.
+             * @sharedapi
+             */
+            Point RelativePosition();
 
         private:
             std::string name;
