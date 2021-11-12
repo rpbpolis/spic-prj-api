@@ -8,6 +8,7 @@
 #include <memory>
 #include "Engine.hpp"
 #include <stdexcept>
+#include <Debug.hpp>
 
 namespace spic {
 
