@@ -51,6 +51,12 @@ namespace spic {
             template<class T>
             static std::shared_ptr<T> FindObjectOfType(bool includeInactive = false) {
                 auto activeScene = Engine::Instance().PeekScene();
+
+                if (!activeScene) {
+                    Debug::LogError("GameObject.hpp FindObjectOfType: ActiveScene is null");
+                    return nullptr;
+                }
+
                 for (const auto& obj : activeScene->Contents()) {
                     auto ptr = std::dynamic_pointer_cast<T>(obj);
                     if (ptr) {
@@ -60,6 +66,7 @@ namespace spic {
                         return ptr;
                     }
                 }
+
                 return nullptr;
             }
 
@@ -69,17 +76,23 @@ namespace spic {
              */
             template<class T>
             static std::vector<std::shared_ptr<T>> FindObjectsOfType(bool includeInactive = false) {
-                std::vector<std::shared_ptr<T>> result;
                 auto activeScene = Engine::Instance().PeekScene();
-                for (const auto& obj : activeScene->Contents()) {
-                    auto ptr = std::dynamic_pointer_cast<T>(obj);
-                    if (ptr) {
-                        if (!includeInactive && !obj->Active()) {
-                            continue;
+                std::vector<std::shared_ptr<T>> result;
+
+                if (activeScene) {
+                    for (const auto& obj : activeScene->Contents()) {
+                        auto ptr = std::dynamic_pointer_cast<T>(obj);
+                        if (ptr) {
+                            if (!includeInactive && !obj->Active()) {
+                                continue;
+                            }
+                            result.push_back(ptr);
                         }
-                        result.push_back(ptr);
                     }
+                } else {
+                    Debug::LogError("GameObject.hpp FindObjectOfType vector: ActiveScene is null");
                 }
+
                 return result;
             }
 
