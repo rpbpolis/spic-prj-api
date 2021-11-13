@@ -117,7 +117,7 @@ namespace spic {
             static void Destroy(Component* obj);
 
             /**
-             * Create a new GameObject and add it to the static administration.
+             * Create a new GameObject and DO NOT add it to the static administration.
              * @tparam GameObjectType The type of GameObject
              * @tparam GameObjectArgs The argument types for the constructor of type GameObjectType
              * @param args The arguments for the constructor of type GameObjectType
@@ -126,7 +126,34 @@ namespace spic {
              */
             template<typename GameObjectType, typename... GameObjectArgs>
             static std::shared_ptr<GameObjectType> Create(GameObjectArgs&&... args) {
-                return Create_ComponentsFirst<GameObjectType>({}, args...);
+                return CreateWithComponents<GameObjectType>(args..., std::vector<std::shared_ptr<spic::Component>>());
+            }
+
+            /**
+             * Create a new GameObject with components and DO NOT add it to the static administration.
+             * @tparam GameObjectType The type of GameObject
+             * @tparam GameObjectArgsAndComponents The argument types for the constructor of type GameObjectType and a
+             * vector of components to add to the game object
+             * @param args The arguments for the constructor of type GameObjectType
+             * @return A shared pointer to a newly created GameObject with the added components
+             * @sharedapi
+             */
+            template<typename GameObjectType, typename... GameObjectArgsAndComponents>
+            static std::shared_ptr<GameObjectType> CreateWithComponents(GameObjectArgsAndComponents&&... input) {
+                return Create_GameObjectArgsWithIndices<GameObjectType>(std::forward_as_tuple(input...), std::make_index_sequence<sizeof...(input) - 1>{});
+            }
+
+            /**
+             * Create a new GameObject and add it to the static administration.
+             * @tparam GameObjectType The type of GameObject
+             * @tparam GameObjectArgs The argument types for the constructor of type GameObjectType
+             * @param args The arguments for the constructor of type GameObjectType
+             * @return A shared pointer to a newly created GameObject
+             * @sharedapi
+             */
+            template<typename GameObjectType, typename... GameObjectArgs>
+            static std::shared_ptr<GameObjectType> CreateGlobal(GameObjectArgs&&... args) {
+                return CreateGlobalWithComponents<GameObjectType>(args..., std::vector<std::shared_ptr<spic::Component>>());
             }
 
             /**
@@ -139,8 +166,20 @@ namespace spic {
              * @sharedapi
              */
             template<typename GameObjectType, typename... GameObjectArgsAndComponents>
-            static std::shared_ptr<GameObjectType> CreateWithComponents(GameObjectArgsAndComponents&&... input) {
-                return Create_GameObjectArgsWithIndices<GameObjectType>(std::forward_as_tuple(input...), std::make_index_sequence<sizeof...(input) - 1>{});
+            static std::shared_ptr<GameObjectType> CreateGlobalWithComponents(GameObjectArgsAndComponents&&... input) {
+                // Check if we have a scene
+                auto scene = Engine::Instance().PeekScene();
+                if (!scene) {
+                    Debug::LogWarning("Can not create game object without scene");
+                    return nullptr;
+                }
+
+                auto object =  Create_GameObjectArgsWithIndices<GameObjectType>(std::forward_as_tuple(input...), std::make_index_sequence<sizeof...(input) - 1>{});
+
+                // Add it to the scene "static administration"
+                scene->Contents().push_back(object);
+
+                return object;
             }
 
             /**
@@ -457,13 +496,6 @@ namespace spic {
              */
             template<typename GameObjectType, typename... GameObjectArgs>
             static std::shared_ptr<GameObjectType> Create_ComponentsFirst(std::vector<std::shared_ptr<Component>> comps, GameObjectArgs... args) {
-                // Check if we have a scene
-                auto scene = Engine::Instance().PeekScene();
-                if (!scene) {
-                    Debug::LogWarning("Can not create game object without scene");
-                    return nullptr;
-                }
-
                 // Create a pointer of the game object
                 std::shared_ptr<GameObjectType> pointer = std::make_shared<GameObjectType>(std::forward<GameObjectArgs>(args)...);
 
@@ -471,9 +503,6 @@ namespace spic {
                     component->GameObject(pointer);
                     pointer->AddComponent(component);
                 }
-
-                // Add it to the scene "static administration"
-                scene->Contents().push_back(pointer);
 
                 return pointer;
             }
