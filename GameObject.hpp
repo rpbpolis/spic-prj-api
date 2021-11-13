@@ -144,6 +144,22 @@ namespace spic {
             }
 
             /**
+             * Add a child to a parent game object.
+             * This is a safer alternative to the two separate calls to AddChild() and Parent().
+             * @param parent The parent game object.
+             * @param child The child game object.
+             */
+            static void AddChild(std::shared_ptr<GameObject> parent, std::shared_ptr<GameObject> child);
+
+            /**
+             * Adds multiple children to a parent game object.
+             * This is a safer alternative to the two separate calls to AddChild() and Parent().
+             * @param parent The parent game object.
+             * @param child The child game object.
+             */
+            static void AddChildren(std::shared_ptr<GameObject> parent, std::vector<std::shared_ptr<GameObject>> children);
+
+            /**
              * @brief Constructor.
              * @details The new GameObject will also be added to a statically
              *          available collection, the administration.  This makes the
