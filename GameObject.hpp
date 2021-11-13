@@ -2,13 +2,14 @@
 #define GAMEOBJECT_H_
 
 #include "Component.hpp"
+#include "Debug.hpp"
+#include "Engine.hpp"
 #include "Transform.hpp"
+#include <iostream>
+#include <memory>
+#include <stdexcept>
 #include <string>
 #include <vector>
-#include <memory>
-#include "Engine.hpp"
-#include <stdexcept>
-#include "Debug.hpp"
 
 namespace spic {
 
@@ -117,28 +118,29 @@ namespace spic {
 
             /**
              * Create a new GameObject and add it to the static administration.
-             * @tparam T The type of GameObject
-             * @tparam Args The argument types for the constructor of type T
-             * @param args The arguments for the constructor of type T
+             * @tparam GameObjectType The type of GameObject
+             * @tparam GameObjectArgs The argument types for the constructor of type GameObjectType
+             * @param args The arguments for the constructor of type GameObjectType
              * @return A shared pointer to a newly created GameObject
              * @sharedapi
              */
-            template<typename T, typename...Args, typename std::enable_if<std::is_base_of<GameObject, T>::value>::type* = nullptr>
-            static std::shared_ptr<T> Create(Args&&... args) {
-                // Check if we have a scene
-                auto scene = Engine::Instance().PeekScene();
-                if (!scene) {
-                    Debug::LogWarning("Can not create game object without scene");
-                    return nullptr;
-                }
+            template<typename GameObjectType, typename... GameObjectArgs>
+            static std::shared_ptr<GameObjectType> Create(GameObjectArgs&&... args) {
+                return Create_ComponentsFirst<GameObjectType>({}, args...);
+            }
 
-                // Create a pointer of the game object
-                auto pointer = std::make_shared<T>(std::forward<Args>(args)...);
-
-                // Add it to the scene "static administration"
-                scene->Contents().push_back(pointer);
-
-                return pointer;
+            /**
+             * Create a new GameObject with components and add it to the static administration.
+             * @tparam GameObjectType The type of GameObject
+             * @tparam GameObjectArgsAndComponents The argument types for the constructor of type GameObjectType and a
+             * vector of components to add to the game object
+             * @param args The arguments for the constructor of type GameObjectType
+             * @return A shared pointer to a newly created GameObject with the added components
+             * @sharedapi
+             */
+            template<typename GameObjectType, typename... GameObjectArgsAndComponents>
+            static std::shared_ptr<GameObjectType> CreateWithComponents(GameObjectArgsAndComponents&&... input) {
+                return Create_GameObjectArgsWithIndices<GameObjectType>(std::forward_as_tuple(input...), std::make_index_sequence<sizeof...(input) - 1>{});
             }
 
             /**
@@ -425,6 +427,54 @@ namespace spic {
             std::weak_ptr<GameObject> parent;
             std::vector<std::shared_ptr<GameObject>> children;
             std::vector<std::shared_ptr<Component>> components;
+
+            /**
+             * The real function that creates a game object with components in one.
+             * Since you can only add normal parameters before variadic ones we used a little redirection and
+             * meta programming to be able to pass them in a natural order. E.g. GameObject args first, then a vector
+             * of components.
+             * @tparam GameObjectType The type of GameObject
+             * @tparam GameObjectArgs The argument types for the constructor of type GameObjectType
+             * @param comps A vector of components to add to the game object
+             * @param args The arguments for the constructor of type GameObjectType
+             * @return A shared pointer to a newly created GameObject with optional components
+             */
+            template<typename GameObjectType, typename... GameObjectArgs>
+            static std::shared_ptr<GameObjectType> Create_ComponentsFirst(std::vector<std::shared_ptr<Component>> comps, GameObjectArgs... args) {
+                // Check if we have a scene
+                auto scene = Engine::Instance().PeekScene();
+                if (!scene) {
+                    Debug::LogWarning("Can not create game object without scene");
+                    return nullptr;
+                }
+
+                // Create a pointer of the game object
+                std::shared_ptr<GameObjectType> pointer = std::make_shared<GameObjectType>(std::forward<GameObjectArgs>(args)...);
+
+                for (const auto &component : comps) {
+                    component->GameObject(pointer);
+                    pointer->AddComponent(component);
+                }
+
+                // Add it to the scene "static administration"
+                scene->Contents().push_back(pointer);
+
+                return pointer;
+            }
+
+            /**
+             * A redirection trick with metaprogramming to shuffle the order of the arguments when creating a game object.
+             * @tparam GameObjectType The type of GameObject
+             * @tparam GameObjectArgs The argument types for the constructor of type GameObjectType
+             * @param comps A vector of components to add to the game object
+             * @param args The arguments for the constructor of type GameObjectType
+             * @return A shared pointer to a newly created GameObject with optional components
+             */
+            template<typename GameObjectType, typename... GameObjectArgsAndComponents, size_t... GameObjectArgIndices>
+            static std::shared_ptr<GameObjectType> Create_GameObjectArgsWithIndices(std::tuple<GameObjectArgsAndComponents...> args, std::index_sequence<GameObjectArgIndices...>) {
+                auto constexpr ComponentIndex = sizeof...(GameObjectArgsAndComponents) - 1;
+                return Create_ComponentsFirst<GameObjectType>(std::get<ComponentIndex>(args), std::get<GameObjectArgIndices>(args)...);
+            }
     };
 
 }
