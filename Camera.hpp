@@ -6,6 +6,13 @@
 
 namespace spic {
 
+    struct RenderTarget {
+        int x;
+        int y;
+
+        RenderTarget(int x, int y);
+    };
+
     /**
      * @brief Class representing a point of view towards the game scene.
      * @spicapi
@@ -69,6 +76,10 @@ namespace spic {
              */
             void AspectHeight(double newAspectHeight);
 
+            void Target(std::shared_ptr<RenderTarget> target);
+
+            std::shared_ptr<RenderTarget> Target() const;
+
             /**
              * Tell the camera to start rendering the current scene.
              *
@@ -80,6 +91,8 @@ namespace spic {
             Color backgroundColor;
             double aspectWidth;
             double aspectHeight;
+
+            std::shared_ptr<RenderTarget> renderTarget;
     };
 
 }
