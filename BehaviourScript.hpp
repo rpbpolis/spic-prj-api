@@ -6,7 +6,6 @@
 #include "GameObject.hpp"
 
 namespace spic {
-
     class BehaviourScript : public Component {
         public:
             /**
