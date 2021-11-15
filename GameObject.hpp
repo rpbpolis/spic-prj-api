@@ -11,6 +11,8 @@
 #include <string>
 #include <vector>
 
+using Components = std::vector<std::shared_ptr<spic::Component>>;
+
 namespace spic {
 
     /**
@@ -124,7 +126,7 @@ namespace spic {
              * @return A shared pointer to a newly created GameObject
              * @sharedapi
              */
-            template<typename GameObjectType, typename... GameObjectArgs>
+            template<typename GameObjectType = spic::GameObject, typename... GameObjectArgs>
             static std::shared_ptr<GameObjectType> Create(GameObjectArgs&&... args) {
                 return CreateWithComponents<GameObjectType>(args..., std::vector<std::shared_ptr<spic::Component>>());
             }
@@ -138,7 +140,7 @@ namespace spic {
              * @return A shared pointer to a newly created GameObject with the added components
              * @sharedapi
              */
-            template<typename GameObjectType, typename... GameObjectArgsAndComponents>
+            template<typename GameObjectType = spic::GameObject, typename... GameObjectArgsAndComponents>
             static std::shared_ptr<GameObjectType> CreateWithComponents(GameObjectArgsAndComponents&&... input) {
                 return Create_GameObjectArgsWithIndices<GameObjectType>(std::forward_as_tuple(input...), std::make_index_sequence<sizeof...(input) - 1>{});
             }
@@ -151,7 +153,7 @@ namespace spic {
              * @return A shared pointer to a newly created GameObject
              * @sharedapi
              */
-            template<typename GameObjectType, typename... GameObjectArgs>
+            template<typename GameObjectType = spic::GameObject, typename... GameObjectArgs>
             static std::shared_ptr<GameObjectType> CreateGlobal(GameObjectArgs&&... args) {
                 return CreateGlobalWithComponents<GameObjectType>(args..., std::vector<std::shared_ptr<spic::Component>>());
             }
@@ -165,7 +167,7 @@ namespace spic {
              * @return A shared pointer to a newly created GameObject with the added components
              * @sharedapi
              */
-            template<typename GameObjectType, typename... GameObjectArgsAndComponents>
+            template<typename GameObjectType = spic::GameObject, typename... GameObjectArgsAndComponents>
             static std::shared_ptr<GameObjectType> CreateGlobalWithComponents(GameObjectArgsAndComponents&&... input) {
                 // Check if we have a scene
                 auto scene = Engine::Instance().PeekScene();
