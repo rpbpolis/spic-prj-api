@@ -361,11 +361,16 @@ namespace spic {
             std::vector<std::shared_ptr<T>> GetComponentsInParent() const {
                 auto p = parent.lock();
                 if (p) {
-                    return p->template GetComponents<T>();
+                    std::vector<std::shared_ptr<T>> result;
+                    for (const auto& component : p->components) {
+                        auto ptr = std::dynamic_pointer_cast<T>(component);
+                        if (ptr) result.push_back(ptr);
+                    }
+                    return result;
                 } else {
                     p.reset();
                 }
-                return nullptr;
+                return {};
             }
 
             /**
