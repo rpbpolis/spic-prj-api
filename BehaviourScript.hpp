@@ -2,7 +2,7 @@
 #define BEHAVIOURSCRIPT_H_
 
 #include "Component.hpp"
-#include "Collider.hpp"
+#include "GameObject.hpp"
 
 namespace spic {
 
@@ -27,21 +27,21 @@ namespace spic {
              *        attached to this object (2D physics only).
              * @spicapi
              */
-            virtual void OnTriggerEnter2D(const Collider& collider);
+            virtual void OnTriggerEnter2D(std::shared_ptr<GameObject> gameObject);
 
             /**
              * @brief Sent when another object leaves a trigger collider
              *        attached to this object (2D physics only).
              * @spicapi
              */
-            virtual void OnTriggerExit2D(const Collider& collider);
+            virtual void OnTriggerExit2D(std::shared_ptr<GameObject> gameObject);
 
             /**
              * @brief Sent each frame where another object is within a trigger
              *        collider attached to this object (2D physics only).
              * @spicapi
              */
-            virtual void OnTriggerStay2D(const Collider& collider);
+            virtual void OnTriggerStay2D(std::shared_ptr<GameObject> gameObject);
 
             /**
              * @brief Whether the script has been started.
