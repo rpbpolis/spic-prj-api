@@ -9,8 +9,8 @@ namespace spic {
      * @spicapi
      */
     struct Transform {
-        Point position; // Translation (shift)
-        double rotation{0}; // Rotation, in radians
+        Point position{0, 0}; // Translation (shift)
+        double rotation{0}; // Rotation, in degrees
         double scale{1.0}; // Multiplication factor
     };
 }
