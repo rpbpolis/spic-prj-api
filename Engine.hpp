@@ -3,6 +3,7 @@
 
 #include "EngineConfig.hpp"
 #include "Scene.hpp"
+#include <CollisionChecker.hpp>
 #include <memory>
 #include <stack>
 
@@ -30,12 +31,14 @@ namespace spic {
         std::stack<std::shared_ptr<Scene>> scenes;
         std::unique_ptr<spic::Renderer> renderer;
         std::unique_ptr<spic::Input::InputHandler> inputHandler;
+        std::unique_ptr<spic::CollisionChecker> collisionChecker;
 
         bool isRunning;
         int fps;
         bool showFps;
 
         void UpdateBehaviourScripts() const;
+        void CheckCollisions() const;
         void Render();
 
     public:
