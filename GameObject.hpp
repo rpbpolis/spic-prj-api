@@ -319,15 +319,10 @@ namespace spic {
             std::vector<std::shared_ptr<T>> GetComponents() const {
                 // Filter components by type T
                 std::vector<std::shared_ptr<T>> result;
+
                 for (const auto& component : components) {
                     auto ptr = std::dynamic_pointer_cast<T>(component);
                     if (ptr) result.push_back(ptr);
-                }
-
-                // Recursively add components from child GameObjects
-                for (const auto& child : children) {
-                    auto childResult = child->GetComponents<T>();
-                    result.insert(result.end(), childResult.begin(), childResult.end());
                 }
 
                 return result;
@@ -343,10 +338,17 @@ namespace spic {
             template <class T>
             std::vector<std::shared_ptr<T>> GetComponentsInChildren() const {
                 std::vector<std::shared_ptr<T>> result;
-                for (const auto& childComponent : children) {
-                    auto childResult = childComponent->GetComponents<T>();
+
+                for (const auto& childObject : children) {
+                    // Get the components of the child (not recursively)
+                    auto childResult = childObject->GetComponents<T>();
                     result.insert(result.end(), childResult.begin(), childResult.end());
+
+                    // Recurse this call on the child
+                    auto inChildResult = childObject->template GetComponentsInChildren<T>();
+                    result.insert(result.end(), inChildResult.begin(), inChildResult.end());
                 }
+
                 return result;
             }
 
@@ -365,7 +367,7 @@ namespace spic {
                 } else {
                     p.reset();
                 }
-                return nullptr;
+                return {};
             }
 
             /**
