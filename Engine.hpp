@@ -3,13 +3,13 @@
 
 #include "EngineConfig.hpp"
 #include "Scene.hpp"
-#include <CollisionChecker.hpp>
 #include <memory>
 #include <stack>
 
 namespace spic {
 
     class Renderer;
+    class CollisionChecker;
 
     namespace Input {
         class InputHandler;
