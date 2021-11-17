@@ -13,6 +13,7 @@ namespace spic {
         public:
             /**
              * @brief Constructor.
+             * @deprecated Do not use
              * @sharedapi
              */
             BoxCollider();
@@ -21,9 +22,10 @@ namespace spic {
              * @brief Constructor.
              * @param width The width for the box collider.
              * @param height The height for the box collider.
+             * @param trigger Is the collider a trigger.
              * @sharedapi
              */
-            BoxCollider(double width, double height);
+            BoxCollider(double width, double height, bool trigger);
 
             /**
              * @brief The collider's width
