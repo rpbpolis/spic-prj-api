@@ -20,11 +20,20 @@ namespace spic {
 
             /**
              * @brief Constructor.
-             * @param radius The radius for the box collider.
+             * @param radius The radius for the circle collider.
              * @param trigger Is the collider a trigger.
              * @sharedapi
              */
             CircleCollider(double radius, bool trigger);
+
+            /**
+             * @brief Constructor.
+             * @param radius The radius for the circle collider.
+             * @param trigger Is the collider a trigger.
+             * @param offsetX The X-axis offset of the collider from the origin point.
+             * @param offsetY The Y-axis offset of the collider from the origin point.
+             */
+            CircleCollider(double radius, bool trigger, double offsetX, double offsetY);
 
             /**
              * @brief Get the collider's radius
