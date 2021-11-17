@@ -23,7 +23,7 @@ namespace spic {
     private:
         static Engine instance;
 
-        Engine() = default;
+        Engine();
         ~Engine();
 
         EngineConfig config;
@@ -36,6 +36,7 @@ namespace spic {
         bool isRunning;
         int fps;
         bool showFps;
+        bool showColliders;
 
         void UpdateBehaviourScripts() const;
         void CheckCollisions() const;
@@ -68,6 +69,9 @@ namespace spic {
 
         const std::unique_ptr<spic::Renderer>& Renderer() const;
         const std::unique_ptr<spic::Input::InputHandler>& InputHandler() const;
+
+        void ToggleFps();
+        void ToggleColliders();
     };
 }
 
