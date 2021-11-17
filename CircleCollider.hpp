@@ -13,6 +13,7 @@ namespace spic {
         public:
             /**
              * @brief Constructor.
+             * @deprecated Do not use
              * @sharedapi
              */
             CircleCollider();
@@ -20,9 +21,10 @@ namespace spic {
             /**
              * @brief Constructor.
              * @param radius The radius for the box collider.
+             * @param trigger Is the collider a trigger.
              * @sharedapi
              */
-            CircleCollider(double radius);
+            CircleCollider(double radius, bool trigger);
 
             /**
              * @brief Get the collider's radius

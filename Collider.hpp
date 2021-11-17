@@ -11,6 +11,7 @@ namespace spic {
      */
     class Collider : public Component {
     public:
+        explicit Collider(bool trigger);
 
         /**
          * @brief Get if the collider is a trigger
