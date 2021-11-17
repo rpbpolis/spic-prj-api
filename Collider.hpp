@@ -13,6 +13,8 @@ namespace spic {
     public:
         explicit Collider(bool trigger);
 
+        explicit Collider(bool trigger, double offsetX, double offsetY);
+
         /**
          * @brief Get if the collider is a trigger
          * @return True if the collider is a trigger, false if not
@@ -27,8 +29,23 @@ namespace spic {
          */
         void IsTrigger(bool newIsTrigger);
 
+        /**
+         * Get the X-axis offset of the collider from the origin point
+         * @return the X-axis offset of the collider from the origin point
+         */
+        double OffsetX() const;
+
+        /**
+         * Get the Y-axis offset of the collider from the origin point
+         * @return the Y-axis offset of the collider from the origin point
+         */
+        double OffsetY() const;
+
     private:
         bool isTrigger;
+
+        double offsetX;
+        double offsetY;
     };
 
 }
