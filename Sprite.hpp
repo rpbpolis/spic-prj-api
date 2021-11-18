@@ -19,8 +19,27 @@ namespace spic {
             bool flipY;
             int sortingLayer;
             int orderInLayer;
-    };
+        public:
+            void SortingLayer(int sortingLayer);
+            int SortingLayer();
 
+            void OrderInLayer(int orderInLayer);
+            int OrderInLayer();
+
+            void FlipX(bool flipX);
+            bool FlipX();
+
+            void FlipY(bool flipY);
+            bool FlipY();
+
+            void SpriteColor(Color color);
+            Color SpriteColor();
+
+            void SpriteSrc(std::string sprite);
+            std::string SpriteSrc();
+
+            Sprite(std::string sprite, double r, double g, double b, double a, bool flipX, bool flipY, int sortingLayer, int orderInLayer);
+    };
 }
 
 #endif // SPRITERENDERER_H_
