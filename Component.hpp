@@ -21,11 +21,21 @@ namespace spic {
              */
             void Active(bool flag) { active = flag; }
 
-        private:
+            bool operator==(const Component& other);
+            bool operator!=(const Component& other);
+
+
+            int Id() const { return id; }
+            void Id(int newId) { id = newId; }
+
+
+    private:
             /**
              * @brief Active status.
              */
             bool active;
+
+            int id;
     };
 
 }
