@@ -13,6 +13,9 @@ namespace spic {
      */
     class GameObject {
         public:
+
+            GameObject(std::string name, std::string tag, bool active, int layer);
+
             /**
              * @brief Finds a GameObject by name and returns it.
              * @param name The name of the GameObject you want to find.
@@ -44,7 +47,16 @@ namespace spic {
              */
             template<class T>
             static std::shared_ptr<GameObject> FindObjectOfType(bool includeInactive = false) {
-                // ... implementation here
+                for(GameObject gameObject : administration){
+                    if(typeid(GameObject) == typeid(T)){
+                        if(includeInactive){
+                            return std::make_shared<GameObject>(gameObject);
+                        } else if(gameObject.Active()){
+                            return std::make_shared<GameObject>(gameObject);
+                        }
+                    }
+                }
+                return nullptr;
             }
 
             /**
@@ -53,7 +65,17 @@ namespace spic {
              */
             template<class T>
             static std::vector<std::shared_ptr<GameObject>> FindObjectsOfType(bool includeInactive = false) {
-                // ...implementation here
+                std::vector<std::shared_ptr<GameObject>> objectsOfType;
+                for(GameObject gameObject : administration){
+                    if(typeid(GameObject) == typeid(T)){
+                        if(includeInactive){
+                            objectsOfType.push_back(std::make_shared<GameObject>(gameObject));
+                        } else if(gameObject.Active()){
+                            objectsOfType.push_back(std::make_shared<GameObject>(gameObject));
+                        }
+                    }
+                }
+                return objectsOfType;
             }
 
             /**
@@ -117,7 +139,8 @@ namespace spic {
              */
             template<class T>
             void AddComponent(std::shared_ptr<Component> component) {
-                // ... implementation here
+                //Wij zijn niet zeker of we de ownership wel goed doorgeven.
+                components.push_back(*component);
             }
 
             /**
@@ -128,7 +151,14 @@ namespace spic {
              */
             template<class T>
             std::shared_ptr<Component> GetComponent() const {
-                // ... implementation here
+                if(std::is_base_of<Component, T>::value){
+                    for(Component component: components){
+                        if(typeid(component) == typeid(T)){
+                            return std::make_shared<Component>(component);
+                        }
+                    }
+                }
+                return nullptr;
             }
 
             /**
@@ -140,7 +170,19 @@ namespace spic {
              */
             template<class T>
             std::shared_ptr<Component> GetComponentInChildren() const {
-                // ... implementation here
+                if(std::is_base_of<Component, T>::value){
+                    for(Component component: components){
+                        if(typeid(component) == typeid(GameObject)){
+                            GameObject *gameObject = (GameObject*)&component;
+                            for(Component innerComponent : gameObject->components){
+                                if(typeid(innerComponent) == typeid(T)){
+                                    return std::make_shared<Component>(innerComponent);
+                                }
+                            }
+                        }
+                    }
+                }
+                return nullptr;
             }
 
             /**
@@ -152,7 +194,9 @@ namespace spic {
              */
             template<class T>
             std::shared_ptr<Component> GetComponentInParent() const {
+                // TODO geen idee hoe we bij de parent kunnen komen?
                 // ... implementation here
+                std::logic_error{"Function not yet implemented."};
             }
 
             /**
@@ -163,7 +207,15 @@ namespace spic {
              */
             template<class T>
             std::vector<std::shared_ptr<Component>> GetComponents() const {
-                // ... implementation here
+                std::vector<std::shared_ptr<Component>> foundComponents;
+                if(std::is_base_of<Component, T>::value){
+                    for(Component component: components){
+                        if(typeid(component) == typeid(T)){
+                             foundComponents.push_back(std::make_shared<Component>(component));
+                        }
+                    }
+                }
+                return foundComponents;
             }
 
             /**
@@ -175,7 +227,20 @@ namespace spic {
              */
             template<class T>
             std::vector<std::shared_ptr<Component>> GetComponentsInChildren() const {
-                // ... implementation here
+                std::vector<std::shared_ptr<Component>> foundComponents;
+                if(std::is_base_of<Component, T>::value){
+                    for(Component component: components){
+                        if(typeid(component) == typeid(GameObject)){
+                            GameObject *gameObject = (GameObject*)&component;
+                            for(Component innerComponent : gameObject->components){
+                                if(typeid(innerComponent) == typeid(T)){
+                                    foundComponents.push_back(std::make_shared<Component>(innerComponent));
+                                }
+                            }
+                        }
+                    }
+                }
+                return foundComponents;
             }
 
             /**
@@ -187,7 +252,9 @@ namespace spic {
              */
             template<class T>
             std::vector<std::shared_ptr<Component>> GetComponentsInParent() const {
+                // TODO geen idee hoe we bij de parent kunnen komen?
                 // ... implementation here
+                std::logic_error{"Function not yet implemented."};
             }
 
             /**
@@ -213,11 +280,25 @@ namespace spic {
              */
             bool IsActiveInWorld() const;
 
-        private:
+            void Name(std::string name);
+            std::string Name() const;
+
+            void Tag(std::string tag);
+            std::string Tag() const;
+
+
+            void Layer(int layer);
+            int Layer() const;
+
+
+
+    private:
             std::string name;
             std::string tag;
             bool active;
             int layer;
+            static std::vector<GameObject> administration;
+            std::vector<Component> components;
             // ... more members
     };
 
