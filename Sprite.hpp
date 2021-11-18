@@ -20,25 +20,25 @@ namespace spic {
             int sortingLayer;
             int orderInLayer;
         public:
-            void SortingLayer(int sortingLayer);
+            void SortingLayer(int newSortingLayer);
             int SortingLayer();
 
-            void OrderInLayer(int orderInLayer);
+            void OrderInLayer(int newOrderInLayer);
             int OrderInLayer();
 
-            void FlipX(bool flipX);
+            void FlipX(bool newFlipX);
             bool FlipX();
 
-            void FlipY(bool flipY);
+            void FlipY(bool newFlipY);
             bool FlipY();
 
-            void SpriteColor(Color color);
+            void SpriteColor(Color newColor);
             Color SpriteColor();
 
-            void SpriteSrc(std::string sprite);
+            void SpriteSrc(const std::string& newSprite);
             std::string SpriteSrc();
 
-            Sprite(std::string sprite, double r, double g, double b, double a, bool flipX, bool flipY, int sortingLayer, int orderInLayer);
+            Sprite(std::string  sprite, Color color, bool flipX, bool flipY, int sortingLayer, int orderInLayer);
     };
 }
 

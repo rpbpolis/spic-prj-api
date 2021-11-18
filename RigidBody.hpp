@@ -28,10 +28,10 @@ namespace spic {
              */
             void AddForce(const Point& forceDirection);
 
-            void Mass(double mass);
+            void Mass(double newMass);
             double Mass() const;
 
-            void GravityScale(double gravityScale);
+            void GravityScale(double newGravityScale);
             double GravityScale();
 
             void BodyTypeRB(spic::BodyType bodyType);
