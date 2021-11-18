@@ -69,9 +69,7 @@ namespace spic {
                     if(typeid(GameObject) != typeid(T)){
                         continue;
                     }
-                    if(includeInactive){
-                        objectsOfType.push_back(std::make_shared<GameObject>(gameObject));
-                    } else if(gameObject.Active()){
+                    if(includeInactive || gameObject.Active()){
                         objectsOfType.push_back(std::make_shared<GameObject>(gameObject));
                     }
                 }
