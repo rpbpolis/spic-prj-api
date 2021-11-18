@@ -21,22 +21,22 @@ namespace spic {
             int orderInLayer;
         public:
             void SortingLayer(int newSortingLayer);
-            int SortingLayer();
+            int SortingLayer() const;
 
             void OrderInLayer(int newOrderInLayer);
-            int OrderInLayer();
+            int OrderInLayer() const;
 
             void FlipX(bool newFlipX);
-            bool FlipX();
+            bool FlipX() const;
 
             void FlipY(bool newFlipY);
-            bool FlipY();
+            bool FlipY() const;
 
             void SpriteColor(Color newColor);
-            Color SpriteColor();
+            Color SpriteColor() const;
 
             void SpriteSrc(const std::string& newSprite);
-            std::string SpriteSrc();
+            std::string SpriteSrc() const;
 
             Sprite(std::string  sprite, Color color, bool flipX, bool flipY, int sortingLayer, int orderInLayer);
     };
