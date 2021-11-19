@@ -5,6 +5,7 @@
 #include "Scene.hpp"
 #include <memory>
 #include <stack>
+#include "EventBus.hpp"
 
 namespace spic {
 
@@ -32,6 +33,7 @@ namespace spic {
         std::unique_ptr<spic::Renderer> renderer;
         std::unique_ptr<spic::Input::InputHandler> inputHandler;
         std::unique_ptr<spic::CollisionChecker> collisionChecker;
+        std::unique_ptr<spic::EventBus> eventBus;
 
         bool isRunning;
         int fps;
@@ -69,6 +71,7 @@ namespace spic {
 
         const std::unique_ptr<spic::Renderer>& Renderer() const;
         const std::unique_ptr<spic::Input::InputHandler>& InputHandler() const;
+        std::unique_ptr<spic::EventBus>& EventBus();
 
         void ToggleFps();
         void ToggleColliders();
