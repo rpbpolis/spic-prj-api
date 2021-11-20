@@ -10,7 +10,7 @@ namespace spic {
         EventBus();
 
         template <typename T> unsigned long Listen(std::function<void(const T&)> fn) {
-            handlers.template try_emplace(++handlerId, eventBus.register_handler<T>(fn));
+            handlers.try_emplace(++handlerId, eventBus.register_handler<T>(fn));
             return handlerId;
         }
 
