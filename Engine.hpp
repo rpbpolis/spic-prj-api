@@ -2,10 +2,11 @@
 #define SPIC_PRJ_API_CD_ENGINE_HPP
 
 #include "EngineConfig.hpp"
+#include "EventBus.hpp"
 #include "Scene.hpp"
 #include <memory>
+#include <physics/PhysicsManager.hpp>
 #include <stack>
-#include "EventBus.hpp"
 
 namespace spic {
 
@@ -34,6 +35,7 @@ namespace spic {
         std::unique_ptr<spic::Input::InputHandler> inputHandler;
         std::unique_ptr<spic::CollisionChecker> collisionChecker;
         std::unique_ptr<spic::EventBus> eventBus;
+        std::unique_ptr<spic::physics::PhysicsManager> physicsManager;
 
         bool isRunning;
         int fps;
