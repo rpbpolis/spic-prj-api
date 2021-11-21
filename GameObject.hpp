@@ -443,6 +443,12 @@ namespace spic {
             void RemoveChild(std::shared_ptr<GameObject> child);
 
             /**
+             * Remove all children of this GameObject.
+             * @sharedapi
+             */
+            void RemoveAllChildren();
+
+            /**
              * Retrieve the name of this GameObject.
              * @return the name of this GameObject.
              * @sharedapi
