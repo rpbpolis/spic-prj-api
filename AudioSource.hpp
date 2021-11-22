@@ -27,7 +27,7 @@ namespace spic {
         void Stop();
 
         std::string AudioClip() const;
-        void AudioClip(std::string audioClip) ;
+        void AudioClip(const std::string & audioClip);
 
         bool PlayOnAwake() const;
         void PlayOnAwake(bool playOnAwake);
