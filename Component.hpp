@@ -19,10 +19,10 @@ namespace spic {
              * @brief flag New active status.
              * @spicapi
              */
-            void Active(bool flag) { active = flag; }
+            virtual void Active(bool flag) { active = flag; }
 
-            bool operator==(const Component& other);
-            bool operator!=(const Component& other);
+            bool operator==(const Component& other) const;
+            bool operator!=(const Component& other) const;
 
 
             int Id() const { return id; }
