@@ -84,7 +84,7 @@ namespace spic {
              * @exception A std::runtime_exception is thrown when the pointer is not valid.
              * @spicapi
              */
-            static void Destroy(std::shared_ptr<GameObject> obj);
+            static void Destroy(const std::shared_ptr<GameObject>& obj);
 
             /**
              * @brief Removes a Component.
@@ -116,7 +116,7 @@ namespace spic {
              * @return true if not equal, false otherwise.
              * @spicapi
              */
-            bool operator!=(const GameObject& other);
+            bool operator!=(const GameObject& other) const;
 
             /**
              * @brief Compare two GameObjects
@@ -124,7 +124,7 @@ namespace spic {
              * @return true if equal, false otherwise.
              * @spicapi
              */
-            bool operator==(const GameObject& other);
+            bool operator==(const GameObject& other) const;
 
             /**
              * @brief Add a Component of the specified type. Must be a valid
@@ -305,11 +305,11 @@ namespace spic {
 
             void addChild( GameObject* newGameObject);
 
-            void Name(std::string name);
-            std::string Name() const;
+            void Name(const std::string &newName);
+            [[nodiscard]] std::string Name() const;
 
-            void Tag(std::string tag);
-            std::string Tag() const;
+            void Tag(const std::string &newTag);
+            [[nodiscard]] std::string Tag() const;
 
 
             void Layer(int layer);
@@ -326,8 +326,8 @@ namespace spic {
             static std::vector<GameObject> administration;
             std::vector<Component> components;
             std::vector<GameObject*> children;
-            GameObject* parent;
-            int id;
+            GameObject* parent {};
+            int id {};
         // ... more members
     };
 
