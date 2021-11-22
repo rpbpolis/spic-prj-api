@@ -29,13 +29,13 @@ namespace spic {
             void AddForce(const Point& forceDirection);
 
             void Mass(double newMass);
-            double Mass() const;
+            [[nodiscard]] double Mass() const;
 
             void GravityScale(double newGravityScale);
-            double GravityScale() const;
+            [[nodiscard]] double GravityScale() const;
 
-            void BodyTypeRB(const spic::BodyType& bodyType);
-            spic::BodyType BodyTypeRB() const;
+            void BodyTypeRB(spic::BodyType bodyType);
+            [[nodiscard]] spic::BodyType BodyTypeRB() const;
 
             RigidBody(double mass, double gravityScale, spic::BodyType bodyType);
         private:
