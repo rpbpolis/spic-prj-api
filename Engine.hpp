@@ -33,7 +33,6 @@ namespace spic {
         std::stack<std::shared_ptr<Scene>> scenes;
         std::unique_ptr<spic::Renderer> renderer;
         std::unique_ptr<spic::Input::InputHandler> inputHandler;
-        std::unique_ptr<spic::CollisionChecker> collisionChecker;
         std::unique_ptr<spic::EventBus> eventBus;
         std::unique_ptr<spic::physics::PhysicsManager> physicsManager;
 
@@ -43,7 +42,6 @@ namespace spic {
         bool showColliders;
 
         void UpdateBehaviourScripts() const;
-        void CheckCollisions() const;
         void Render();
 
     public:
