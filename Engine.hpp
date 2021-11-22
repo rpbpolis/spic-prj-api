@@ -4,7 +4,7 @@
 #include "EngineConfig.hpp"
 #include "EventBus.hpp"
 #include "Scene.hpp"
-#include "physics/PhysicsManager.hpp"
+#include "PhysicsManager.hpp"
 #include <memory>
 #include <stack>
 
@@ -34,7 +34,7 @@ namespace spic {
         std::unique_ptr<spic::Renderer> renderer;
         std::unique_ptr<spic::Input::InputHandler> inputHandler;
         std::unique_ptr<spic::EventBus> eventBus;
-        std::unique_ptr<spic::physics::PhysicsManager> physicsManager;
+        std::unique_ptr<spic::PhysicsManager> physicsManager;
 
         bool isRunning;
         int fps;
