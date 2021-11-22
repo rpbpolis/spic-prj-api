@@ -1,6 +1,7 @@
 #ifndef ANIMATOR_H_
 #define ANIMATOR_H_
 
+#include <vector>
 #include "Component.hpp"
 #include "Sprite.hpp"
 
@@ -11,7 +12,7 @@ namespace spic {
      */
     class Animator : public Component {
         public:
-            Animator(int fps);
+            Animator(int fps, std::vector<Sprite> sprites) : fps(fps), sprites(std::move(sprites)) {};
 
             /**
              * @brief Start playing the image sequence.
@@ -28,15 +29,20 @@ namespace spic {
             void Stop();
 
             void Fps(int fps);
-            int Fps() const;
+            [[nodiscard]] int Fps() const;
 
+            const Sprite & CurrentSprite();
         private:
             /**
              * @brief frames per second (playing speed)
              * @spicapi
              */
             int fps;
-            // ... collection of Sprites here
+            bool isPlaying;
+            bool _looping;
+            size_t currentFrame{};
+
+            std::vector<Sprite> sprites{};
     };
 
 }
