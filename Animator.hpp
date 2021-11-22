@@ -12,7 +12,7 @@ namespace spic {
      */
     class Animator : public Component {
         public:
-            Animator(int fps, std::vector<Sprite> sprites) : fps(fps), sprites(std::move(sprites)) {};
+            Animator(int fps, std::vector<Sprite> sprites) : Component(), fps(fps), _looping(true), sprites(std::move(sprites)) {};
 
             /**
              * @brief Start playing the image sequence.
@@ -38,7 +38,7 @@ namespace spic {
              * @spicapi
              */
             int fps;
-            bool isPlaying;
+            bool isPlaying{};
             bool _looping;
             size_t currentFrame{};
 
