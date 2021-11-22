@@ -15,9 +15,6 @@ namespace spic {
      */
     class GameObject {
         public:
-
-            GameObject(std::string name, std::string tag, bool active, int layer);
-
             /**
              * @brief Finds a GameObject by name and returns it.
              * @param name The name of the GameObject you want to find.
@@ -104,9 +101,11 @@ namespace spic {
              * @param name The name for the game object.
              * @spicapi
              */
-            GameObject(const std::string& name);
+            explicit GameObject(std::string name);
+            GameObject(std::string name, std::string tag, bool active, int layer);
 
-            /**
+
+        /**
              * @brief Does the object exist? TODO wat wordt hiermee bedoeld?
              * @spicapi
              */
@@ -333,7 +332,7 @@ namespace spic {
             std::string tag;
             bool active;
             int layer;
-            std::vector<std::shared_ptr<GameObject>> gameObjects;
+            static std::vector<std::shared_ptr<GameObject>> gameObjects;
             std::vector<std::shared_ptr<Component>> components;
 //            std::vector<GameObject*> children;
 //            GameObject* parent;
