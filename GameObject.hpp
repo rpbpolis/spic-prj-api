@@ -190,7 +190,7 @@ namespace spic {
              */
             template<class T>
             [[nodiscard]] std::shared_ptr<Component> GetComponentInParent() const {
-                return parent->GetComponent<T>();
+                return parent == nullptr ? nullptr : parent->GetComponent<T>();
             }
 
             /**
@@ -250,7 +250,7 @@ namespace spic {
              */
             template<class T>
             [[nodiscard]] std::vector<std::shared_ptr<Component>> GetComponentsInParent() const {
-                return parent->GetComponents<T>();
+                return parent == nullptr ? std::vector<std::shared_ptr<Component>>() : parent->GetComponents<T>();
             }
 
             /**
