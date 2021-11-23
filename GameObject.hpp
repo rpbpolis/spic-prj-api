@@ -480,7 +480,7 @@ namespace spic {
 
             void MarkForcedPositionRead();
 
-            bool HasForcedPosition();
+            bool HasForcedPosition() const;
 
             Point ForcedPosition();
 
