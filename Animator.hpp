@@ -12,7 +12,7 @@ namespace spic {
      */
     class Animator : public Component {
         public:
-            Animator(int fps, std::vector<Sprite> sprites) : Component(), fps(fps), _looping(true), sprites(std::move(sprites)) {};
+            Animator(int fps, std::vector<Sprite> sprites);
 
             /**
              * @brief Start playing the image sequence.
