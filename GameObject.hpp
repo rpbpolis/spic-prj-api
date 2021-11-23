@@ -109,7 +109,7 @@ namespace spic {
              * @brief Does the object exist?
              * @spicapi
              */
-            operator bool() const;
+            explicit operator bool() const;
 
             /**
              * @brief Compare two GameObjects.
