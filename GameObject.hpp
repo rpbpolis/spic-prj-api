@@ -106,10 +106,10 @@ namespace spic {
             GameObject(std::vector<std::shared_ptr<Component>> components, const std::string& parentName, std::string name, std::string tag, bool active, int layer);
 
             /**
-             * @brief Does the object exist? TODO wat wordt hiermee bedoeld?
+             * @brief Does the object exist?
              * @spicapi
              */
-            operator bool();
+            operator bool() const;
 
             /**
              * @brief Compare two GameObjects.
