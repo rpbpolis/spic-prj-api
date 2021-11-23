@@ -289,16 +289,16 @@ namespace spic {
             [[nodiscard]] bool IsActiveInWorld() const;
 
             void Name(const std::string& name);
-            std::string Name() const;
+            [[nodiscard]] std::string Name() const;
 
             void Tag(const std::string& tag);
-            std::string Tag() const;
+            [[nodiscard]] std::string Tag() const;
 
 
             void Layer(int layer);
-            int Layer() const;
+            [[nodiscard]] int Layer() const;
 
-            int Id() const { return id; }
+            [[nodiscard]] int Id() const { return id; }
             void Id(int newId) { id = newId; }
 
     private:
