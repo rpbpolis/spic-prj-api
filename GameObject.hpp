@@ -476,6 +476,14 @@ namespace spic {
              */
             Point RelativePosition();
 
+            void ForcePositionTo(Point point);
+
+            void MarkForcedPositionRead();
+
+            bool HasForcedPosition();
+
+            Point ForcedPosition();
+
         private:
             std::string name;
             std::string tag;
@@ -530,6 +538,9 @@ namespace spic {
                 auto constexpr ComponentIndex = sizeof...(GameObjectArgsAndComponents) - 1;
                 return Create_ComponentsFirst<GameObjectType>(std::get<ComponentIndex>(args), std::get<GameObjectArgIndices>(args)...);
             }
+
+            bool positionForced;
+            Point newForcedPosition;
     };
 
 }
