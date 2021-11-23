@@ -39,6 +39,8 @@ namespace spic {
              */
             void AddForce(const Point& forceDirection);
 
+            Point Force() const;
+
             /**
              * @brief The type of this body.
              * @return The current value.
@@ -85,6 +87,7 @@ namespace spic {
             double mass;
             double gravityScale;
             BodyType bodyType;
+            Point force;
     };
 
 }

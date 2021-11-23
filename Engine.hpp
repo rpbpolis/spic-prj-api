@@ -2,10 +2,11 @@
 #define SPIC_PRJ_API_CD_ENGINE_HPP
 
 #include "EngineConfig.hpp"
+#include "EventBus.hpp"
 #include "Scene.hpp"
+#include "PhysicsManager.hpp"
 #include <memory>
 #include <stack>
-#include "EventBus.hpp"
 
 namespace spic {
 
@@ -32,8 +33,8 @@ namespace spic {
         std::stack<std::shared_ptr<Scene>> scenes;
         std::unique_ptr<spic::Renderer> renderer;
         std::unique_ptr<spic::Input::InputHandler> inputHandler;
-        std::unique_ptr<spic::CollisionChecker> collisionChecker;
         std::unique_ptr<spic::EventBus> eventBus;
+        std::unique_ptr<spic::PhysicsManager> physicsManager;
 
         bool isRunning;
         int fps;
@@ -41,7 +42,6 @@ namespace spic {
         bool showColliders;
 
         void UpdateBehaviourScripts() const;
-        void CheckCollisions() const;
         void Render();
 
     public:
@@ -72,10 +72,11 @@ namespace spic {
         const std::unique_ptr<spic::Renderer>& Renderer() const;
         const std::unique_ptr<spic::Input::InputHandler>& InputHandler() const;
         std::unique_ptr<spic::EventBus>& EventBus();
+        const std::unique_ptr<spic::PhysicsManager>& PhysicsManager() const;
 
         void ToggleFps();
         void ToggleColliders();
     };
 }
 
-#endif //SPIC_PRJ_API_CD_ENGINE_HPP
+#endif // SPIC_PRJ_API_CD_ENGINE_HPP
