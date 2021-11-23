@@ -103,7 +103,7 @@ namespace spic {
              */
             explicit GameObject(std::vector<std::shared_ptr<Component>> components, std::string name);
             GameObject(std::vector<std::shared_ptr<Component>> components, std::string name, std::string tag, bool active, int layer);
-            GameObject(std::vector<std::shared_ptr<Component>> components, std::shared_ptr<GameObject> parent, std::string name, std::string tag, bool active, int layer);
+            GameObject(std::vector<std::shared_ptr<Component>> components, const std::string& parentName, std::string name, std::string tag, bool active, int layer);
 
             /**
              * @brief Does the object exist? TODO wat wordt hiermee bedoeld?
@@ -172,21 +172,12 @@ namespace spic {
              * @spicapi
              */
             template<class T>
-            std::shared_ptr<Component> GetComponentInChildren() const {
-//                if(!std::is_base_of<Component, T>::value){
-//                    return nullptr;
-//                }
-//                for(Component component: components){
-//                    if(typeid(component) == typeid(GameObject)){
-//                        continue;
-//                    }
-//                    GameObject *gameObject = (GameObject*)&component;
-//                    for(Component innerComponent : gameObject->components){
-//                        if(typeid(innerComponent) == typeid(T)){
-//                            return std::make_shared<Component>(innerComponent);
-//                        }
-//                    }
-//                }
+            [[nodiscard]] std::shared_ptr<Component> GetComponentInChildren() const {
+                for(const std::shared_ptr<GameObject>& child: GameObject::gameObjects) {
+                    std::shared_ptr<Component> foundComponent = child->GetComponents<T>();
+
+                    if (foundComponent != nullptr) return foundComponent;
+                }
                 return nullptr;
             }
 
@@ -238,8 +229,13 @@ namespace spic {
             [[nodiscard]] std::vector<std::shared_ptr<Component>> GetComponentsInChildren() const {
                 std::vector<std::shared_ptr<Component>> foundComponents;
 
+
                 for(const std::shared_ptr<GameObject>& child: GameObject::gameObjects) {
-                    foundComponents.emplace_back(child->GetComponents<T>());
+                    if (child->parent != nullptr && *child->parent == *this) {
+                        std::vector<std::shared_ptr<Component>> childComponents = child->GetComponents<T>();
+
+                        std::move(childComponents.cbegin(), childComponents.cend(), std::back_inserter(foundComponents));
+                    }
                 }
 
                 return foundComponents;
