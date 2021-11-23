@@ -72,6 +72,7 @@ namespace spic {
         const std::unique_ptr<spic::Renderer>& Renderer() const;
         const std::unique_ptr<spic::Input::InputHandler>& InputHandler() const;
         std::unique_ptr<spic::EventBus>& EventBus();
+        const std::unique_ptr<spic::PhysicsManager>& PhysicsManager() const;
 
         void ToggleFps();
         void ToggleColliders();
