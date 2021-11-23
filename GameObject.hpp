@@ -3,10 +3,11 @@
 
 #include "Component.hpp"
 #include <string>
-#include <utility>
+#include <algorithm>
 #include <vector>
 #include <memory>
 #include <iostream>
+#include <boost/range/algorithm/equal.hpp>
 
 namespace spic {
 
@@ -46,15 +47,23 @@ namespace spic {
              */
             template<class T>
             static std::shared_ptr<GameObject> FindObjectOfType(bool includeInactive = false) {
-//                for(GameObject gameObject : gameObjects){
-//                    if(typeid(GameObject) != typeid(T)){
-//                        continue;
-//                    }
-//                    if(includeInactive || gameObject.Active()){
-//                        return std::make_shared<GameObject>(gameObject);
-//                    }
-//                }
-                return nullptr;
+                std::function<bool(const std::shared_ptr<GameObject>& gameObject)> predicate = [&includeInactive](const std::shared_ptr<GameObject>& gameObject) {
+                    if(!gameObject.get()){
+                        return false;
+                    }
+
+                        auto test3 = std::is_same_v<T, decltype(*gameObject)>;
+
+                    GameObject& gameObjectRefPtr = *gameObject;
+
+                    return typeid(gameObjectRefPtr) == typeid(T) && (includeInactive || gameObject->Active());
+                };
+                auto test = spic::GameObject::gameObjects;
+                auto foundGameObject = std::find_if(spic::GameObject::gameObjects.begin(), spic::GameObject::gameObjects.end(), predicate);
+
+                if (foundGameObject == spic::GameObject::gameObjects.cend()) return nullptr;
+
+                return *foundGameObject;
             }
 
             /**
@@ -63,16 +72,19 @@ namespace spic {
              */
             template<class T>
             static std::vector<std::shared_ptr<GameObject>> FindObjectsOfType(bool includeInactive = false) {
-//                std::vector<std::shared_ptr<GameObject>> objectsOfType;
-//                for(GameObject gameObject : gameObjects){
-//                    if(typeid(GameObject) != typeid(T)){
-//                        continue;
-//                    }
-//                    if(includeInactive || gameObject.Active()){
-//                        objectsOfType.push_back(std::make_shared<GameObject>(gameObject));
-//                    }
-//                }
-                return std::vector<std::shared_ptr<GameObject>>();
+                std::vector<std::shared_ptr<spic::GameObject>> targetGameObjects;
+                std::function<bool(const std::shared_ptr<GameObject>& gameObject)> predicate = [&includeInactive](const std::shared_ptr<GameObject>& gameObject) {
+                    if(!gameObject.get()){
+                        return false;
+                    }
+
+                    GameObject& gameObjectRefPtr = *gameObject;
+
+                    return typeid(gameObjectRefPtr) == typeid(T) && (includeInactive || gameObject->Active());
+                };
+                std::copy_if(spic::GameObject::gameObjects.begin(), spic::GameObject::gameObjects.end(), std::back_inserter(targetGameObjects), predicate);
+
+                return targetGameObjects;
             }
 
             /**
@@ -103,7 +115,7 @@ namespace spic {
              */
             explicit GameObject(std::vector<std::shared_ptr<Component>> components, std::string name);
             GameObject(std::vector<std::shared_ptr<Component>> components, std::string name, std::string tag, bool active, int layer);
-            GameObject(std::vector<std::shared_ptr<Component>> components, const std::string& parentName, std::string name, std::string tag, bool active, int layer);
+            GameObject(std::vector<std::shared_ptr<Component>> components, const std::string& parentName, std::string name, std::string tag, bool active, int layer, bool autoInsert = true);
 
             /**
              * @brief Does the object exist?
@@ -265,7 +277,7 @@ namespace spic {
              * @return true if active, false if not.
              * @spicapi
              */
-            bool Active() const;
+            [[nodiscard]] virtual bool Active() const;
 
             /**
              * @brief Returns whether this game component is active, taking its parents
@@ -298,8 +310,14 @@ namespace spic {
             std::vector<std::shared_ptr<Component>> components;
             std::shared_ptr<GameObject> parent;
             int id{};
+    protected:
+        template<class T>
+        void AddGameObject(const T& gameObject) {
+            if (!std::any_of(GameObject::gameObjects.cbegin(), GameObject::gameObjects.cend(), [&gameObject](const std::shared_ptr<GameObject>& gameObject1) { return boost::equal(gameObject1->name, gameObject.name); } )) {
+                GameObject::gameObjects.emplace_back(std::make_shared<T>(gameObject));
+            }
+        }
     };
-
 }
 
 #endif // GAMEOBJECT_H_

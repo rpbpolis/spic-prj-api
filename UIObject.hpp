@@ -13,6 +13,8 @@ namespace spic {
         private:
             double width;
             double height;
+        public:
+            UIObject(int newWidth, int newHeight);
     };
 
 }
