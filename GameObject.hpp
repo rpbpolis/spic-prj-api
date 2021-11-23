@@ -286,7 +286,7 @@ namespace spic {
              *        false otherwise.
              * @spicapi
              */
-            bool IsActiveInWorld() const;
+            [[nodiscard]] bool IsActiveInWorld() const;
 
             void Name(const std::string& name);
             std::string Name() const;
