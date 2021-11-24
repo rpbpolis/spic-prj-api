@@ -30,9 +30,9 @@ namespace spic {
             Alignment alignment;
             Color color;
         public:
-            Text(double newWidth, double newHeight, std::string text, std::string font, int size, Alignment alignment,
+            Text(const std::string & objectName, const std::string & objectTag, bool active, int layer, double newWidth, double newHeight, std::string text, std::string font, int size, Alignment alignment,
                  const Color &color)
-            : UIObject(newWidth, newHeight), text(std::move(text)), font(std::move(font)), size(size),
+            : UIObject(objectName, objectTag, active, layer, newWidth, newHeight), text(std::move(text)), font(std::move(font)), size(size),
               alignment(alignment), color(color) {}
 
             void TextString(const std::string & newText);
