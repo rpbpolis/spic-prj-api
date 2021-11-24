@@ -1,6 +1,8 @@
 #ifndef UIOBJECT_H_
 #define UIOBJECT_H_
 
+#include <utility>
+
 #include "GameObject.hpp"
 
 namespace spic {
@@ -14,7 +16,8 @@ namespace spic {
             double width;
             double height;
         public:
-            UIObject(double newWidth, double newHeight) : width(newWidth), height(newHeight) {}
+            UIObject(std::string name, std::string tag, bool active, int layer, double newWidth, double newHeight)
+                    : GameObject(std::move(name), std::move(tag), active, layer), width(newWidth), height(newHeight) {}
 
             void Width(double newWidth);
             [[nodiscard]] double Width() const;
