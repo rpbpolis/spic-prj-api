@@ -14,7 +14,13 @@ namespace spic {
             double width;
             double height;
         public:
-            UIObject(int newWidth, int newHeight);
+            UIObject(std::vector<std::shared_ptr<Component>> components, const std::string& parentName, const std::string& name, const std::string& tag, bool active, int layer, double newWidth, double newHeight);
+
+            void Width(double newWidth);
+            [[nodiscard]] double Width() const;
+
+            void Height(double newHeight);
+            [[nodiscard]] double Height() const;
     };
 
 }
