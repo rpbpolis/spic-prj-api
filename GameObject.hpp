@@ -214,18 +214,7 @@ namespace spic {
             template<class T>
             [[nodiscard]] std::vector<std::shared_ptr<Component>> GetComponents() const {
                 std::vector<std::shared_ptr<Component>> foundComponents;
-
-                for(const std::shared_ptr<Component>& component : components){
-                    if(!component.get()){
-                        continue;
-                    }
-
-                    Component& componentRefPtr = *component;
-
-                    if(typeid(componentRefPtr) == typeid(T)){
-                        foundComponents.emplace_back(component);
-                    }
-                }
+                std::copy_if(components.cbegin(), components.cend(), std::back_inserter(foundComponents), [](const std::shared_ptr<Component>& component) { return component.get() && dynamic_cast<T*>(component.get()) != nullptr; });
 
                 return foundComponents;
             }
@@ -240,7 +229,6 @@ namespace spic {
             template<class T>
             [[nodiscard]] std::vector<std::shared_ptr<Component>> GetComponentsInChildren() const {
                 std::vector<std::shared_ptr<Component>> foundComponents;
-
 
                 for(const std::shared_ptr<GameObject>& child: GameObject::gameObjects) {
                     if (child->parent != nullptr && *child->parent == *this) {
