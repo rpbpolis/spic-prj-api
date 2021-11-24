@@ -4,6 +4,7 @@
 #include "UIObject.hpp"
 #include "Color.hpp"
 #include <string>
+#include <utility>
 
 namespace spic {
 
@@ -29,6 +30,11 @@ namespace spic {
             Alignment alignment;
             Color color;
         public:
+            Text(double newWidth, double newHeight, std::string text, std::string font, int size, Alignment alignment,
+                 const Color &color)
+            : UIObject(newWidth, newHeight), text(std::move(text)), font(std::move(font)), size(size),
+              alignment(alignment), color(color) {}
+
             void TextString(const std::string & newText);
             [[nodiscard]] const std::string & TextString() const;
 
