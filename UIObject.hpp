@@ -13,6 +13,12 @@ namespace spic {
         private:
             double width;
             double height;
+        public:
+            void Width(double newWidth);
+            [[nodiscard]] double Width() const;
+    
+            void Height(double newHeight);
+            [[nodiscard]] double Height() const;
     };
 
 }
