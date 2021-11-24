@@ -44,11 +44,11 @@ namespace spic {
             void Size(int newSize);
             [[nodiscard]] int Size() const;
 
-//            void Alignment(const spic::Alignment & newAlignment);
-//            [[nodiscard]] const spic::Alignment & Alignment() const;
+            void AlignmentValue(const spic::Alignment & newAlignment);
+            [[nodiscard]] const spic::Alignment & AlignmentValue() const;
 
-//            void Color(const spic::Color & newColor);
-//            [[nodiscard]] const spic::Color & Color() const;
+            void ColorValue(const spic::Color & newColor);
+            [[nodiscard]] const spic::Color & ColorValue() const;
     };
 
 }
