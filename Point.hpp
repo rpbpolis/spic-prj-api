@@ -10,6 +10,22 @@ namespace spic {
     struct Point {
         double x;
         double y;
+
+        double length() const;
+
+        void normalize();
+
+        void truncate(double max);
+
+        Point friend operator-(const Point& left, const Point& right);
+
+        Point friend operator+(const Point& left, const Point& right);
+
+        Point operator*(double scalar) const;
+
+        Point operator/(double scalar) const;
+
+        void operator*=(double scalar);
     };
 
 }
