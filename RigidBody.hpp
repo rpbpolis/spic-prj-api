@@ -27,9 +27,10 @@ namespace spic {
              * @param mass The mass of the rigid body
              * @param gravityScale The scale of the gravity of the rigid body
              * @param bodyType The type of the rigid body
+             * @param linearDamping The linear damping, can be used to prevent ice-skating
              * @sharedapi
              */
-            RigidBody(double mass, double gravityScale, const BodyType& bodyType);
+            RigidBody(double mass, double gravityScale, const BodyType& bodyType, float linearDamping = 0.0);
 
             /**
              * @brief Apply force to this rigid body.
@@ -83,11 +84,16 @@ namespace spic {
              */
             void GravityScale(double newGravityScale);
 
+            void LinearDamping(float newLinearDamping);
+
+            float LinearDamping() const;
+
         private:
             double mass;
             double gravityScale;
             BodyType bodyType;
             Point force;
+            float linearDamping;
     };
 
 }
