@@ -30,10 +30,14 @@ namespace spic {
             Alignment alignment;
             Color color;
         public:
-            Text(const std::vector<std::shared_ptr<Component>>& components, const std::string& parentName, const std::string& name, const std::string& tag, bool active, int layer, double newWidth, double newHeight, std::string text, std::string font, int size, Alignment alignment,
-                 const Color &color)
-            : UIObject(components, parentName, name, tag, active, layer, newWidth, newHeight), text(std::move(text)), font(std::move(font)), size(size),
-              alignment(alignment), color(color) {}
+            explicit Text(std::vector<std::shared_ptr<Component>> components, std::string name, std::string text,
+                          std::string font, Alignment alignment, const Color & color, int size = 3, double width = 60, double height = 15);
+
+            Text(std::vector<std::shared_ptr<Component>> components, std::string name, std::string tag, std::string text,
+                 std::string font, Alignment alignment, const Color &color, bool active = true, int layer = 1, int size = 3, double width = 60, double height = 15);
+
+            Text(const std::vector<std::shared_ptr<Component>>& components, const std::string& parentName, const std::string& name,
+                 const std::string& tag, std::string text, std::string font, Alignment alignment, const Color &color, bool active = true, int layer = 1, int size = 3, double width = 60, double height = 15);
 
             void TextString(const std::string & newText);
             [[nodiscard]] const std::string & TextString() const;
