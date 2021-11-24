@@ -14,6 +14,8 @@ namespace spic {
             double width;
             double height;
         public:
+            UIObject(double newWidth, double newHeight) : width(newWidth), height(newHeight) {}
+
             void Width(double newWidth);
             [[nodiscard]] double Width() const;
     
