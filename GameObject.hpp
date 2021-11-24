@@ -294,7 +294,6 @@ namespace spic {
             void Tag(const std::string& tag);
             [[nodiscard]] std::string Tag() const;
 
-
             void Layer(int layer);
             [[nodiscard]] int Layer() const;
 
@@ -309,11 +308,12 @@ namespace spic {
             static std::vector<std::shared_ptr<GameObject>> gameObjects;
             std::vector<std::shared_ptr<Component>> components;
             std::shared_ptr<GameObject> parent;
-            int id{};
+            int id = -1;
     protected:
         template<class T>
         void AddGameObject(const T& gameObject) {
-            if (!std::any_of(GameObject::gameObjects.cbegin(), GameObject::gameObjects.cend(), [&gameObject](const std::shared_ptr<GameObject>& gameObject1) { return boost::equal(gameObject1->name, gameObject.name); } )) {
+            if (std::is_base_of_v<GameObject, T>) {
+                this->id = static_cast<int>(GameObject::gameObjects.size());
                 GameObject::gameObjects.emplace_back(std::make_shared<T>(gameObject));
             }
         }
