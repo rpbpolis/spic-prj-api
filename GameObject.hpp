@@ -3,8 +3,11 @@
 
 #include "Component.hpp"
 #include <string>
+#include <algorithm>
 #include <vector>
 #include <memory>
+#include <iostream>
+#include <boost/range/algorithm/equal.hpp>
 
 namespace spic {
 
@@ -13,9 +16,6 @@ namespace spic {
      */
     class GameObject {
         public:
-
-            GameObject(std::string name, std::string tag, bool active, int layer);
-
             /**
              * @brief Finds a GameObject by name and returns it.
              * @param name The name of the GameObject you want to find.
@@ -47,15 +47,23 @@ namespace spic {
              */
             template<class T>
             static std::shared_ptr<GameObject> FindObjectOfType(bool includeInactive = false) {
-                for(GameObject gameObject : administration){
-                    if(typeid(GameObject) != typeid(T)){
-                        continue;
+                std::function<bool(const std::shared_ptr<GameObject>& gameObject)> predicate = [&includeInactive](const std::shared_ptr<GameObject>& gameObject) {
+                    if(!gameObject.get()){
+                        return false;
                     }
-                    if(includeInactive || gameObject.Active()){
-                        return std::make_shared<GameObject>(gameObject);
-                    }
-                }
-                return nullptr;
+
+                        auto test3 = std::is_same_v<T, decltype(*gameObject)>;
+
+                    GameObject& gameObjectRefPtr = *gameObject;
+
+                    return typeid(gameObjectRefPtr) == typeid(T) && (includeInactive || gameObject->Active());
+                };
+                auto test = spic::GameObject::gameObjects;
+                auto foundGameObject = std::find_if(spic::GameObject::gameObjects.begin(), spic::GameObject::gameObjects.end(), predicate);
+
+                if (foundGameObject == spic::GameObject::gameObjects.cend()) return nullptr;
+
+                return *foundGameObject;
             }
 
             /**
@@ -64,27 +72,30 @@ namespace spic {
              */
             template<class T>
             static std::vector<std::shared_ptr<GameObject>> FindObjectsOfType(bool includeInactive = false) {
-                std::vector<std::shared_ptr<GameObject>> objectsOfType;
-                for(GameObject gameObject : administration){
-                    if(typeid(GameObject) != typeid(T)){
-                        continue;
+                std::vector<std::shared_ptr<spic::GameObject>> targetGameObjects;
+                std::function<bool(const std::shared_ptr<GameObject>& gameObject)> predicate = [&includeInactive](const std::shared_ptr<GameObject>& gameObject) {
+                    if(!gameObject.get()){
+                        return false;
                     }
-                    if(includeInactive || gameObject.Active()){
-                        objectsOfType.push_back(std::make_shared<GameObject>(gameObject));
-                    }
-                }
-                return objectsOfType;
+
+                    GameObject& gameObjectRefPtr = *gameObject;
+
+                    return typeid(gameObjectRefPtr) == typeid(T) && (includeInactive || gameObject->Active());
+                };
+                std::copy_if(spic::GameObject::gameObjects.begin(), spic::GameObject::gameObjects.end(), std::back_inserter(targetGameObjects), predicate);
+
+                return targetGameObjects;
             }
 
             /**
-             * @brief Removes a GameObject from the administration.
+             * @brief Removes a GameObject from the gameObjects.
              * @details TODO What happens if this GameObject is a parent to others? What happens
              *          to the Components it possesses?
              * @param obj The GameObject to be destroyed. Must be a valid pointer to existing Game Object.
              * @exception A std::runtime_exception is thrown when the pointer is not valid.
              * @spicapi
              */
-            static void Destroy(const std::shared_ptr<GameObject>& obj);
+            static void Destroy(std::shared_ptr<GameObject> obj);
 
             /**
              * @brief Removes a Component.
@@ -97,18 +108,20 @@ namespace spic {
             /**
              * @brief Constructor.
              * @details The new GameObject will also be added to a statically
-             *          available collection, the administration.  This makes the
+             *          available collection, the gameObjects.  This makes the
              *          Find()-functions possible.
              * @param name The name for the game object.
              * @spicapi
              */
-            GameObject(const std::string& name);
+            explicit GameObject(std::vector<std::shared_ptr<Component>> components, std::string name);
+            GameObject(std::vector<std::shared_ptr<Component>> components, std::string name, std::string tag, bool active, int layer);
+            GameObject(std::vector<std::shared_ptr<Component>> components, const std::string& parentName, std::string name, std::string tag, bool active, int layer, bool autoInsert = true);
 
             /**
-             * @brief Does the object exist? TODO wat wordt hiermee bedoeld?
+             * @brief Does the object exist?
              * @spicapi
              */
-            operator bool();
+            explicit operator bool() const;
 
             /**
              * @brief Compare two GameObjects.
@@ -137,7 +150,7 @@ namespace spic {
              */
             template<class T>
             void AddComponent(std::shared_ptr<Component> component) {
-                components.push_back(*component);
+                components.emplace_back(std::move(component));
             }
 
             /**
@@ -147,13 +160,16 @@ namespace spic {
              * @spicapi
              */
             template<class T>
-            std::shared_ptr<Component> GetComponent() const {
-                if(!std::is_base_of<Component, T>::value){
-                    return nullptr;
-                }
-                for(Component component: components){
-                    if(typeid(component) == typeid(T)){
-                        return std::make_shared<Component>(component);
+            [[nodiscard]] std::shared_ptr<Component> GetComponent() const {
+                for(const std::shared_ptr<Component>& component: components){
+                    if(!component.get()){
+                        continue;
+                    }
+
+                    Component& componentRefPtr = *component;
+
+                    if(typeid(componentRefPtr) == typeid(T)){
+                        return component;
                     }
                 }
                 return nullptr;
@@ -168,20 +184,11 @@ namespace spic {
              * @spicapi
              */
             template<class T>
-            std::shared_ptr<Component> GetComponentInChildren() const {
-                if(!std::is_base_of<Component, T>::value){
-                    return nullptr;
-                }
-                for(Component component: components){
-                    if(typeid(component) == typeid(GameObject)){
-                        continue;
-                    }
-                    GameObject *gameObject = (GameObject*)&component;
-                    for(Component innerComponent : gameObject->components){
-                        if(typeid(innerComponent) == typeid(T)){
-                            return std::make_shared<Component>(innerComponent);
-                        }
-                    }
+            [[nodiscard]] std::shared_ptr<Component> GetComponentInChildren() const {
+                for(const std::shared_ptr<GameObject>& child: GameObject::gameObjects) {
+                    std::shared_ptr<Component> foundComponent = child->GetComponents<T>();
+
+                    if (foundComponent != nullptr) return foundComponent;
                 }
                 return nullptr;
             }
@@ -194,19 +201,8 @@ namespace spic {
              * @spicapi
              */
             template<class T>
-            std::shared_ptr<Component> GetComponentInParent() const {
-                if(parent != nullptr){
-                    return nullptr;
-                }
-                if(!std::is_base_of<Component, T>::value){
-                    return nullptr;
-                }
-                for(Component component: parent->components){
-                    if(typeid(component) == typeid(T)){
-                        return std::make_shared<Component>(component);
-                    }
-                }
-                return nullptr;
+            [[nodiscard]] std::shared_ptr<Component> GetComponentInParent() const {
+                return parent == nullptr ? nullptr : parent->GetComponent<T>();
             }
 
             /**
@@ -216,16 +212,21 @@ namespace spic {
              * @spicapi
              */
             template<class T>
-            std::vector<std::shared_ptr<Component>> GetComponents() const {
+            [[nodiscard]] std::vector<std::shared_ptr<Component>> GetComponents() const {
                 std::vector<std::shared_ptr<Component>> foundComponents;
-                if(!std::is_base_of<Component, T>::value){
-                    return foundComponents;
-                }
-                for(Component component: components){
-                    if(typeid(component) == typeid(T)){
-                        foundComponents.push_back(std::make_shared<Component>(component));
+
+                for(const std::shared_ptr<Component>& component : components){
+                    if(!component.get()){
+                        continue;
+                    }
+
+                    Component& componentRefPtr = *component;
+
+                    if(typeid(componentRefPtr) == typeid(T)){
+                        foundComponents.emplace_back(component);
                     }
                 }
+
                 return foundComponents;
             }
 
@@ -237,22 +238,18 @@ namespace spic {
              * @spicapi
              */
             template<class T>
-            std::vector<std::shared_ptr<Component>> GetComponentsInChildren() const {
+            [[nodiscard]] std::vector<std::shared_ptr<Component>> GetComponentsInChildren() const {
                 std::vector<std::shared_ptr<Component>> foundComponents;
-                if(std::is_base_of<Component, T>::value){
-                    return foundComponents;
-                }
-                for(Component component: components){
-                    if(typeid(component) != typeid(GameObject)){
-                        continue;
-                    }
-                    GameObject *gameObject = (GameObject*)&component;
-                    for(Component innerComponent : gameObject->components){
-                        if(typeid(innerComponent) == typeid(T)){
-                            foundComponents.push_back(std::make_shared<Component>(innerComponent));
-                        }
+
+
+                for(const std::shared_ptr<GameObject>& child: GameObject::gameObjects) {
+                    if (child->parent != nullptr && *child->parent == *this) {
+                        std::vector<std::shared_ptr<Component>> childComponents = child->GetComponents<T>();
+
+                        std::move(childComponents.cbegin(), childComponents.cend(), std::back_inserter(foundComponents));
                     }
                 }
+
                 return foundComponents;
             }
 
@@ -264,20 +261,8 @@ namespace spic {
              * @spicapi
              */
             template<class T>
-            std::vector<std::shared_ptr<Component>> GetComponentsInParent() const {
-                std::vector<std::shared_ptr<Component>> parentComponents;
-                if(parent != nullptr){
-                    return parentComponents;
-                }
-                if(!std::is_base_of<Component, T>::value){
-                    return parentComponents;
-                }
-                for(Component component: parent->components){
-                    if(typeid(component) == typeid(T)){
-                        parentComponents.push_back(std::make_shared<Component>(component));
-                    }
-                }
-                return parentComponents;
+            [[nodiscard]] std::vector<std::shared_ptr<Component>> GetComponentsInParent() const {
+                return parent == nullptr ? std::vector<std::shared_ptr<Component>>() : parent->GetComponents<T>();
             }
 
             /**
@@ -292,7 +277,7 @@ namespace spic {
              * @return true if active, false if not.
              * @spicapi
              */
-            bool Active() const;
+            [[nodiscard]] virtual bool Active() const;
 
             /**
              * @brief Returns whether this game component is active, taking its parents
@@ -301,21 +286,18 @@ namespace spic {
              *        false otherwise.
              * @spicapi
              */
-            bool IsActiveInWorld() const;
+            [[nodiscard]] bool IsActiveInWorld() const;
 
-            void addChild( GameObject* newGameObject);
-
-            void Name(const std::string &newName);
+            void Name(const std::string& name);
             [[nodiscard]] std::string Name() const;
 
-            void Tag(const std::string &newTag);
+            void Tag(const std::string& tag);
             [[nodiscard]] std::string Tag() const;
 
-
             void Layer(int layer);
-            int Layer() const;
+            [[nodiscard]] int Layer() const;
 
-            int Id() const { return id; }
+            [[nodiscard]] int Id() const { return id; }
             void Id(int newId) { id = newId; }
 
     private:
@@ -323,14 +305,19 @@ namespace spic {
             std::string tag;
             bool active;
             int layer;
-            static std::vector<GameObject> administration;
-            std::vector<Component> components;
-            std::vector<GameObject*> children;
-            GameObject* parent {};
-            int id {};
-        // ... more members
+            static std::vector<std::shared_ptr<GameObject>> gameObjects;
+            std::vector<std::shared_ptr<Component>> components;
+            std::shared_ptr<GameObject> parent;
+            int id = -1;
+    protected:
+        template<class T>
+        void AddGameObject(const T& gameObject) {
+            if (std::is_base_of_v<GameObject, T>) {
+                this->id = static_cast<int>(GameObject::gameObjects.size());
+                GameObject::gameObjects.emplace_back(std::make_shared<T>(gameObject));
+            }
+        }
     };
-
 }
 
 #endif // GAMEOBJECT_H_
