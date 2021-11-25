@@ -41,6 +41,7 @@ namespace spic {
              * @param trigger Is the collider a trigger.
              * @param offsetX The X-axis offset of the collider from the origin point.
              * @param offsetY The Y-axis offset of the collider from the origin point.
+             * @param givesFeedback A value to define if the collider should always trigger
              */
             CircleCollider(double radius, bool trigger, double offsetX, double offsetY, bool givesFeedback);
 

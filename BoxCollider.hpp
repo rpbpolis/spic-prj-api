@@ -38,6 +38,17 @@ namespace spic {
             BoxCollider(double width, double height, bool trigger, double offsetX, double offsetY);
 
             /**
+             * @brief Constructor.
+             * @param width The width for the box collider.
+             * @param height The height for the box collider.
+             * @param trigger Is the collider a trigger.
+             * @param offsetX The X-axis offset of the collider from the origin point.
+             * @param offsetY The Y-axis offset of the collider from the origin point.
+             * @param givesFeedback A value to define if the collider should always trigger
+             */
+            BoxCollider(double width, double height, bool trigger, double offsetX, double offsetY, bool givesFeedback);
+
+            /**
              * @brief The collider's width
              * @return The current width
              * @spicapi

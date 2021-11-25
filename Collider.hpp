@@ -33,7 +33,6 @@ namespace spic {
         /**
          * @brief Get if the collider should always trigger
          * @return True if the collider should always trigger
-         * @sharedapi
          */
         bool GivesFeedback() const;
 
