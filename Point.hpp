@@ -11,11 +11,11 @@ namespace spic {
         double x;
         double y;
 
-        double length() const;
+        double Length() const;
 
-        void normalize();
+        void Normalize();
 
-        void truncate(double max);
+        void Truncate(double max);
 
         Point friend operator-(const Point& left, const Point& right);
 
