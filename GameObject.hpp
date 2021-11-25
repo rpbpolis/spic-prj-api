@@ -8,6 +8,7 @@
 #include <memory>
 #include <iostream>
 #include <boost/range/algorithm/equal.hpp>
+#include <functional>
 
 namespace spic {
 
@@ -48,17 +49,15 @@ namespace spic {
             template<class T>
             static std::shared_ptr<GameObject> FindObjectOfType(bool includeInactive = false) {
                 std::function<bool(const std::shared_ptr<GameObject>& gameObject)> predicate = [&includeInactive](const std::shared_ptr<GameObject>& gameObject) {
-                    if(!gameObject.get()){
+                    if(!gameObject){
                         return false;
                     }
-
-                        auto test3 = std::is_same_v<T, decltype(*gameObject)>;
 
                     GameObject& gameObjectRefPtr = *gameObject;
 
                     return typeid(gameObjectRefPtr) == typeid(T) && (includeInactive || gameObject->Active());
                 };
-                auto test = spic::GameObject::gameObjects;
+
                 auto foundGameObject = std::find_if(spic::GameObject::gameObjects.begin(), spic::GameObject::gameObjects.end(), predicate);
 
                 if (foundGameObject == spic::GameObject::gameObjects.cend()) return nullptr;
@@ -74,7 +73,7 @@ namespace spic {
             static std::vector<std::shared_ptr<GameObject>> FindObjectsOfType(bool includeInactive = false) {
                 std::vector<std::shared_ptr<spic::GameObject>> targetGameObjects;
                 std::function<bool(const std::shared_ptr<GameObject>& gameObject)> predicate = [&includeInactive](const std::shared_ptr<GameObject>& gameObject) {
-                    if(!gameObject.get()){
+                    if(!gameObject){
                         return false;
                     }
 
@@ -162,7 +161,7 @@ namespace spic {
             template<class T>
             [[nodiscard]] std::shared_ptr<Component> GetComponent() const {
                 for(const std::shared_ptr<Component>& component: components){
-                    if(!component.get()){
+                    if(!component){
                         continue;
                     }
 
