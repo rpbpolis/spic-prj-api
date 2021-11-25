@@ -30,14 +30,7 @@ namespace spic {
             Alignment alignment;
             Color color;
         public:
-            explicit Text(std::vector<std::shared_ptr<Component>> components, std::string name, std::string text,
-                          std::string font, Alignment alignment, const Color & color, int size = 3, double width = 60, double height = 15);
-
-            Text(std::vector<std::shared_ptr<Component>> components, std::string name, std::string tag, std::string text,
-                 std::string font, Alignment alignment, const Color &color, bool active = true, int layer = 1, int size = 3, double width = 60, double height = 15);
-
-            Text(const std::vector<std::shared_ptr<Component>>& components, const std::string& parentName, const std::string& name,
-                 const std::string& tag, std::string text, std::string font, Alignment alignment, const Color &color, bool active = true, int layer = 1, int size = 3, double width = 60, double height = 15);
+            explicit Text(std::string font, std::string text, const std::vector<std::shared_ptr<Component>>& components = {}, const std::string& parentName = "", const std::string& name = "", const std::string& tag = "", Alignment alignment = Alignment::left, const Color &color = Color::black(), bool active = true, int layer = 1, int size = 3, double width = 60, double height = 15);
 
             void TextString(const std::string & newText);
             [[nodiscard]] const std::string & TextString() const;
