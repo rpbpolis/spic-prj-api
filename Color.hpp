@@ -75,6 +75,17 @@ namespace spic {
             static const Color& black()   { return _black; }
             // ... more standard colors here
 
+            double R();
+            void R(double newR);
+
+            double G();
+            void G(double newG);
+
+            double B();
+            void B(double newB);
+
+            double A();
+            void A(double newA);
         private:
             double r;
             double g;
