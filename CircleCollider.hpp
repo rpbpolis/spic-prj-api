@@ -36,6 +36,16 @@ namespace spic {
             CircleCollider(double radius, bool trigger, double offsetX, double offsetY);
 
             /**
+             * @brief Constructor.
+             * @param radius The radius for the circle collider.
+             * @param trigger Is the collider a trigger.
+             * @param offsetX The X-axis offset of the collider from the origin point.
+             * @param offsetY The Y-axis offset of the collider from the origin point.
+             * @param givesFeedback A value to define if the collider should always trigger
+             */
+            CircleCollider(double radius, bool trigger, double offsetX, double offsetY, bool givesFeedback);
+
+            /**
              * @brief Get the collider's radius
              * @return The radius
              * @spicapi
