@@ -15,7 +15,7 @@ namespace spic {
 
         explicit Collider(bool trigger, double offsetX, double offsetY);
 
-        explicit Collider(bool trigger, bool givesFeedback, double offsetX, double offsetY);
+        explicit Collider(bool trigger, double offsetX, double offsetY, bool givesFeedback);
         /**
          * @brief Get if the collider is a trigger
          * @return True if the collider is a trigger, false if not
