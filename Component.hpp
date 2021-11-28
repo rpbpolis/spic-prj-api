@@ -28,7 +28,7 @@ namespace spic {
             int Id() const { return id; }
             void Id(int newId) { id = newId; }
 
-
+            Component();
     private:
             /**
              * @brief Active status.
