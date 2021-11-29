@@ -7,35 +7,38 @@ namespace spic {
      * @brief Base class for all components.
      */
     class Component {
-        public:
-            /**
-             * @brief Getter for active status.
-             * @return true if active, false otherwise.
-             * @spicapi
-             */
-            bool Active() const { return active; }
+    public:
+        Component();
 
-            /**
-             * @brief flag New active status.
-             * @spicapi
-             */
-            virtual void Active(bool flag) { active = flag; }
-
-            bool operator==(const Component& other) const;
-            bool operator!=(const Component& other) const;
+        /**
+         * @brief Getter for active status.
+         * @return true if active, false otherwise.
+         * @spicapi
+         */
+        bool Active() const { return active; }
 
 
-            int Id() const { return id; }
-            void Id(int newId) { id = newId; }
+        /**
+         * @brief flag New active status.
+         * @spicapi
+         */
+        virtual void Active(bool flag) { active = flag; }
 
-            Component();
+        bool operator==(const Component& other) const;
+        bool operator!=(const Component& other) const;
+
+        static int nextAvailableId;
+
+        int Id() const { return id; }
+
+
     private:
-            /**
-             * @brief Active status.
-             */
-            bool active;
+        /**
+         * @brief Active status.
+         */
+        bool active;
 
-            int id;
+        int id;
     };
 
 }
