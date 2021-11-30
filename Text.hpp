@@ -17,6 +17,14 @@ namespace spic {
         right
     };
 
+    enum class FontStyle {
+        normal = 0,
+        bold = 1,
+        italic = 2,
+        underline = 4,
+        strikethrough = 8
+    };
+
     /**
      * @brief Class representing a piece of text which can be rendered.
      * @spicapi
@@ -33,7 +41,7 @@ namespace spic {
              * @sharedapi
              */
             Text(const std::string& name, const std::string& tag, int layer, double width, double height);
-            
+
             /**
              * @brief Constructor.
              * @param name The name for the game object.
@@ -44,11 +52,13 @@ namespace spic {
              * @param text The content of the Text object
              * @param font The font the Text object will use to render
              * @param size The size the font will be rendered at
-             * @param alignment The alignment the content will be rendered with 
+             * @param alignment The alignment the content will be rendered with
              * @param color The color the content will be rendered in
+             * @param style The font style.
              * @sharedapi
              */
-            Text(const std::string& name, const std::string& tag, int layer, double width, double height, const std::string& text, const std::string& font, int size, Alignment alignment, const Color& color);
+            Text(const std::string& name, const std::string& tag, int layer, double width, double height, const std::string& text, const std::string& font, int size, Alignment alignment, const Color& color,
+                 FontStyle style = FontStyle::normal);
 
             /**
              * @brief Get the content of the Text object
@@ -120,12 +130,15 @@ namespace spic {
              */
             void TextColor(const Color& color);
 
+            FontStyle GetFontStyle() const;
+
         private:
             std::string text;
             std::string font;
             int size;
             Alignment alignment;
             Color color;
+            FontStyle fontStyle;
     };
 
 }
