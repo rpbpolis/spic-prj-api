@@ -22,7 +22,7 @@ namespace spic {
         bold = 1,
         italic = 2,
         underline = 4,
-        striketrough = 8
+        strikethrough = 8
     };
 
     /**
