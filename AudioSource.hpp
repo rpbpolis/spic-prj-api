@@ -54,7 +54,7 @@ namespace spic {
              * @return The audioClip of the AudioSource, which is a string path of the audio
              * @sharedapi
              */
-            std::string AudioClip() const;
+            const std::string& AudioClip() const;
 
             /**
              * @brief Get the loop bool of the AudioSource
