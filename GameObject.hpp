@@ -371,6 +371,56 @@ namespace spic {
             }
 
             /**
+             * Get a child game object of a specified type T
+             * @tparam T The type of the game object.
+             * @param recursive A boolean flag to specify if it should search recursively.
+             * @return A game object of type T or a nullptr if no such type was found.
+             */
+            template <class T>
+            std::shared_ptr<T> GetChildOfType(bool recursive = false) const {
+                std::shared_ptr<T> result{nullptr};
+
+                for (const auto& child : children) {
+                    auto obj = std::dynamic_pointer_cast<T>(child);
+                    if (obj) return obj;
+
+                    // If we want to search recursive do it here, set the result, so we can quit early
+                    if (recursive) {
+                        result = child->template GetChildOfType<T>(true);
+                    }
+
+                    // If we found a child of type T in the recursive call, return it
+                    if (result) return result;
+                }
+
+                return result;
+            }
+
+            /**
+             * Get multiple child game objects of a specified type T
+             * @tparam T The type of the game object.
+             * @param recursive A boolean flag to specify if it should search recursively.
+             * @return A vector of game objects of type T.
+             */
+            template <class T>
+            std::shared_ptr<T> GetChildrenOfType(bool recursive = false) const {
+                std::vector<T> result{};
+
+                for (const auto& child : children) {
+                    auto obj = std::dynamic_pointer_cast<T>(child);
+                    if (obj) result.push_back(obj);
+
+                    if (recursive) {
+                        auto recursiveResult = child->template GetChildrenOfType<T>(true);
+
+                        result.insert(result.end(), recursiveResult.begin(), recursiveResult.end());
+                    }
+                }
+
+                return result;
+            }
+
+            /**
              * @brief Activates/Deactivates the GameObject, depending on the given true or false value.
              * @param active Desired value.
              * @spicapi
