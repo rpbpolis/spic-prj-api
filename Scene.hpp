@@ -47,13 +47,13 @@ namespace spic {
              * one is popped from the stack, thus revealing this one.
              * @sharedapi
              */
-            virtual void OnActivate() {};
+            virtual void OnActivate();
 
             /**
              * Called when this scene is popped from the stack.
              * @sharedapi
              */
-            virtual void OnDeactivate() {};
+            virtual void OnDeactivate();
 
     private:
         std::vector<std::shared_ptr<GameObject>> contents;
