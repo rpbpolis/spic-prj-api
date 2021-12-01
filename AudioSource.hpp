@@ -20,7 +20,7 @@ namespace spic {
              * @param volume The volume level of the AudioSource.
              * @sharedapi
              */
-            AudioSource(const std::string& audioClip, bool playOnAwake, bool looping, double volume);
+            AudioSource(const std::string& audioClip, bool playOnAwake, bool looping, double volume, bool music);
 
             /**
              * @brief Call this method to start playing audio.
@@ -49,6 +49,27 @@ namespace spic {
              */
             void Volume(double newVolume);
 
+            /**
+             * @brief Get the audioClip of the AudioSource
+             * @return The audioClip of the AudioSource, which is a string path of the audio
+             * @sharedapi
+             */
+            std::string AudioClip() const;
+
+            /**
+             * @brief Get the loop bool of the AudioSource
+             * @return The loop check of the AudioSource, which is a bool that shows if the audio should be looped
+             * @sharedapi
+             */
+            bool Loop() const;
+
+            /**
+             * @brief Get the music bool of the AudioSource
+             * @return The music check of the AudioSource, which is a bool that shows if the audio should be played as music or a sound effect
+             * @sharedapi
+             */
+            bool Music() const;
+
         private:
             /**
              * @brief Path to a locally stored audio file.
@@ -73,6 +94,12 @@ namespace spic {
              * @spicapi
              */
             double volume;
+
+            /**
+             * @brief When true, music will be played, otherwise a sound effect will be played
+             * @spicapi
+             */
+            bool music;
     };
 
 }
