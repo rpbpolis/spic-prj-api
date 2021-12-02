@@ -3,15 +3,15 @@
 
 #include "EngineConfig.hpp"
 #include "EventBus.hpp"
-#include "Scene.hpp"
 #include "PhysicsManager.hpp"
+#include "Scene.hpp"
+#include <AudioManager.hpp>
 #include <memory>
 #include <stack>
 
 namespace spic {
 
     class Renderer;
-    class CollisionChecker;
 
     namespace Input {
         class InputHandler;
@@ -35,6 +35,7 @@ namespace spic {
         std::unique_ptr<spic::Input::InputHandler> inputHandler;
         std::unique_ptr<spic::EventBus> eventBus;
         std::unique_ptr<spic::PhysicsManager> physicsManager;
+        std::unique_ptr<spic::AudioManager> audioManager;
 
         bool isRunning;
         int fps;
@@ -73,6 +74,7 @@ namespace spic {
         const std::unique_ptr<spic::Input::InputHandler>& InputHandler() const;
         std::unique_ptr<spic::EventBus>& EventBus();
         const std::unique_ptr<spic::PhysicsManager>& PhysicsManager() const;
+        const std::unique_ptr<spic::AudioManager>& AudioManager() const;
 
         void ToggleFps();
         void ToggleColliders();
