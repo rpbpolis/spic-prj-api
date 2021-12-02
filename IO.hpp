@@ -47,6 +47,42 @@ namespace spic::io {
      * file.
      */
     void OpenFileForReading(const std::string& path, const std::function<void(std::istream&)>& readingFn);
+
+    /**
+     * List the directories in a given path.
+     *
+     * @param path The path to search in.
+     * @param filterFn A filtering function where you can filter out any paths you want. Defaults to a function that
+     * always returns true.
+     * @return A vector of directories in the given path, an empty vector if the given path does not exist.
+     */
+    std::vector<std::string> ListDirectories(
+        const std::string& path,
+        const std::function<bool(const std::string&)>& filterFn = [](const auto&) { return true; });
+
+    /**
+     * Return the directory the file is in.
+     *
+     * @param file The file to get the dirname of.
+     * @return The directory the file is in.
+     */
+    std::string Dirname(const std::string& file);
+
+    /**
+     * Return the basename of the file.
+     *
+     * @param file The full file to get a basename of.
+     * @return The basename of the file.
+     */
+    std::string Basename(const std::string& file);
+
+    /**
+     * Delete a file.
+     *
+     * @param file The file to delete.
+     * @return TRUE if the operation was successful, FALSE if not.
+     */
+    bool DeleteFile(const std::string& file);
 }
 
 #endif
