@@ -25,6 +25,21 @@ namespace spic {
             virtual void OnUpdate();
 
             /**
+            * @brief Called when this scene is pushed on top of the stack, or when the scene directly above this
+             * one is popped from the stack, thus revealing this one.(Via Scene::OnActivate )
+            *      Always called, even if not active
+            * @sharedapi
+            */
+            virtual void OnActivate();
+
+            /**
+             * @brief called when the scene is popped from the stack. (Via Scene::OnDeactivate)
+             *      Always called, even if not active
+             * @sharedapi
+             */
+            virtual void OnDeactivate();
+
+            /**
              * @brief Sent when another object enters a trigger collider
              *        attached to this object (2D physics only).
              * @spicapi
