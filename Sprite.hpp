@@ -134,7 +134,6 @@ namespace spic {
             void CutoffWidth(double newValue);
 
         private:
-
             std::string sprite;
             spic::Color color;
             bool flipX;
