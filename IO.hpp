@@ -63,18 +63,26 @@ namespace spic::io {
     /**
      * Return the directory the file is in.
      *
-     * @param file
-     * @return
+     * @param file The file to get the dirname of.
+     * @return The directory the file is in.
      */
     std::string Dirname(const std::string& file);
 
     /**
-     * Return the basename of the path.
+     * Return the basename of the file.
      *
-     * @param file
-     * @return
+     * @param file The full file to get a basename of.
+     * @return The basename of the file.
      */
     std::string Basename(const std::string& file);
+
+    /**
+     * Delete a file.
+     *
+     * @param file The file to delete.
+     * @return TRUE if the operation was successful, FALSE if not.
+     */
+    bool DeleteFile(const std::string& file);
 }
 
 #endif
