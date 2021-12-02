@@ -120,13 +120,28 @@ namespace spic {
              */
             int OrderInLayer() const;
 
+            /**
+             * @brief The width that should be rendered. (Overwrites QueryTexture width in Renderer)
+             * @return the current cutoffWidth
+             * @sharedapi
+             */
+            double CutoffWidth() const;
+
+            /**
+             * @brief Replace cutoff width
+             * @param newValue
+             */
+            void CutoffWidth(double newValue);
+
         private:
+
             std::string sprite;
             spic::Color color;
             bool flipX;
             bool flipY;
             int sortingLayer;
             int orderInLayer;
+            double cutoffWidth;
     };
 
 }
