@@ -20,6 +20,8 @@ namespace spic {
 
         void Unregister(unsigned long);
 
+        void UnregisterAll();
+
     private:
         dp::event_bus eventBus;
 
