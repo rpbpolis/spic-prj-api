@@ -43,6 +43,7 @@ namespace spic {
         bool showColliders;
 
         void UpdateBehaviourScripts() const;
+        void UpdateAnimators() const;
         void Render();
 
     public:
