@@ -5,6 +5,8 @@
 #include "Sprite.hpp"
 #include <vector>
 #include <memory>
+#include <map>
+#include <string>
 
 namespace spic {
 
@@ -20,7 +22,7 @@ namespace spic {
              * @param sprites An list of sprites to loop through.
              * @sharedapi
              */
-            Animator(int fps, const std::vector<std::shared_ptr<Sprite>>& sprites);
+            Animator(int fps, const std::map<std::string, std::vector<std::shared_ptr<Sprite>>>& spritesMap);
 
             /**
              * @brief Start playing the image sequence.
@@ -57,7 +59,20 @@ namespace spic {
              */
             int fps;
 
-            std::vector<std::shared_ptr<Sprite>> sprites;
+            /**
+             * @brief index of the current sprite in the current animation
+             */
+            int spriteIndex;
+
+            /**
+            * @brief name of the current state
+            */
+            std::string currentState;
+
+            /**
+            * @brief map of the states with the respective sprites vector
+            */
+            std::map<std::string, std::vector<std::shared_ptr<Sprite>>> spritesMap;
     };
 
 }
