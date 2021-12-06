@@ -73,6 +73,11 @@ namespace spic {
             * @brief map of the states with the respective sprites vector
             */
             std::map<std::string, std::vector<std::shared_ptr<Sprite>>> spritesMap;
+
+            /**
+            * @brief the time that has elapsed since the last frame
+            */
+            double elapsedTime;
     };
 
 }
