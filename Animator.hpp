@@ -60,12 +60,12 @@ namespace spic {
             int fps;
 
             /**
-             * @brief index of the current sprite in the current animation
+             * @brief index of the current sprite in the current state
              */
             int spriteIndex;
 
             /**
-            * @brief name of the current state
+            * @brief name of the current state. for example "idle" or "running"
             */
             std::string currentState;
 
