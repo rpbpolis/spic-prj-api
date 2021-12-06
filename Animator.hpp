@@ -22,6 +22,14 @@ namespace spic {
              * @param sprites An list of sprites to loop through.
              * @sharedapi
              */
+            Animator(int fps, const std::vector<std::shared_ptr<Sprite>>& sprites);
+
+            /**
+             * @brief Constructor.
+             * @param fps The amount of frames the animator will cycle though per second.
+             * @param sprites An list of sprites to loop through.
+             * @sharedapi
+             */
             Animator(int fps, const std::map<std::string, std::vector<std::shared_ptr<Sprite>>>& spritesMap);
 
             /**
@@ -59,24 +67,27 @@ namespace spic {
              */
             int fps;
 
+            std::vector<std::shared_ptr<Sprite>> sprites;
+
             /**
              * @brief index of the current sprite in the current state
              */
             int spriteIndex;
 
             /**
-            * @brief name of the current state. for example "idle" or "running"
-            */
+             * @brief name of the current state. for example "idle" or "running"
+             */
             std::string currentState;
 
+
             /**
-            * @brief map of the states with the respective sprites vector
-            */
+             * @brief map of the states with the respective sprites vector
+             */
             std::map<std::string, std::vector<std::shared_ptr<Sprite>>> spritesMap;
 
             /**
-            * @brief the time that has elapsed since the last frame
-            */
+             * @brief the time that has elapsed since the last frame
+             */
             double elapsedTime;
     };
 
