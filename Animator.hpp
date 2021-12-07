@@ -3,10 +3,10 @@
 
 #include "Component.hpp"
 #include "Sprite.hpp"
-#include <vector>
-#include <memory>
 #include <map>
+#include <memory>
 #include <string>
+#include <vector>
 
 namespace spic {
 
@@ -30,7 +30,7 @@ namespace spic {
          * @param sprites An list of sprites to loop through.
          * @sharedapi
          */
-        Animator(int fps, const std::map<std::string, std::vector<std::shared_ptr<Sprite>>>& spritesMap);
+        Animator(int fps, const std::map<std::string, std::vector<std::string>>& spritesMap);
 
         /**
          * @brief Start playing the image sequence.
@@ -91,11 +91,10 @@ namespace spic {
          */
         std::string currentState;
 
-
         /**
          * @brief map of the states with the respective sprites vector
          */
-        std::map<std::string, std::vector<std::shared_ptr<Sprite>>> spritesMap;
+        std::map<std::string, std::vector<std::string>> spritesMap;
 
         /**
          * @brief the time that has elapsed since the last frame
