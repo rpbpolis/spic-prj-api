@@ -100,6 +100,11 @@ namespace spic {
              * @brief true if the animator is playing
              */
             bool isPlaying;
+
+            /**
+             * @brief true if the animator is playing
+             */
+            bool isLooping;
     };
 
 }
