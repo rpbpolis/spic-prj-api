@@ -60,6 +60,12 @@ namespace spic {
              */
             void FPS(int newFps);
 
+            /**
+             * @brief Animate the game object according to the sprites in the vector or sprites map
+             * @sharedapi
+             */
+            void Animate();
+
         private:
             /**
              * @brief frames per second (playing speed)
