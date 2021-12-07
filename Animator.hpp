@@ -89,6 +89,11 @@ namespace spic {
              * @brief the time that has elapsed since the last frame
              */
             double elapsedTime;
+
+            /**
+             * @brief true if the animator is playing
+             */
+            bool isPlaying;
     };
 
 }
