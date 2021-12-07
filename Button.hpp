@@ -39,6 +39,13 @@ namespace spic {
             void OnClick(std::function<void()> callback) { onClick = callback; }
 
             /**
+             * @brief Register an onClick handler that has the Button as a parameter (to access components)
+             * @param callback The function to register.
+             * @sharedapi
+             */
+            void OnClick(std::function<void(Button*)> callback) { onClickWithButton = callback; }
+
+            /**
              * @brief Get if the button is interactable
              * @return A boolean flag if the button is interactable or not
              * @sharedapi
@@ -64,6 +71,7 @@ namespace spic {
              * @spicapi
              */
             std::function<void()> onClick;
+            std::function<void(Button*)> onClickWithButton;
     };
 
 }
