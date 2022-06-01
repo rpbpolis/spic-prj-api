@@ -9,6 +9,12 @@ namespace spic {
     class IKeyListener {
         public:
             /**
+             * @brief Virtual destructor.
+             * @spicapi
+             */
+            virtual ~IKeyListener() = default;
+
+            /**
              * @brief This method will be caled whenever a key is pressed.
              *        Override for implementing the desired behaviour.
              * @spicapi
