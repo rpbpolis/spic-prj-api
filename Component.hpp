@@ -9,6 +9,12 @@ namespace spic {
     class Component {
         public:
             /**
+             * @brief Virtual destructor.
+             * @spicapi
+             */
+            virtual ~Component() = default;
+
+            /**
              * @brief Getter for active status.
              * @return true if active, false otherwise.
              * @spicapi
