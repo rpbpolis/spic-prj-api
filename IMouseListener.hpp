@@ -9,6 +9,12 @@ namespace spic {
     class IMouseListener {
         public:
             /**
+             * @brief Virtual destructor.
+             * @spicapi
+             */
+            virtual ~IMouseListener() = default;
+
+            /**
              * @brief Called whenever the mouse is moved.
              * @spicapi
              */
