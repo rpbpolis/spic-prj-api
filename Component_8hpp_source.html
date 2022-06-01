@@ -73,20 +73,23 @@ $(function() {
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
 <div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="classspic_1_1Component.html">    9</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classspic_1_1Component.html">Component</a> {</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classspic_1_1Component.html#a0240ed3c3632a2fa08b90796c0600020">   16</a></span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classspic_1_1Component.html#a0240ed3c3632a2fa08b90796c0600020">Active</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> active; }</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classspic_1_1Component.html#a3804f5e3cac204184980b7e34e991033">   22</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classspic_1_1Component.html#a3804f5e3cac204184980b7e34e991033">Active</a>(<span class="keywordtype">bool</span> flag) { active = flag; }</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classspic_1_1Component.html#a3507a84730510403c771bbb1b4e533c3">   15</a></span>&#160;            <span class="keyword">virtual</span> <a class="code" href="classspic_1_1Component.html#a3507a84730510403c771bbb1b4e533c3">~Component</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classspic_1_1Component.html#a0240ed3c3632a2fa08b90796c0600020">   22</a></span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classspic_1_1Component.html#a0240ed3c3632a2fa08b90796c0600020">Active</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> active; }</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <span class="keywordtype">bool</span> active;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    };</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// COMPONENT_H_</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classspic_1_1Component.html#a3804f5e3cac204184980b7e34e991033">   28</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classspic_1_1Component.html#a3804f5e3cac204184980b7e34e991033">Active</a>(<span class="keywordtype">bool</span> flag) { active = flag; }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="keywordtype">bool</span> active;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    };</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// COMPONENT_H_</span></div>
 <div class="ttc" id="aclassspic_1_1Component_html"><div class="ttname"><a href="classspic_1_1Component.html">spic::Component</a></div><div class="ttdoc">Base class for all components.</div><div class="ttdef"><b>Definition:</b> Component.hpp:9</div></div>
-<div class="ttc" id="aclassspic_1_1Component_html_a0240ed3c3632a2fa08b90796c0600020"><div class="ttname"><a href="classspic_1_1Component.html#a0240ed3c3632a2fa08b90796c0600020">spic::Component::Active</a></div><div class="ttdeci">bool Active() const</div><div class="ttdoc">Getter for active status.</div><div class="ttdef"><b>Definition:</b> Component.hpp:16</div></div>
-<div class="ttc" id="aclassspic_1_1Component_html_a3804f5e3cac204184980b7e34e991033"><div class="ttname"><a href="classspic_1_1Component.html#a3804f5e3cac204184980b7e34e991033">spic::Component::Active</a></div><div class="ttdeci">void Active(bool flag)</div><div class="ttdoc">flag New active status.</div><div class="ttdef"><b>Definition:</b> Component.hpp:22</div></div>
+<div class="ttc" id="aclassspic_1_1Component_html_a0240ed3c3632a2fa08b90796c0600020"><div class="ttname"><a href="classspic_1_1Component.html#a0240ed3c3632a2fa08b90796c0600020">spic::Component::Active</a></div><div class="ttdeci">bool Active() const</div><div class="ttdoc">Getter for active status.</div><div class="ttdef"><b>Definition:</b> Component.hpp:22</div></div>
+<div class="ttc" id="aclassspic_1_1Component_html_a3507a84730510403c771bbb1b4e533c3"><div class="ttname"><a href="classspic_1_1Component.html#a3507a84730510403c771bbb1b4e533c3">spic::Component::~Component</a></div><div class="ttdeci">virtual ~Component()=default</div><div class="ttdoc">Virtual destructor.</div></div>
+<div class="ttc" id="aclassspic_1_1Component_html_a3804f5e3cac204184980b7e34e991033"><div class="ttname"><a href="classspic_1_1Component.html#a3804f5e3cac204184980b7e34e991033">spic::Component::Active</a></div><div class="ttdeci">void Active(bool flag)</div><div class="ttdoc">flag New active status.</div><div class="ttdef"><b>Definition:</b> Component.hpp:28</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
