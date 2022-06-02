@@ -39,7 +39,7 @@ namespace spic {
             static std::shared_ptr<GameObject> FindWithTag(const std::string& tag);
 
             /**
-             * @brief Returns the first active loaded object of Type type.
+             * @brief Returns the first active loaded object of type T.
              * @spicapi
              */
             template<class T>
@@ -48,7 +48,7 @@ namespace spic {
             }
 
             /**
-             * @brief Gets a list of all loaded objects of Type type.
+             * @brief Gets a list of all loaded objects of type T.
              * @spicapi
              */
             template<class T>
@@ -58,8 +58,8 @@ namespace spic {
 
             /**
              * @brief Removes a GameObject from the administration.
-             * @details TODO What happens if this GameObject is a parent to others? What happens
-             *          to the Components it possesses?
+             * @details Child GameObjects will be destroyed, too, as well as
+             *          Components owned by the GameObject.
              * @param obj The GameObject to be destroyed. Must be a valid pointer to existing Game Object.
              * @exception A std::runtime_exception is thrown when the pointer is not valid.
              * @spicapi
@@ -69,7 +69,7 @@ namespace spic {
             /**
              * @brief Removes a Component.
              * @details Will search for the Component among the GameObjects.
-             * @param obj The Component to be removed.
+             * @param obj The Component to be removed. If obj == nullptr, Destroy() does nothing.
              * @spicapi
              */
             static void Destroy(Component* obj);
