@@ -151,11 +151,11 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:afe1650b6c75098e9b63a0ccece558567"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe9b817a231613c65d08cf59200d5605"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
 <tr class="memitem:abe9b817a231613c65d08cf59200d5605"><td class="memTemplItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="classspic_1_1GameObject.html">GameObject</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classspic_1_1GameObject.html#abe9b817a231613c65d08cf59200d5605">FindObjectOfType</a> (bool includeInactive=false)</td></tr>
-<tr class="memdesc:abe9b817a231613c65d08cf59200d5605"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the first active loaded object of Type type.  <a href="classspic_1_1GameObject.html#abe9b817a231613c65d08cf59200d5605">More...</a><br /></td></tr>
+<tr class="memdesc:abe9b817a231613c65d08cf59200d5605"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the first active loaded object of type T.  <a href="classspic_1_1GameObject.html#abe9b817a231613c65d08cf59200d5605">More...</a><br /></td></tr>
 <tr class="separator:abe9b817a231613c65d08cf59200d5605"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa60eac0d485f371b175d26c158c6768e"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
 <tr class="memitem:aa60eac0d485f371b175d26c158c6768e"><td class="memTemplItemLeft" align="right" valign="top">static std::vector&lt; std::shared_ptr&lt; <a class="el" href="classspic_1_1GameObject.html">GameObject</a> &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classspic_1_1GameObject.html#aa60eac0d485f371b175d26c158c6768e">FindObjectsOfType</a> (bool includeInactive=false)</td></tr>
-<tr class="memdesc:aa60eac0d485f371b175d26c158c6768e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a list of all loaded objects of Type type.  <a href="classspic_1_1GameObject.html#aa60eac0d485f371b175d26c158c6768e">More...</a><br /></td></tr>
+<tr class="memdesc:aa60eac0d485f371b175d26c158c6768e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a list of all loaded objects of type T.  <a href="classspic_1_1GameObject.html#aa60eac0d485f371b175d26c158c6768e">More...</a><br /></td></tr>
 <tr class="separator:aa60eac0d485f371b175d26c158c6768e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae100199931d90bcc3fe3bebcf6b389e1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classspic_1_1GameObject.html#ae100199931d90bcc3fe3bebcf6b389e1">Destroy</a> (std::shared_ptr&lt; <a class="el" href="classspic_1_1GameObject.html">GameObject</a> &gt; obj)</td></tr>
 <tr class="memdesc:ae100199931d90bcc3fe3bebcf6b389e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a <a class="el" href="classspic_1_1GameObject.html" title="Any object which should be represented on screen.">GameObject</a> from the administration.  <a href="classspic_1_1GameObject.html#ae100199931d90bcc3fe3bebcf6b389e1">More...</a><br /></td></tr>
@@ -311,7 +311,7 @@ template&lt;class T &gt; </div>
 <p>Removes a <a class="el" href="classspic_1_1Component.html" title="Base class for all components.">Component</a>. </p>
 <p>Will search for the <a class="el" href="classspic_1_1Component.html" title="Base class for all components.">Component</a> among the GameObjects. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">obj</td><td>The <a class="el" href="classspic_1_1Component.html" title="Base class for all components.">Component</a> to be removed. </td></tr>
+    <tr><td class="paramname">obj</td><td>The <a class="el" href="classspic_1_1Component.html" title="Base class for all components.">Component</a> to be removed. If obj == nullptr, <a class="el" href="classspic_1_1GameObject.html#ae100199931d90bcc3fe3bebcf6b389e1" title="Removes a GameObject from the administration.">Destroy()</a> does nothing. </td></tr>
   </table>
   </dd>
 </dl>
@@ -345,7 +345,7 @@ template&lt;class T &gt; </div>
 </div><div class="memdoc">
 
 <p>Removes a <a class="el" href="classspic_1_1GameObject.html" title="Any object which should be represented on screen.">GameObject</a> from the administration. </p>
-<p>TODO What happens if this <a class="el" href="classspic_1_1GameObject.html" title="Any object which should be represented on screen.">GameObject</a> is a parent to others? What happens to the Components it possesses? </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Child GameObjects will be destroyed, too, as well as Components owned by the <a class="el" href="classspic_1_1GameObject.html" title="Any object which should be represented on screen.">GameObject</a>. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">obj</td><td>The <a class="el" href="classspic_1_1GameObject.html" title="Any object which should be represented on screen.">GameObject</a> to be destroyed. Must be a valid pointer to existing Game Object. </td></tr>
   </table>
@@ -462,7 +462,7 @@ template&lt;class T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the first active loaded object of Type type. </p>
+<p>Returns the first active loaded object of type T. </p>
 <dl class="section attention"><dt>Attention</dt><dd>This is a symbol defined by the original SPIC API and should be kept as-is.<br  />
 </dd></dl>
 
@@ -494,7 +494,7 @@ template&lt;class T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Gets a list of all loaded objects of Type type. </p>
+<p>Gets a list of all loaded objects of type T. </p>
 <dl class="section attention"><dt>Attention</dt><dd>This is a symbol defined by the original SPIC API and should be kept as-is.<br  />
 </dd></dl>
 
