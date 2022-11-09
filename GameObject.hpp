@@ -43,7 +43,7 @@ namespace spic {
              * @spicapi
              */
             template<class T>
-            static std::shared_ptr<GameObject> FindObjectOfType(bool includeInactive = false) {
+            static std::shared_ptr<T> FindObjectOfType(bool includeInactive = false) {
                 // ... implementation here
             }
 
@@ -52,7 +52,7 @@ namespace spic {
              * @spicapi
              */
             template<class T>
-            static std::vector<std::shared_ptr<GameObject>> FindObjectsOfType(bool includeInactive = false) {
+            static std::vector<std::shared_ptr<T>> FindObjectsOfType(bool includeInactive = false) {
                 // ...implementation here
             }
 
@@ -116,7 +116,7 @@ namespace spic {
              * @spicapi
              */
             template<class T>
-            void AddComponent(std::shared_ptr<Component> component) {
+            void AddComponent(std::shared_ptr<T> component) {
                 // ... implementation here
             }
 
@@ -127,7 +127,7 @@ namespace spic {
              * @spicapi
              */
             template<class T>
-            std::shared_ptr<Component> GetComponent() const {
+            std::shared_ptr<T> GetComponent() const {
                 // ... implementation here
             }
 
@@ -139,7 +139,7 @@ namespace spic {
              * @spicapi
              */
             template<class T>
-            std::shared_ptr<Component> GetComponentInChildren() const {
+            std::shared_ptr<T> GetComponentInChildren() const {
                 // ... implementation here
             }
 
@@ -151,7 +151,7 @@ namespace spic {
              * @spicapi
              */
             template<class T>
-            std::shared_ptr<Component> GetComponentInParent() const {
+            std::shared_ptr<T> GetComponentInParent() const {
                 // ... implementation here
             }
 
@@ -162,7 +162,7 @@ namespace spic {
              * @spicapi
              */
             template<class T>
-            std::vector<std::shared_ptr<Component>> GetComponents() const {
+            std::vector<std::shared_ptr<T>> GetComponents() const {
                 // ... implementation here
             }
 
@@ -174,7 +174,7 @@ namespace spic {
              * @spicapi
              */
             template<class T>
-            std::vector<std::shared_ptr<Component>> GetComponentsInChildren() const {
+            std::vector<std::shared_ptr<T>> GetComponentsInChildren() const {
                 // ... implementation here
             }
 
@@ -186,7 +186,7 @@ namespace spic {
              * @spicapi
              */
             template<class T>
-            std::vector<std::shared_ptr<Component>> GetComponentsInParent() const {
+            std::vector<std::shared_ptr<T>> GetComponentsInParent() const {
                 // ... implementation here
             }
 
