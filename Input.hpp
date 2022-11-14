@@ -291,7 +291,7 @@ namespace spic {
          * @brief Returns the value of the virtual axis identified by axisName.
          * @spicapi
          */
-        double GetAxis();
+        double GetAxis(std::string axisName);
 
         /**
          * @brief Returns true while the user holds down the key identified by keycode.
